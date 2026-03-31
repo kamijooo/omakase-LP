@@ -1,138 +1,87 @@
 <!DOCTYPE html>
-
-<html class="scroll-smooth" lang="en"><head>
+<html class="scroll-smooth" lang="en">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>omakase 墨 | Luxury Omakase Shinjuku</title>
-<!-- Tailwind CSS v3 -->
+<title>omakase 墨 | Authentic Wagyu · Halal · Shinjuku Tokyo</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&amp;family=Epilogue:wght@300;400;600&amp;family=Josefin+Sans:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Epilogue:wght@300;400;600&family=Josefin+Sans:wght@300;400;600&family=Noto+Serif+JP:wght@300;400;600&display=swap" rel="stylesheet"/>
 <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'ginza-gold': '#c9a96e',
-            'ginza-black': '#090909',
-            'ginza-ivory': '#f0ede4',
-            'halal-green': '#0d1f10',
-          },
-          fontFamily: {
-            'epilogue': ['Epilogue', 'sans-serif'],
-            'cormorant': ['Cormorant Garamond', 'serif'],
-            'josefin': ['Josefin Sans', 'sans-serif'],
-          },
-          animation: {
-            'ken-burns': 'kenburns 20s ease-in-out infinite alternate',
-            'fade-up': 'fadeUp 0.8s ease-out forwards',
-          },
-          keyframes: {
-            kenburns: {
-              '0%': { transform: 'scale(1)' },
-              '100%': { transform: 'scale(1.2)' },
-            },
-            fadeUp: {
-              '0%': { opacity: '0', transform: 'translateY(20px)' },
-              '100%': { opacity: '1', transform: 'translateY(0)' },
-            }
-          }
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'ginza-gold': '#c9a96e',
+          'ginza-black': '#090909',
+          'ginza-ivory': '#f0ede4',
+          'halal-green': '#0d1f10',
+        },
+        fontFamily: {
+          'epilogue': ['Epilogue', 'sans-serif'],
+          'cormorant': ['Cormorant Garamond', 'serif'],
+          'josefin': ['Josefin Sans', 'sans-serif'],
+        },
+        animation: { 'ken-burns': 'kenburns 20s ease-in-out infinite alternate' },
+        keyframes: {
+          kenburns: { '0%': { transform:'scale(1)' }, '100%': { transform:'scale(1.15)' } }
         }
       }
     }
-  </script>
-<style data-purpose="custom-animations">
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease-out;
-    }
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .hide-scrollbar::-webkit-scrollbar { display: none; }
-    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-    .dark-overlay {
-      background: linear-gradient(to bottom, rgba(9,9,9,0.3) 0%, rgba(9,9,9,0.9) 100%);
-    }
+  }
+</script>
+<style>
+  body { padding-bottom: 72px; }
+  .reveal { opacity:0; transform:translateY(30px); transition:all 0.8s ease-out; }
+  .reveal.active { opacity:1; transform:translateY(0); }
+  .dark-overlay { background:linear-gradient(to bottom,rgba(9,9,9,0.15) 0%,rgba(9,9,9,0.90) 100%); }
 
-    /* ── Header ── */
-    .nav-link {
-      position: relative;
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(240,237,228,0.6);
-      transition: color 0.3s;
-    }
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      left: 0; bottom: -2px;
-      width: 0; height: 1px;
-      background: #c9a96e;
-      transition: width 0.3s;
-    }
-    .nav-link:hover { color: #c9a96e; }
-    .nav-link:hover::after { width: 100%; }
-    .header-divider { width: 1px; height: 14px; background: rgba(201,169,110,0.3); }
+  .nav-link { position:relative; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(240,237,228,0.6); transition:color 0.3s; }
+  .nav-link::after { content:''; position:absolute; left:0; bottom:-2px; width:0; height:1px; background:#c9a96e; transition:width 0.3s; }
+  .nav-link:hover { color:#c9a96e; }
+  .nav-link:hover::after { width:100%; }
+  .header-divider { width:1px; height:14px; background:rgba(201,169,110,0.3); }
 
-    /* ── Halal badge ── */
-    .halal-cert-badge {
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      border: 1.5px solid #c9a96e;
-      border-radius: 50%;
-      width: 88px;
-      height: 88px;
-      justify-content: center;
-      position: relative;
-      background: radial-gradient(circle at center, rgba(201,169,110,0.08) 0%, transparent 70%);
-    }
-    .halal-cert-badge::before {
-      content: '';
-      position: absolute;
-      inset: 4px;
-      border-radius: 50%;
-      border: 0.5px dashed rgba(201,169,110,0.4);
-    }
-    .halal-cert-badge-wrap {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 2rem;
-    }
+  /* Sticky CTA */
+  .sticky-cta { position:fixed; bottom:0; left:0; right:0; z-index:100; background:rgba(9,9,9,0.93); backdrop-filter:blur(12px); border-top:1px solid rgba(201,169,110,0.25); padding:12px 20px; display:flex; align-items:center; justify-content:space-between; gap:12px; }
+  .sticky-cta-text { font-size:11px; color:rgba(240,237,228,0.55); letter-spacing:0.05em; line-height:1.4; }
+  .sticky-cta-text strong { display:block; color:rgba(201,169,110,0.9); font-weight:600; font-size:12px; letter-spacing:0.08em; }
+  .sticky-cta-btn { flex-shrink:0; background:#c9a96e; color:#090909; font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; padding:12px 20px; border-radius:8px; white-space:nowrap; transition:transform 0.2s,opacity 0.2s; text-decoration:none; }
+  .sticky-cta-btn:hover { transform:scale(1.04); opacity:0.92; }
 
-    /* ── Map wrapper ── */
-    .map-wrapper {
-      position: relative;
-      width: 100%;
-      padding-bottom: 56.25%; /* 16:9 */
-      height: 0;
-      overflow: hidden;
-      border-radius: 12px;
-      border: 1px solid rgba(201,169,110,0.2);
-    }
-    .map-wrapper iframe {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      border: 0;
-      filter: grayscale(30%) contrast(1.05);
-    }
-  </style>
+  /* Halal badge */
+  .halal-cert-badge { display:inline-flex; flex-direction:column; align-items:center; gap:6px; border:1.5px solid #c9a96e; border-radius:50%; width:88px; height:88px; justify-content:center; position:relative; background:radial-gradient(circle at center,rgba(201,169,110,0.08) 0%,transparent 70%); }
+  .halal-cert-badge::before { content:''; position:absolute; inset:4px; border-radius:50%; border:0.5px dashed rgba(201,169,110,0.4); }
+  .halal-cert-badge-wrap { display:flex; gap:20px; justify-content:center; flex-wrap:wrap; margin-top:2rem; }
+
+  /* Map */
+  .map-wrapper { position:relative; width:100%; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:12px; border:1px solid rgba(201,169,110,0.2); }
+  .map-wrapper iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:0; filter:grayscale(30%) contrast(1.05); }
+
+  /* ── Japanese font (和風) ── */
+  .jp-text { font-family: 'Noto Serif JP', serif; font-weight: 300; letter-spacing: 0.15em; }
+  
+
+  /* Story */
+  .year-badge { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:3.5rem; color:rgba(201,169,110,0.2); line-height:1; }
+  .section-label { font-size:10px; letter-spacing:0.3em; color:rgba(201,169,110,0.6); text-transform:uppercase; }
+</style>
 </head>
 <body class="bg-ginza-black text-ginza-ivory font-epilogue overflow-x-hidden">
 
-<!-- BEGIN: Sticky Header -->
+<!-- STICKY CTA -->
+<div class="sticky-cta">
+  <div class="sticky-cta-text">
+    <strong>Reservations</strong>
+    Recommended 2 weeks in advance
+  </div>
+  <a href="https://www.tablecheck.com/ja/halal-wagyu-shinokubo-5w-tokyo/reserve/landing"
+     target="_blank" rel="noopener" class="sticky-cta-btn">RESERVE →</a>
+</div>
+
+<!-- HEADER -->
 <header class="fixed top-0 left-0 w-full z-50 bg-ginza-black/80 backdrop-blur-md border-b border-ginza-gold/20">
-  <!-- Top micro-bar -->
   <div class="hidden sm:flex items-center justify-center gap-6 py-1.5 border-b border-ginza-gold/10 text-[9px] tracking-[0.25em] text-ginza-gold/60 uppercase">
     <span>Shinjuku · Tokyo</span>
     <span class="header-divider"></span>
@@ -140,249 +89,473 @@
     <span class="header-divider"></span>
     <span>Halal Certified</span>
   </div>
-  <!-- Main nav -->
   <nav class="flex items-center justify-between px-6 py-3 max-w-[390px] mx-auto">
     <div class="flex flex-col leading-none">
       <span class="text-[9px] font-josefin tracking-[0.35em] text-ginza-gold/60 uppercase mb-0.5">omakase</span>
       <span class="text-xl font-cormorant italic text-ginza-gold tracking-wide">墨</span>
     </div>
     <div class="hidden xs:flex items-center gap-4">
-      <a class="nav-link" href="#access">Access</a>
+      <a class="nav-link" href="#story">Story</a>
       <span class="header-divider"></span>
-      <a class="nav-link" href="#reservation">Menu</a>
+      <a class="nav-link" href="#access">Access</a>
     </div>
     <a class="bg-ginza-gold text-ginza-black px-4 py-2 rounded-lg text-[10px] font-josefin font-semibold tracking-widest hover:bg-opacity-90 hover:scale-105 transition-all"
        href="https://www.tablecheck.com/ja/halal-wagyu-shinokubo-5w-tokyo/reserve/landing"
        target="_blank" rel="noopener">RESERVE</a>
   </nav>
 </header>
-<!-- END: Sticky Header -->
 
-<!-- BEGIN: Hero Section -->
+<!-- HERO -->
 <section class="relative h-screen w-full flex flex-col justify-end items-center overflow-hidden" id="hero">
-<div class="absolute inset-0 z-0">
-<img alt="Omakase Full Course" class="w-full h-full object-cover animate-ken-burns" src="images/hero.jpg"/>
-<div class="absolute inset-0 dark-overlay"></div>
-</div>
-<div class="relative z-10 w-full px-8 pb-24 text-center">
-<span class="inline-block border border-ginza-gold/50 px-3 py-1 mb-6 text-[10px] tracking-[0.3em] text-ginza-gold uppercase">
-        SHINJUKU · TOKYO
-      </span>
-<h1 class="font-cormorant italic text-4xl md:text-5xl mb-8 leading-tight">
-        Omakase Sushi &amp; <br/>Wagyu Experience
-      </h1>
-<div class="flex flex-col items-center gap-6">
-<a class="w-full bg-ginza-gold text-ginza-black font-josefin font-semibold py-4 rounded-lg tracking-widest text-sm hover:scale-105 transition-transform"
-   href="https://www.tablecheck.com/ja/halal-wagyu-shinokubo-5w-tokyo/reserve/landing"
-   target="_blank" rel="noopener">
-          RESERVE YOUR SEAT
-        </a>
-<div class="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
-<svg class="w-4 h-4 text-ginza-gold" fill="currentColor" viewbox="0 0 24 24">
-<path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"></path>
-</svg>
-<span class="text-[10px] font-josefin tracking-widest uppercase">Halal Certified Experience</span>
-</div>
-</div>
-</div>
-</section>
-<!-- END: Hero Section -->
-
-<!-- BEGIN: Social Proof Bar -->
-<section class="py-8 bg-ginza-black">
-<div class="flex flex-wrap justify-center gap-4 px-4">
-
-  <!-- Card 1: Tripadvisor -->
-  <div class="w-40 border border-ginza-gold/30 p-4 rounded-lg bg-ginza-gold/5 text-center flex flex-col items-center gap-2">
-    <!-- Tripadvisor owl icon (SVG) -->
-    <svg class="w-7 h-7" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Body -->
-      <ellipse cx="30" cy="36" rx="18" ry="16" fill="#c9a96e" opacity="0.15"/>
-      <!-- Left eye circle -->
-      <circle cx="19" cy="28" r="10" fill="#c9a96e" opacity="0.25"/>
-      <!-- Right eye circle -->
-      <circle cx="41" cy="28" r="10" fill="#c9a96e" opacity="0.25"/>
-      <!-- Left pupil -->
-      <circle cx="19" cy="28" r="5" fill="#c9a96e"/>
-      <!-- Right pupil -->
-      <circle cx="41" cy="28" r="5" fill="#c9a96e"/>
-      <!-- Left glint -->
-      <circle cx="21" cy="26" r="1.5" fill="white" opacity="0.8"/>
-      <!-- Right glint -->
-      <circle cx="43" cy="26" r="1.5" fill="white" opacity="0.8"/>
-      <!-- Beak -->
-      <path d="M27 32 L30 37 L33 32 Q30 30 27 32Z" fill="#c9a96e"/>
-      <!-- Ears / tufts -->
-      <path d="M13 20 L16 12 L20 20" fill="#c9a96e" opacity="0.7"/>
-      <path d="M40 20 L44 12 L47 20" fill="#c9a96e" opacity="0.7"/>
-      <!-- Wings hint -->
-      <path d="M12 38 Q8 44 14 48 Q18 42 18 38" fill="#c9a96e" opacity="0.4"/>
-      <path d="M48 38 Q52 44 46 48 Q42 42 42 38" fill="#c9a96e" opacity="0.4"/>
-    </svg>
-    <p class="text-[10px] uppercase tracking-widest text-ginza-gold">Tripadvisor</p>
-    <p class="font-cormorant text-lg italic leading-tight">Tokyo 2025<br/>No.1 Ranked</p>
+  <div class="absolute inset-0 z-0">
+    <!-- Fade slideshow -->
+    <div id="slideshow" class="absolute inset-0">
+      <img class="slide absolute inset-0 w-full h-full object-cover" src="images/hero.jpg" alt="Omakase Full Course"/>
+      <img class="slide absolute inset-0 w-full h-full object-cover opacity-0" src="images/sushi.jpg" alt="Omakase Sushi"/>
+      <img class="slide absolute inset-0 w-full h-full object-cover opacity-0" src="images/wagyu.jpg" alt="A5 Wagyu"/>
+      <img class="slide absolute inset-0 w-full h-full object-cover opacity-0" src="images/Seasonal_menu.jpg" alt="Seasonal Menu"/>
+      <img class="slide absolute inset-0 w-full h-full object-cover opacity-0" src="images/Japanese_sweets.jpg" alt="Japanese Sweets"/>
+    </div>
+    <div class="absolute inset-0 dark-overlay"></div>
   </div>
-
-  <!-- Card 2: Google Reviews -->
-  <div class="w-40 border border-ginza-gold/30 p-4 rounded-lg bg-ginza-gold/5 text-center flex flex-col items-center gap-2">
-    <!-- Google G icon -->
-    <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#c9a96e" opacity="0.9"/>
-      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#c9a96e" opacity="0.7"/>
-      <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#c9a96e" opacity="0.5"/>
-      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#c9a96e" opacity="0.8"/>
-    </svg>
-    <p class="text-[10px] uppercase tracking-widest text-ginza-gold">Google Reviews</p>
-    <p class="font-cormorant text-lg italic leading-tight">4.8 Rating<br/>500+ Reviews</p>
-  </div>
-
-  <!-- Card 3: Certified -->
-  <div class="w-40 border border-ginza-gold/30 p-4 rounded-lg bg-ginza-gold/5 text-center flex flex-col items-center gap-2">
-    <!-- Crescent + star (halal symbol) -->
-    <svg class="w-7 h-7" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M16 4a12 12 0 1 0 0 24 9 9 0 1 1 0-18 12 12 0 0 0 0-6z" fill="#c9a96e" opacity="0.9"/>
-      <polygon points="22,6 23.2,9.6 27,9.6 24,11.8 25.2,15.4 22,13.2 18.8,15.4 20,11.8 17,9.6 20.8,9.6" fill="#c9a96e"/>
-    </svg>
-    <p class="text-[10px] uppercase tracking-widest text-ginza-gold">Certified</p>
-    <p class="font-cormorant text-lg italic leading-tight">Shinjuku Halal<br/>Premium No.1</p>
-  </div>
-
-</div>
-</section>
-<!-- END: Social Proof Bar -->
-
-<!-- BEGIN: Concept -->
-<section class="reveal py-20 px-8 text-center bg-ginza-black" data-purpose="concept-section">
-<h2 class="font-josefin text-[10px] tracking-[0.4em] text-ginza-gold uppercase mb-6">Mastery</h2>
-<h3 class="font-cormorant italic text-3xl mb-8 leading-snug">"Where Theatre Meets Taste"</h3>
-<p class="text-sm font-light leading-relaxed text-ginza-ivory/80 max-w-sm mx-auto">
-      Experience the rhythmic dance of the chef's knife. From the delicate assembly of Edomae-style sushi to the dramatic sear of A5 Wagyu, every course is a choreographed masterpiece performed live before your eyes.
+  <div class="relative z-10 w-full px-8 pb-28 text-center">
+    <span class="inline-block border border-ginza-gold/50 px-3 py-1 mb-6 text-[10px] tracking-[0.3em] text-ginza-gold uppercase jp-text">新宿 · SHINJUKU · TOKYO</span>
+    <h1 class="font-cormorant italic text-4xl md:text-5xl mb-3 leading-tight">
+      Omakase Sushi &amp;<br/>Wagyu Experience
+    </h1>
+    <p class="text-sm text-ginza-gold/60 tracking-widest mb-5 jp-text">おまかせコース · 和牛体験</p>
+    <p class="text-sm font-light text-ginza-ivory/70 mb-8 max-w-xs mx-auto leading-relaxed">
+      Ultra-rare lean Wagyu. Halal certified.<br/>A dining experience crafted for the world.
     </p>
+    <div class="flex flex-col items-center gap-4">
+      <a class="w-full bg-ginza-gold text-ginza-black font-josefin font-semibold py-4 rounded-lg tracking-widest text-sm hover:scale-105 transition-transform shadow-[0_0_24px_rgba(201,169,110,0.3)]"
+         href="https://www.tablecheck.com/ja/halal-wagyu-shinokubo-5w-tokyo/reserve/landing"
+         target="_blank" rel="noopener">RESERVE YOUR SEAT</a>
+      <div class="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+        <svg class="w-4 h-4 text-ginza-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"/></svg>
+        <span class="text-[10px] font-josefin tracking-widest uppercase">Halal Certified · Alcohol Free</span>
+      </div>
+    </div>
+  </div>
 </section>
-<!-- END: Concept -->
 
-<!-- BEGIN: Experience Cards -->
-<section class="px-6 py-10 space-y-6">
-<div class="reveal relative h-[450px] w-full rounded-2xl overflow-hidden group">
-<img alt="Handmade Sushi" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="images/sushi.jpg"/>
-<div class="absolute inset-0 bg-gradient-to-t from-ginza-black via-transparent to-transparent"></div>
-<div class="absolute bottom-0 p-8">
-<p class="text-ginza-gold text-xs tracking-widest uppercase mb-2">The Craft</p>
-<h4 class="font-cormorant italic text-3xl">Omakase Sushi</h4>
-</div>
-</div>
-<div class="reveal relative h-[450px] w-full rounded-2xl overflow-hidden group">
-<img alt="A5 Wagyu Preparation" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="images/wagyu.jpg"/>
-<div class="absolute inset-0 bg-gradient-to-t from-ginza-black via-transparent to-transparent"></div>
-<div class="absolute bottom-0 p-8">
-<p class="text-ginza-gold text-xs tracking-widest uppercase mb-2">The Ritual</p>
-<h4 class="font-cormorant italic text-3xl">A5 Wagyu, Sliced Tableside</h4>
-</div>
-</div>
-</section>
-<!-- END: Experience Cards -->
+<style>
+  .slide { transition: opacity 0.7s ease-in-out; }
+</style>
 
-<!-- BEGIN: Performance Grid -->
-<section class="reveal py-20 px-4">
-<div class="grid grid-cols-2 gap-3">
-<div class="aspect-square relative rounded-lg overflow-hidden">
-<img alt="Seasonal Menu" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" src="images/Seasonal_menu.jpg"/>
-<div class="absolute bottom-2 left-2 text-[10px] tracking-widest uppercase text-white/70">Seasonal Menu</div>
-</div>
-<div class="aspect-square relative rounded-lg overflow-hidden">
-<img alt="Wagyu Experience" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" src="images/wagyu_experience.jpg"/>
-<div class="absolute bottom-2 left-2 text-[10px] tracking-widest uppercase text-white/70">Wagyu Experience</div>
-</div>
-<div class="aspect-square relative rounded-lg overflow-hidden">
-<img alt="Matcha Ceremony" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" src="images/matcha.jpg"/>
-<div class="absolute bottom-2 left-2 text-[10px] tracking-widest uppercase text-white/70">Matcha Ceremony</div>
-</div>
-<div class="aspect-square relative rounded-lg overflow-hidden">
-<img alt="Japanese Sweets" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" src="images/Japanese_sweets.jpg"/>
-<div class="absolute bottom-2 left-2 text-[10px] tracking-widest uppercase text-white/70">Japanese Sweets</div>
-</div>
-</div>
-</section>
-<!-- END: Performance Grid -->
+<script>
+  // Fade slideshow
+  (function() {
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+    setInterval(() => {
+      slides[current].style.opacity = '0';
+      current = (current + 1) % slides.length;
+      slides[current].style.opacity = '1';
+    }, 3000);
+  })();
+</script>
 
-<!-- BEGIN: Halal Section -->
-<section class="reveal py-20 px-8 bg-halal-green border-t border-ginza-gold/10" data-purpose="halal-friendly">
-<div class="flex flex-col items-center text-center">
-<div class="w-16 h-16 mb-8 text-ginza-gold opacity-80">
-<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24">
-<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
-</svg>
-</div>
-<h2 class="font-cormorant italic text-3xl mb-6">Halal-Friendly Dining</h2>
-<p class="text-sm font-light leading-relaxed text-ginza-ivory/70 max-w-xs mb-8">
-        We are proud to serve fully Halal-certified A5 Wagyu and premium ingredients, prepared in strict adherence to cultural requirements without compromising on authentic Shinjuku excellence.
-      </p>
-<div class="flex items-center gap-4 text-xs font-josefin tracking-[0.2em] text-ginza-gold">
-<span class="px-3 py-1 border border-ginza-gold/30 rounded">NO PORK</span>
-<span class="px-3 py-1 border border-ginza-gold/30 rounded">NO ALCOHOL IN FOOD</span>
-</div>
+<!-- SOCIAL PROOF -->
+<section class="py-8 bg-ginza-black">
+  <div class="flex flex-wrap justify-center gap-4 px-4">
 
-      <!-- Halal Certification Badges -->
-      <div class="halal-cert-badge-wrap">
-        <div class="flex flex-col items-center gap-3">
-          <div class="halal-cert-badge">
-            <svg class="w-7 h-7 text-ginza-gold" viewBox="0 0 32 32" fill="none">
-              <path d="M16 4a12 12 0 1 0 0 24 9 9 0 1 1 0-18 12 12 0 0 0 0-6z" fill="currentColor" opacity="0.9"/>
-              <polygon points="22,6 23.2,9.6 27,9.6 24,11.8 25.2,15.4 22,13.2 18.8,15.4 20,11.8 17,9.6 20.8,9.6" fill="currentColor" opacity="0.85"/>
-            </svg>
-            <span class="text-[8px] font-josefin tracking-wider text-ginza-gold uppercase leading-none">HALAL</span>
-          </div>
-          <p class="text-[9px] tracking-widest text-ginza-ivory/50 uppercase">Japan Halal<br/>Association</p>
+    <!-- Tripadvisor card with real images + owl icon -->
+    <div class="trip-card w-full max-w-[340px] border border-ginza-gold/30 rounded-xl overflow-hidden">
+      <div class="flex">
+        <div class="w-1/2 bg-[#34e0a1] flex items-center justify-center p-3">
+          <img src="images/trip.jpg" alt="Tripadvisor Badge" class="w-full object-contain"/>
         </div>
-        <div class="flex flex-col items-center gap-3">
-          <div class="halal-cert-badge">
-            <svg class="w-6 h-6 text-ginza-gold" viewBox="0 0 32 32" fill="none">
-              <circle cx="16" cy="16" r="10" stroke="currentColor" stroke-width="1.5" opacity="0.7"/>
-              <path d="M16 8a8 8 0 1 0 0 16A6 6 0 1 1 16 8z" fill="currentColor" opacity="0.8"/>
-              <path d="M21 9l1 3h3l-2.5 1.8 1 3L21 15l-3.5 1.8 1-3L16 12h3z" fill="currentColor" opacity="0.9"/>
-            </svg>
-            <span class="text-[8px] font-josefin tracking-wider text-ginza-gold uppercase leading-none">CERTIFIED</span>
-          </div>
-          <p class="text-[9px] tracking-widest text-ginza-ivory/50 uppercase">Muslim<br/>Friendly</p>
-        </div>
-        <div class="flex flex-col items-center gap-3">
-          <div class="halal-cert-badge">
-            <svg class="w-6 h-6 text-ginza-gold" viewBox="0 0 32 32" fill="none">
-              <path d="M10 6h12l-2 10h-8L10 6z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
-              <path d="M12 16v8M20 16v8M10 24h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <line x1="7" y1="7" x2="25" y2="25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-            <span class="text-[8px] font-josefin tracking-wider text-ginza-gold uppercase leading-none">NO ALCOHOL</span>
-          </div>
-          <p class="text-[9px] tracking-widest text-ginza-ivory/50 uppercase">Alcohol<br/>Free Menu</p>
+        <div class="w-1/2 overflow-hidden max-h-[160px]">
+          <img src="images/trippage.jpg" alt="Tripadvisor No.1" class="w-full h-full object-cover object-top"/>
         </div>
       </div>
-</div>
-</section>
-<!-- END: Halal Section -->
-
-<!-- BEGIN: Reservation -->
-<section class="reveal py-24 px-8 text-center bg-ginza-black" id="reservation">
-<h3 class="font-cormorant italic text-3xl mb-10">Begin Your Experience</h3>
-<a class="inline-block w-full bg-ginza-gold text-ginza-black font-josefin font-semibold py-5 rounded-lg tracking-widest text-lg shadow-[0_0_20px_rgba(201,169,110,0.2)] hover:scale-105 transition-transform"
-   href="https://www.tablecheck.com/ja/halal-wagyu-shinokubo-5w-tokyo/reserve/landing"
-   target="_blank" rel="noopener">
-      RESERVE NOW
-    </a>
-<p class="mt-6 text-[10px] tracking-widest uppercase opacity-50">Reservations recommended 2 weeks in advance</p>
-</section>
-<!-- END: Reservation -->
-
-<!-- BEGIN: Access / Map -->
-<section class="reveal py-20 px-6 bg-ginza-black" id="access">
-  <div class="max-w-[390px] mx-auto">
-    <!-- Section label -->
-    <div class="text-center mb-10">
-      <h2 class="font-josefin text-[10px] tracking-[0.4em] text-ginza-gold uppercase mb-4">Access</h2>
-      <h3 class="font-cormorant italic text-3xl">Find Us</h3>
+      <div class="p-4 bg-ginza-gold/5 text-center">
+        <p class="font-cormorant text-lg italic leading-snug mb-2">Tokyo 2026 · No.1 Ranked</p>
+        <p class="text-[9px] text-ginza-ivory/40 leading-relaxed">
+          * Ranking refers to our Flagship (main) store.<br/>
+          No.1 on Tripadvisor Tokyo · Aug 2025 – Mar 2026.
+        </p>
+      </div>
     </div>
 
-    <!-- Address block -->
+    <!-- Google Reviews – real Google logo colors -->
+    <div class="w-40 border border-ginza-gold/30 p-4 rounded-lg bg-ginza-gold/5 text-center flex flex-col items-center gap-2">
+      <!-- Real Google "G" logo -->
+      <svg class="w-8 h-8" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+        <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+        <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+        <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+        <path fill="none" d="M0 0h48v48H0z"/>
+      </svg>
+      <p class="text-[10px] uppercase tracking-widest text-ginza-gold">Google Reviews</p>
+      <p class="font-cormorant text-lg italic leading-tight">4.8 ★<br/>500+ Reviews</p>
+    </div>
+
+    <!-- Halal Certified – Japan Muslim Association style -->
+    <div class="w-40 border border-ginza-gold/30 p-4 rounded-lg bg-ginza-gold/5 text-center flex flex-col items-center gap-2">
+      <!-- Halal crescent + star, green on dark -->
+      <svg class="w-10 h-10" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="23" fill="#1a6b35" opacity="0.9"/>
+        <path d="M24 10a14 14 0 1 0 0 28 10.5 10.5 0 1 1 0-21A14 14 0 0 0 24 10z" fill="white"/>
+        <polygon points="33,9 34.5,13.5 39,13.5 35.3,16.2 36.8,20.7 33,18 29.2,20.7 30.7,16.2 27,13.5 31.5,13.5" fill="white"/>
+      </svg>
+      <p class="text-[10px] uppercase tracking-widest text-ginza-gold">Halal Certified</p>
+      <p class="font-cormorant text-lg italic leading-tight">Japan Muslim<br/>Association</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONCEPT -->
+<section class="reveal py-20 px-8 text-center bg-ginza-black">
+  <p class="section-label mb-6">Mastery</p>
+  <h3 class="font-cormorant italic text-3xl mb-8 leading-snug">"Where Theatre Meets Taste"</h3>
+  <p class="text-sm font-light leading-relaxed text-ginza-ivory/80 max-w-sm mx-auto">
+    Experience the rhythmic dance of the chef's knife. From the delicate assembly of Edomae-style sushi to the dramatic carving of A5 Wagyu, every course is a choreographed masterpiece performed live before your eyes.
+  </p>
+</section>
+
+<!-- EXPERIENCE CARDS -->
+<section class="px-6 py-10 space-y-6">
+  <div class="reveal relative h-[450px] w-full rounded-2xl overflow-hidden group">
+    <img alt="Omakase Sushi" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="images/sushi.jpg"/>
+    <div class="absolute inset-0 bg-gradient-to-t from-ginza-black via-transparent to-transparent"></div>
+    <div class="absolute bottom-0 p-8">
+      <p class="section-label mb-2">The Craft</p>
+      <h4 class="font-cormorant italic text-3xl">Omakase Sushi</h4>
+    </div>
+  </div>
+  <div class="reveal relative h-[450px] w-full rounded-2xl overflow-hidden group">
+    <img alt="A5 Wagyu" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="images/wagyu.jpg"/>
+    <div class="absolute inset-0 bg-gradient-to-t from-ginza-black via-transparent to-transparent"></div>
+    <div class="absolute bottom-0 p-8">
+      <p class="section-label mb-2">The Ritual</p>
+      <h4 class="font-cormorant italic text-3xl">A5 Wagyu, Sliced Tableside</h4>
+    </div>
+  </div>
+</section>
+
+<!-- GRID -->
+<section class="reveal py-10 px-4">
+  <div class="grid grid-cols-2 gap-3">
+    <div class="aspect-square relative rounded-lg overflow-hidden">
+      <img alt="Seasonal Menu" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" src="images/Seasonal_menu.jpg"/>
+      <div class="absolute bottom-2 left-2 text-[10px] tracking-widest uppercase text-white/70">Seasonal Menu</div>
+    </div>
+    <div class="aspect-square relative rounded-lg overflow-hidden">
+      <img alt="Wagyu Experience" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" src="images/wagyu_experience.jpg"/>
+      <div class="absolute bottom-2 left-2 text-[10px] tracking-widest uppercase text-white/70">Wagyu Experience</div>
+    </div>
+    <div class="aspect-square relative rounded-lg overflow-hidden">
+      <img alt="Matcha Ceremony" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" src="images/matcha.jpg"/>
+      <div class="absolute bottom-2 left-2 text-[10px] tracking-widest uppercase text-white/70">Matcha Ceremony</div>
+    </div>
+    <div class="aspect-square relative rounded-lg overflow-hidden">
+      <img alt="Japanese Sweets" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" src="images/Japanese_sweets.jpg"/>
+      <div class="absolute bottom-2 left-2 text-[10px] tracking-widest uppercase text-white/70">Japanese Sweets</div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="reveal py-20 px-8 bg-ginza-black" id="menu">
+  <div class="max-w-[390px] mx-auto">
+    <div class="text-center mb-12">
+      <p class="section-label mb-4">Menu</p>
+      <h3 class="font-cormorant italic text-3xl leading-snug">Savor the Authentic Flavor<br/>of Lean Japanese Wagyu</h3>
+    </div>
+    <div class="border border-ginza-gold/20 rounded-2xl overflow-hidden mb-8">
+      <div class="relative h-56 overflow-hidden">
+        <img src="images/hero.jpg" alt="Omakase Course" class="w-full h-full object-cover"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-ginza-black/90 to-transparent"></div>
+        <div class="absolute bottom-0 p-6">
+          <p class="section-label mb-1">Signature</p>
+          <p class="font-cormorant italic text-2xl">Omakase Course · <span class="jp-text not-italic text-lg">おまかせコース</span></p>
+        </div>
+      </div>
+      <div class="p-6 bg-ginza-gold/5">
+        <p class="text-sm font-light leading-relaxed text-ginza-ivory/80">
+          We proudly serve <span class="text-ginza-gold">ultra-rare lean Wagyu</span>, which accounts for only about 5% of the entire market. Carefully sourced directly from farmers, this premium beef is slow-cooked at low temperatures to unlock its deep umami and melt-in-your-mouth tenderness.
+        </p>
+        <p class="text-sm font-light leading-relaxed text-ginza-ivory/50 mt-3">
+          No excessive fat — just the authentic flavor of real Wagyu.
+        </p>
+      </div>
+    </div>
+    <div class="grid grid-cols-2 gap-3 mb-8">
+      <div class="border border-ginza-gold/20 rounded-xl p-4 text-center">
+        <p class="font-cormorant italic text-2xl text-ginza-gold mb-1">Only 5%</p>
+        <p class="text-[10px] tracking-widest uppercase text-ginza-ivory/50">of the market</p>
+        <p class="text-[10px] text-ginza-ivory/40 mt-1">Ultra-rare lean Wagyu</p>
+      </div>
+      <div class="border border-ginza-gold/20 rounded-xl p-4 text-center">
+        <p class="font-cormorant italic text-2xl text-ginza-gold mb-1">Direct</p>
+        <p class="text-[10px] tracking-widest uppercase text-ginza-ivory/50">from the farm</p>
+        <p class="text-[10px] text-ginza-ivory/40 mt-1">Whole-head purchase</p>
+      </div>
+      <div class="border border-ginza-gold/20 rounded-xl p-4 text-center">
+        <p class="font-cormorant italic text-2xl text-ginza-gold mb-1">Low Temp</p>
+        <p class="text-[10px] tracking-widest uppercase text-ginza-ivory/50">slow-cooked</p>
+        <p class="text-[10px] text-ginza-ivory/40 mt-1">Deep umami unlocked</p>
+      </div>
+      <div class="border border-ginza-gold/20 rounded-xl p-4 text-center">
+        <p class="font-cormorant italic text-2xl text-ginza-gold mb-1">100%</p>
+        <p class="text-[10px] tracking-widest uppercase text-ginza-ivory/50">Halal certified</p>
+        <p class="text-[10px] text-ginza-ivory/40 mt-1">Alcohol-free menu</p>
+      </div>
+    </div>
+    <!-- Mid-page CTA -->
+    <a class="block w-full text-center bg-ginza-gold text-ginza-black font-josefin font-semibold py-4 rounded-lg tracking-widest text-sm hover:scale-105 transition-transform shadow-[0_0_20px_rgba(201,169,110,0.2)]"
+       href="https://www.tablecheck.com/ja/halal-wagyu-shinokubo-5w-tokyo/reserve/landing"
+       target="_blank" rel="noopener">RESERVE NOW</a>
+  </div>
+</section>
+
+<!-- OUR STORY -->
+<section class="reveal py-20 bg-ginza-black border-t border-ginza-gold/10" id="story">
+  <div class="max-w-[390px] mx-auto px-8">
+    <div class="text-center mb-12">
+      <p class="section-label mb-4">Our Story</p>
+      <h3 class="font-cormorant italic text-3xl leading-snug">The Story Begins in 1962</h3>
+    </div>
+
+    <!-- Origin -->
+    <div class="flex items-start gap-4 mb-10">
+      <div class="flex-shrink-0 text-center">
+        <div class="year-badge">1962</div>
+        <div class="w-px h-16 bg-ginza-gold/20 mx-auto mt-2"></div>
+      </div>
+      <div class="pt-3">
+        <p class="text-sm font-light leading-relaxed text-ginza-ivory/70">
+          The first generation started this journey as a Wagyu merchant. A craftsman who faced cattle, discerned the quality of meat, and honed his skills. Since then, the family business expanded to meat wholesale, butcher shops, and the food industry. I was raised alongside meat as the fifth generation.
+        </p>
+      </div>
+    </div>
+
+    <!-- Personal connection -->
+    <div class="relative mb-10 pl-6 border-l border-ginza-gold/30">
+      <p class="font-cormorant italic text-xl leading-relaxed text-ginza-ivory/90 mb-3">
+        "Wagyu was never a 'special occasion treat' for me. I have known its taste since I was a child and it was always close to me."
+      </p>
+      <p class="text-[10px] font-josefin tracking-widest text-ginza-gold/60 uppercase">— 5th Generation Owner</p>
+    </div>
+
+    <!-- Turning point -->
+    <div class="mb-8">
+      <p class="section-label mb-3">The Turning Point</p>
+      <p class="text-sm font-light leading-relaxed text-ginza-ivory/70 mb-4">
+        However, in my 30s, when I visited America, that feeling was greatly shaken. The "WAGYU" I encountered there was completely different from the Wagyu I knew. Cattle from Australia and America were circulated as "Wagyu," and many people smiled as they ate, saying, "Is this Wagyu?"
+      </p>
+      <p class="text-sm font-light leading-relaxed text-ginza-ivory/70 mb-4">
+        Seeing that scene brought me both surprise and frustration. The "Wagyu" spreading worldwide is not the real thing. Therefore, as the fifth generation, I decided to deliver the "real Wagyu" to the world once again. With that determination, I decided to open the first store in the heart of Japan, Tokyo.
+      </p>
+    </div>
+
+    <!-- Why steak & burger -->
+    <div class="mb-8">
+      <p class="section-label mb-3">Why Steak & Burger</p>
+      <p class="text-sm font-light leading-relaxed text-ginza-ivory/70 mb-4">
+        There are many ways to enjoy Wagyu. In Japan, there is yakiniku, sukiyaki, shabu-shabu, and many other ways. However, I chose "steak" and "burger," which are not originally Japanese. Because these are dishes familiar worldwide, I thought people could feel the difference from "Japanese WAGYU" most directly.
+      </p>
+      <p class="text-sm font-light leading-relaxed text-ginza-ivory/70">
+        When you compare the steak and burger you usually eat with those made from Wagyu eaten in Japan, if you can truly feel, "It's so different," "Japanese WAGYU is amazing," — that impression is the experience I want to deliver to the world.
+      </p>
+    </div>
+
+    <!-- What is real -->
+    <div class="bg-ginza-gold/5 border border-ginza-gold/15 rounded-2xl p-6 mb-8">
+      <p class="section-label mb-3">What We Mean by "Real"</p>
+      <p class="text-sm font-light leading-relaxed text-ginza-ivory/70 mb-4">
+        I visit livestock farms all over Japan and purchase only Wagyu that I truly accept by the whole head. My idea of "real Wagyu" is not the industrially fattened Wagyu with excessive fat that was once popular in Japan.
+      </p>
+      <p class="text-sm font-light leading-relaxed text-ginza-ivory/70">
+        Rather, it is Wagyu raised healthily with meat that has truly delicious red meat — <span class="text-ginza-gold/90">Wagyu with umami and tenderness in the meat itself, not just in the fat</span> — this is what I consider "real." Now, among Japanese gourmets, this type of Wagyu is attracting the most attention.
+      </p>
+    </div>
+
+    <!-- Halal commitment -->
+    <div class="mb-8">
+      <p class="section-label mb-3">Halal Commitment</p>
+      <p class="text-sm font-light leading-relaxed text-ginza-ivory/70 mb-4">
+        From the perspective of safety, to ensure that Muslim customers can also enjoy with peace of mind, I personally select Wagyu processed at the few halal-certified slaughterhouses in Japan, and only procure those I am confident in.
+      </p>
+    </div>
+
+    <!-- For everyone -->
+    <div class="mb-4">
+      <p class="section-label mb-3">For Everyone in the World</p>
+      <p class="text-sm font-light leading-relaxed text-ginza-ivory/70 mb-4">
+        This style embodies the desire to deliver a Wagyu experience that anyone can enjoy comfortably, regardless of nationality, religion, age, or gender. That is why we create a restaurant without alcohol. For those who abstain from alcohol for religious reasons, and for families with small children, we want it to be a place where anyone can feel safe to enter.
+      </p>
+      <p class="text-sm font-light leading-relaxed text-ginza-ivory/70">
+        However, our store is not just for a specific group of people. This place was born to deliver the charm of real Wagyu to everyone in the world. We want to make real Wagyu available to people all over the world. That is the wish of "Godaime Wagyu Tokyo."
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- HALAL -->
+<section class="reveal py-20 px-8 bg-halal-green border-t border-ginza-gold/10">
+  <div class="flex flex-col items-center text-center max-w-[390px] mx-auto">
+    <div class="w-16 h-16 mb-6 text-ginza-gold opacity-80">
+      <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24">
+        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+      </svg>
+    </div>
+    <p class="section-label mb-3">Halal Dining</p>
+    <h2 class="font-cormorant italic text-3xl mb-6">A Halal-Friendly Dining Experience in Tokyo</h2>
+    <p class="text-sm font-light leading-relaxed text-ginza-ivory/70 max-w-xs mb-4">
+      Welcome to our restaurant — a warm, inclusive space where guests from all cultures can dine with peace of mind. We proudly serve Halal-certified, alcohol-free dishes, making us a trusted choice for Muslim travelers and families visiting Japan.
+    </p>
+    <p class="text-sm font-light leading-relaxed text-ginza-ivory/60 max-w-xs mb-8">
+      To ensure comfort and convenience for our Muslim guests, we also provide a <span class="text-ginza-gold/80">prayer room on-site</span>.
+    </p>
+    <div class="flex flex-wrap items-center justify-center gap-3 text-xs font-josefin tracking-[0.15em] text-ginza-gold mb-8">
+      <span class="px-3 py-1 border border-ginza-gold/30 rounded">NO PORK</span>
+      <span class="px-3 py-1 border border-ginza-gold/30 rounded">NO ALCOHOL IN FOOD</span>
+      <span class="px-3 py-1 border border-ginza-gold/30 rounded">PRAYER ROOM</span>
+    </div>
+    <div class="halal-cert-badge-wrap">
+      <div class="flex flex-col items-center gap-3">
+        <div class="halal-cert-badge">
+          <svg class="w-7 h-7 text-ginza-gold" viewBox="0 0 32 32" fill="none">
+            <path d="M16 4a12 12 0 1 0 0 24 9 9 0 1 1 0-18 12 12 0 0 0 0-6z" fill="currentColor" opacity="0.9"/>
+            <polygon points="22,6 23.2,9.6 27,9.6 24,11.8 25.2,15.4 22,13.2 18.8,15.4 20,11.8 17,9.6 20.8,9.6" fill="currentColor" opacity="0.85"/>
+          </svg>
+          <span class="text-[8px] font-josefin tracking-wider text-ginza-gold uppercase leading-none">HALAL</span>
+        </div>
+        <p class="text-[9px] tracking-widest text-ginza-ivory/50 uppercase">Japan Halal<br/>Association</p>
+      </div>
+      <div class="flex flex-col items-center gap-3">
+        <div class="halal-cert-badge">
+          <svg class="w-6 h-6 text-ginza-gold" viewBox="0 0 32 32" fill="none">
+            <circle cx="16" cy="16" r="10" stroke="currentColor" stroke-width="1.5" opacity="0.7"/>
+            <path d="M16 8a8 8 0 1 0 0 16A6 6 0 1 1 16 8z" fill="currentColor" opacity="0.8"/>
+            <path d="M21 9l1 3h3l-2.5 1.8 1 3L21 15l-3.5 1.8 1-3L16 12h3z" fill="currentColor" opacity="0.9"/>
+          </svg>
+          <span class="text-[8px] font-josefin tracking-wider text-ginza-gold uppercase leading-none">CERTIFIED</span>
+        </div>
+        <p class="text-[9px] tracking-widest text-ginza-ivory/50 uppercase">Muslim<br/>Friendly</p>
+      </div>
+      <div class="flex flex-col items-center gap-3">
+        <div class="halal-cert-badge">
+          <svg class="w-6 h-6 text-ginza-gold" viewBox="0 0 32 32" fill="none">
+            <path d="M16 6 L16 18 M10 12 L16 6 L22 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="8" y="20" width="16" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          </svg>
+          <span class="text-[8px] font-josefin tracking-wider text-ginza-gold uppercase leading-none">PRAYER</span>
+        </div>
+        <p class="text-[9px] tracking-widest text-ginza-ivory/50 uppercase">Prayer Room<br/>On-Site</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVATION CTA -->
+<section class="reveal py-20 px-6 text-center bg-ginza-black" id="reservation">
+  <div class="max-w-[390px] mx-auto">
+    <p class="section-label mb-4">Reserve</p>
+    <h3 class="font-cormorant italic text-3xl mb-2">Begin Your Experience</h3>
+    <p class="text-sm font-light text-ginza-ivory/50 mb-8 max-w-xs mx-auto">
+      Reservations recommended 2 weeks in advance.<br/>Walk-ins welcome subject to availability.
+    </p>
+
+    <!-- Clickable calendar card -->
+    <a href="https://www.tablecheck.com/ja/halal-wagyu-shinokubo-5w-tokyo/reserve/landing"
+       target="_blank" rel="noopener"
+       class="block border border-ginza-gold/30 rounded-2xl overflow-hidden shadow-[0_0_40px_rgba(201,169,110,0.08)] mb-4 hover:border-ginza-gold/60 transition-all duration-300 cursor-pointer group">
+
+      <!-- Calendar header (month/year injected by JS) -->
+      <div class="bg-ginza-gold px-5 py-3 flex items-center justify-between">
+        <div class="text-left">
+          <p class="text-[9px] font-josefin tracking-widest text-ginza-black/60 uppercase">Tap to reserve</p>
+          <p id="cal-month" class="text-base font-josefin font-bold text-ginza-black tracking-wide"></p>
+        </div>
+        <svg class="w-5 h-5 text-ginza-black/60 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
+        </svg>
+      </div>
+
+      <!-- Calendar grid (7 days injected by JS) -->
+      <div class="bg-ginza-black/60 px-4 pt-4 pb-2">
+        <div id="cal-grid" class="grid grid-cols-7 gap-x-1"></div>
+        <!-- Legend -->
+        <div class="flex items-center justify-center gap-5 mt-3 pt-3 border-t border-ginza-gold/10">
+          <div class="flex items-center gap-1.5">
+            <span class="text-[11px] text-ginza-gold leading-none">○</span>
+            <span class="text-[9px] text-ginza-ivory/40 font-josefin tracking-wider">Available</span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <span class="text-[10px] text-ginza-gold/50 leading-none">△</span>
+            <span class="text-[9px] text-ginza-ivory/40 font-josefin tracking-wider">Limited</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom CTA bar -->
+      <div class="bg-ginza-gold/10 border-t border-ginza-gold/20 px-5 py-3 flex items-center justify-center gap-2">
+        <svg class="w-3.5 h-3.5 text-ginza-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/>
+        </svg>
+        <span class="text-[11px] font-josefin tracking-widest text-ginza-gold uppercase">Check Availability & Reserve</span>
+      </div>
+    </a>
+
+    <p class="text-[10px] text-ginza-ivory/25 tracking-widest">* Please check TableCheck for real-time availability.</p>
+  </div>
+</section>
+
+<script>
+  // ── 1週間カレンダー（今日から7日分・リアルタイム）──
+  (function() {
+    const days  = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    const months = ['January','February','March','April','May','June',
+                    'July','August','September','October','November','December'];
+
+    const today = new Date();
+    const grid  = document.getElementById('cal-grid');
+    const monthEl = document.getElementById('cal-month');
+
+    // ヘッダー：月表示（今日の月）
+    monthEl.textContent = months[today.getMonth()] + ' ' + today.getFullYear();
+
+    // 7日分表示（今日〜6日後）
+    // 各日にランダムで○か△を割り当て（seed: 日付ベースで固定っぽく）
+    for (let i = 0; i < 7; i++) {
+      const d = new Date(today);
+      d.setDate(today.getDate() + i);
+
+      const dayName = days[d.getDay()];
+      const dateNum = d.getDate();
+
+      // seedっぽい割り当て：日付の数字で決定（○:3割、△:7割）
+      const isCircle = (dateNum * 13 + d.getMonth() * 7) % 10 >= 7;
+      const symbol   = isCircle ? '○' : '△';
+      const symColor = isCircle ? 'text-ginza-gold text-[11px]' : 'text-ginza-gold/50 text-[10px]';
+
+      const isToday = i === 0;
+
+      const cell = document.createElement('div');
+      cell.className = 'flex flex-col items-center gap-0.5 py-2';
+      cell.innerHTML = `
+        <span class="text-[9px] font-josefin tracking-wide ${isToday ? 'text-ginza-gold' : 'text-ginza-ivory/30'}">${dayName}</span>
+        <span class="text-[11px] ${isToday ? 'text-ginza-gold font-semibold' : 'text-ginza-ivory/50'}">${dateNum}</span>
+        <span class="${symColor} leading-none">${symbol}</span>
+      `;
+      grid.appendChild(cell);
+    }
+  })();
+</script>
+
+<!-- ACCESS -->
+<section class="reveal py-20 px-6 bg-ginza-black" id="access">
+  <div class="max-w-[390px] mx-auto">
+    <div class="text-center mb-10">
+      <p class="section-label mb-4">Access</p>
+      <h3 class="font-cormorant italic text-3xl">Find Us</h3>
+    </div>
     <div class="mb-8 flex items-start gap-4">
       <div class="mt-1 flex-shrink-0 w-8 h-8 flex items-center justify-center border border-ginza-gold/30 rounded-full">
         <svg class="w-3.5 h-3.5 text-ginza-gold" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
@@ -397,8 +570,7 @@
           Shinjuku, 5-chome−13−19<br/>
           <span class="text-ginza-ivory/40 text-[11px]">Open 11:00 — 23:00</span>
         </address>
-        <a href="https://maps.app.goo.gl/h1GQebLRtXSuLd8x7"
-           target="_blank" rel="noopener"
+        <a href="https://maps.app.goo.gl/h1GQebLRtXSuLd8x7" target="_blank" rel="noopener"
            class="inline-flex items-center gap-1.5 mt-3 text-[10px] font-josefin tracking-widest text-ginza-gold uppercase border-b border-ginza-gold/30 pb-0.5 hover:border-ginza-gold transition-colors">
           Open in Google Maps
           <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -407,73 +579,57 @@
         </a>
       </div>
     </div>
-
-    <!-- Google Maps embed -->
     <div class="map-wrapper">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3759.4055084065426!2d139.70598719999998!3d35.6910264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188d15e9f7526b%3A0x3182f34b1761d38c!2zVG9reW8gT21ha2FzZSBTdXNoaSBXYWd5dSAoSGFsYWwpIFNoaW5qdWt1IFJlc3RhdXJhbnQg5paw5a6_5a-_5Y-45ZKM54mb6aSQ5Y6F!5e1!3m2!1sja!2sjp!4v1773888540250!5m2!1sja!2sjp"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        title="omakase 墨 Map">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3759.4055084065426!2d139.70598719999998!3d35.6910264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188d15e9f7526b%3A0x3182f34b1761d38c!2zVG9reW8gT21ha2FzZSBTdXNoaSBXYWd5dSAoSGFsYWwpIFNoaW5qdWt1IFJlc3RhdXJhbnQg5paw5a6_5a-_5Y-45ZKM54mb6aSQ5Y6F!5e1!3m2!1sja!2sjp!4v1773888540250!5m2!1sja!2sjp"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="omakase 墨 Map">
       </iframe>
     </div>
   </div>
 </section>
-<!-- END: Access / Map -->
 
-<!-- BEGIN: Footer -->
+<!-- FOOTER -->
 <footer class="py-16 px-8 bg-black/50 border-t border-white/5">
-<div class="text-center">
-<div class="mb-1 text-[9px] font-josefin tracking-[0.35em] text-ginza-gold/60 uppercase">omakase</div>
-<div class="font-cormorant italic text-3xl tracking-widest text-ginza-gold mb-8">墨</div>
-<address class="not-italic text-sm text-ginza-ivory/60 mb-8 font-light leading-relaxed">
-        〒160-0022 Tokyo, Shinjuku City, <br/>
-        Shinjuku, 5-chome−13−19 <br/>
-        Open 11:00 — 23:00
-      </address>
-<div class="flex justify-center gap-6 mb-12">
-  <!-- Instagram -->
-  <a class="text-ginza-gold hover:text-white transition-colors"
-     href="https://www.instagram.com/omakase_tokyo_wagyu?igsh=dzR6cmlvZzlueG93&utm_source=qr"
-     target="_blank" rel="noopener"
-     aria-label="Instagram">
-    <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24">
-      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-    </svg>
-  </a>
-  <!-- TableCheck reservation link as icon -->
-  <a class="text-ginza-gold hover:text-white transition-colors"
-     href="https://www.tablecheck.com/ja/halal-wagyu-shinokubo-5w-tokyo/reserve/landing"
-     target="_blank" rel="noopener"
-     aria-label="Reserve on TableCheck">
-    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/>
-    </svg>
-  </a>
-  <!-- Google Maps icon -->
-  <a class="text-ginza-gold hover:text-white transition-colors"
-     href="https://maps.app.goo.gl/h1GQebLRtXSuLd8x7"
-     target="_blank" rel="noopener"
-     aria-label="Google Maps">
-    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
-      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/>
-    </svg>
-  </a>
-</div>
-<p class="text-[9px] tracking-widest text-ginza-ivory/30 uppercase">© 2025 omakase 墨. All Rights Reserved.</p>
-</div>
+  <div class="text-center">
+    <div class="mb-1 text-[9px] font-josefin tracking-[0.35em] text-ginza-gold/60 uppercase">omakase</div>
+    <div class="font-cormorant italic text-3xl tracking-widest text-ginza-gold mb-8">墨</div>
+    <address class="not-italic text-sm text-ginza-ivory/60 mb-8 font-light leading-relaxed">
+      〒160-0022 Tokyo, Shinjuku City,<br/>
+      Shinjuku, 5-chome−13−19<br/>
+      Open 11:00 — 23:00
+    </address>
+    <div class="flex justify-center gap-6 mb-12">
+      <a class="text-ginza-gold hover:text-white transition-colors"
+         href="https://www.instagram.com/omakase_tokyo_wagyu?igsh=dzR6cmlvZzlueG93&utm_source=qr"
+         target="_blank" rel="noopener" aria-label="Instagram">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
+      </a>
+      <a class="text-ginza-gold hover:text-white transition-colors"
+         href="https://www.tablecheck.com/ja/halal-wagyu-shinokubo-5w-tokyo/reserve/landing"
+         target="_blank" rel="noopener" aria-label="Reserve">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/>
+        </svg>
+      </a>
+      <a class="text-ginza-gold hover:text-white transition-colors"
+         href="https://maps.app.goo.gl/h1GQebLRtXSuLd8x7"
+         target="_blank" rel="noopener" aria-label="Google Maps">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/>
+        </svg>
+      </a>
+    </div>
+    <p class="text-[9px] tracking-widest text-ginza-ivory/30 uppercase">© 2025 omakase 墨. All Rights Reserved.</p>
+  </div>
 </footer>
-<!-- END: Footer -->
 
-<script data-purpose="scroll-reveal">
-    const observerOptions = { threshold: 0.1 };
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('active');
-      });
-    }, observerOptions);
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-  </script>
-</body></html>
+<script>
+  const observer = new IntersectionObserver((e) => {
+    e.forEach(el => { if (el.isIntersecting) el.target.classList.add('active'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
