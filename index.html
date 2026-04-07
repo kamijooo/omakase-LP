@@ -232,41 +232,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- MENU (Mastery統合・写真小さめ) -->
-<section class="reveal py-16 px-6 bg-ginza-black" id="menu">
-  <div class="max-w-[390px] mx-auto">
+<!-- MENU -->
+<section class="reveal py-16 bg-ginza-black" id="menu">
 
-    <!-- Mastery見出し -->
-    <div class="text-center mb-10">
-      <p class="section-label mb-4">Menu · Mastery</p>
-      <h3 class="font-cormorant italic text-3xl mb-4 leading-snug">"Where Theatre Meets Taste"</h3>
-      <p class="text-sm font-light leading-relaxed text-ginza-ivory/70 max-w-sm mx-auto">
-        From the delicate assembly of Edomae-style sushi to the dramatic carving of A5 Wagyu, every course is a choreographed masterpiece performed live before your eyes.
-      </p>
-    </div>
+  <!-- Mastery見出し -->
+  <div class="text-center mb-10 px-6">
+    <p class="section-label mb-4">Menu · Mastery</p>
+    <h3 class="font-cormorant italic text-3xl mb-4 leading-snug">"Where Theatre Meets Taste"</h3>
+    <p class="text-sm font-light leading-relaxed text-ginza-ivory/70 max-w-lg mx-auto">
+      From the delicate assembly of Edomae-style sushi to the dramatic carving of A5 Wagyu, every course is a choreographed masterpiece performed live before your eyes.
+    </p>
+  </div>
 
-    <!-- 写真2枚（小さめ横並び） -->
-    <div class="grid grid-cols-2 gap-3 mb-10">
-      <div class="relative h-40 rounded-xl overflow-hidden group">
-        <img alt="Omakase Sushi" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="images/sushi.jpg"/>
-        <div class="absolute inset-0 bg-gradient-to-t from-ginza-black/80 to-transparent"></div>
-        <div class="absolute bottom-0 p-3">
-          <p class="text-[9px] tracking-widest uppercase text-ginza-gold mb-0.5">The Craft</p>
-          <p class="font-cormorant italic text-base leading-tight">Omakase Sushi</p>
-        </div>
-      </div>
-      <div class="relative h-40 rounded-xl overflow-hidden group">
-        <img alt="A5 Wagyu" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="images/wagyu.jpg"/>
-        <div class="absolute inset-0 bg-gradient-to-t from-ginza-black/80 to-transparent"></div>
-        <div class="absolute bottom-0 p-3">
-          <p class="text-[9px] tracking-widest uppercase text-ginza-gold mb-0.5">The Ritual</p>
-          <p class="font-cormorant italic text-base leading-tight">A5 Wagyu</p>
-        </div>
+  <!-- 背景画像：2枚横並び（full bleed） -->
+  <div class="flex mb-10">
+    <div class="relative flex-1 h-52 overflow-hidden group">
+      <img alt="Omakase Sushi" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="images/sushi.jpg"/>
+      <div class="absolute inset-0 bg-gradient-to-r from-transparent to-ginza-black/70"></div>
+      <div class="absolute bottom-0 right-0 p-4 text-right">
+        <p class="text-[9px] tracking-widest uppercase text-ginza-gold mb-0.5">The Craft</p>
+        <p class="font-cormorant italic text-lg">Omakase Sushi</p>
       </div>
     </div>
+    <div class="relative flex-1 h-52 overflow-hidden group">
+      <img alt="A5 Wagyu" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="images/wagyu.jpg"/>
+      <div class="absolute inset-0 bg-gradient-to-l from-transparent to-ginza-black/70"></div>
+      <div class="absolute bottom-0 left-0 p-4">
+        <p class="text-[9px] tracking-widest uppercase text-ginza-gold mb-0.5">The Ritual</p>
+        <p class="font-cormorant italic text-lg">A5 Wagyu</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="px-6 max-w-3xl mx-auto">
 
     <!-- キーファクト -->
-    <div class="grid grid-cols-2 gap-3 mb-10">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10">
       <div class="border border-ginza-gold/20 rounded-xl p-4 text-center">
         <p class="font-cormorant italic text-2xl text-ginza-gold mb-1">Only 5%</p>
         <p class="text-[10px] tracking-widest uppercase text-ginza-ivory/50">of the market</p>
@@ -289,11 +290,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
 
-    <!-- コース横スクロール -->
+    <!-- コース見出し -->
+    <div class="text-center mb-4">
+      <p class="section-label mb-2">Course Selection</p>
+      <p class="text-xs text-ginza-ivory/40 font-josefin tracking-widest">Tap a course to see full details</p>
+    </div>
+
+    <!-- コースカード：PC=3列 / SP=横スクロール -->
     <style>
-      .course-scroll { display:flex; gap:12px; overflow-x:auto; padding:8px 4px 16px; scroll-snap-type:x mandatory; -ms-overflow-style:none; scrollbar-width:none; }
+      .course-scroll { display:flex; gap:16px; overflow-x:auto; padding:8px 0 16px; -ms-overflow-style:none; scrollbar-width:none; }
       .course-scroll::-webkit-scrollbar { display:none; }
-      .course-card { scroll-snap-align:center; flex-shrink:0; width:240px; border-radius:16px; overflow:hidden; }
+      .course-card { flex-shrink:0; width:260px; border-radius:16px; overflow:hidden; }
+      @media (min-width:768px) {
+        .course-scroll { display:grid; grid-template-columns:repeat(3,1fr); overflow-x:visible; }
+        .course-card { width:auto; }
+      }
       .course-detail-panel { max-height:0; overflow:hidden; transition:max-height 0.4s ease; }
       .course-detail-panel.open { max-height:600px; }
       .chevron-icon { transition:transform 0.3s; }
@@ -304,49 +315,49 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <!-- SUMI -->
       <div class="course-card border border-ginza-gold/20 bg-ginza-gold/5">
-        <div class="p-4">
+        <div class="p-5">
           <p class="text-[9px] section-label mb-1">Entry Course</p>
           <p class="font-cormorant italic text-xl mb-3">SUMI — 墨 —</p>
           <div class="flex items-baseline gap-2 mb-1">
-            <span class="text-ginza-gold font-josefin font-bold text-sm">¥39,800</span>
+            <span class="text-ginza-gold font-josefin font-bold">¥39,800</span>
             <span class="text-ginza-ivory/35 text-[9px]">(¥43,780 inc.tax)</span>
           </div>
-          <p class="text-[10px] text-ginza-ivory/45 font-josefin mb-3">13 courses · 60–75 min</p>
+          <p class="text-[10px] text-ginza-ivory/45 font-josefin mb-4">13 courses · 60–75 min</p>
           <button onclick="toggleCourse('sumi')" class="w-full text-[10px] font-josefin tracking-widest border border-ginza-gold/30 text-ginza-gold/70 py-2 rounded-lg flex items-center justify-center gap-1">
             SEE DETAILS <svg class="chevron-icon w-3 h-3" id="chevron-sumi" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
           </button>
           <div class="course-detail-panel" id="detail-sumi">
             <div class="border-t border-ginza-gold/10 space-y-2 pt-3 mt-3">
-              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">序</span><span class="text-ginza-ivory/60">Handmade Tofu · Seafood Yukhoe & Hyogo Nori</span></div>
-              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">八寸</span><span class="text-ginza-ivory/60">Seasonal Appetizer — Abalone / Shrimp & Ginkgo / Squid / Namasu / Date-maki / Lotus Root</span></div>
-              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">温物</span><span class="text-ginza-ivory/60">Wagyu Shabu-shabu & Dashi</span></div>
-              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">鮨</span><span class="text-ginza-ivory/60">Temaki: Salmon & Ikura / Maguro · Pressed Sushi 6 kinds · Wagyu Tenderloin Nigiri × Akazu</span></div>
+              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">序</span><span class="text-ginza-ivory/60">Handmade Tofu · Seafood Yukhoe &amp; Hyogo Nori</span></div>
+              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">八寸</span><span class="text-ginza-ivory/60">Seasonal Appetizer — Abalone / Shrimp &amp; Ginkgo / Squid / Namasu / Date-maki / Lotus Root</span></div>
+              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">温物</span><span class="text-ginza-ivory/60">Wagyu Shabu-shabu &amp; Dashi</span></div>
+              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">鮨</span><span class="text-ginza-ivory/60">Temaki: Salmon &amp; Ikura / Maguro · Pressed Sushi 6 kinds · Wagyu Tenderloin Nigiri × Akazu</span></div>
               <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">椀</span><span class="text-ginza-ivory/60">Aka-dashi Miso — Lake Shinji Clams</span></div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- BOKUGA（MOST POPULAR・ハイライト） -->
+      <!-- BOKUGA（MOST POPULAR） -->
       <div class="course-card border-2 border-ginza-gold relative" style="box-shadow:0 0 24px rgba(201,169,110,0.18);">
         <div class="absolute top-3 right-3 bg-ginza-gold text-ginza-black text-[9px] font-josefin font-bold tracking-widest px-2.5 py-1 rounded-full z-10">MOST POPULAR</div>
-        <div class="p-4 bg-ginza-gold/5">
+        <div class="p-5 bg-ginza-gold/5">
           <p class="text-[9px] section-label mb-1">Premium Course</p>
           <p class="font-cormorant italic text-xl mb-3">BOKUGA — 墨雅 —</p>
           <div class="flex items-baseline gap-2 mb-1">
-            <span class="text-ginza-gold font-josefin font-bold text-sm">¥49,800</span>
+            <span class="text-ginza-gold font-josefin font-bold">¥49,800</span>
             <span class="text-ginza-ivory/35 text-[9px]">(¥54,780 inc.tax)</span>
           </div>
-          <p class="text-[10px] text-ginza-ivory/45 font-josefin mb-3">15 courses · 75–90 min</p>
+          <p class="text-[10px] text-ginza-ivory/45 font-josefin mb-4">15 courses · 75–90 min</p>
           <button onclick="toggleCourse('bokuga')" class="w-full text-[10px] font-josefin tracking-widest border border-ginza-gold/50 text-ginza-gold py-2 rounded-lg flex items-center justify-center gap-1">
             SEE DETAILS <svg class="chevron-icon w-3 h-3" id="chevron-bokuga" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
           </button>
           <div class="course-detail-panel" id="detail-bokuga">
             <div class="border-t border-ginza-gold/10 space-y-2 pt-3 mt-3">
-              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">序</span><span class="text-ginza-ivory/60">Handmade Tofu · Seafood Yukhoe & Hyogo Nori</span></div>
+              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">序</span><span class="text-ginza-ivory/60">Handmade Tofu · Seafood Yukhoe &amp; Hyogo Nori</span></div>
               <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">八寸</span><span class="text-ginza-ivory/60">Seasonal Appetizer Collection</span></div>
-              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">温物</span><span class="text-ginza-ivory/60">Wagyu Shabu-shabu & Dashi</span></div>
-              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">逸品</span><span class="text-ginza-ivory/60">Wagyu & Shiso Spring Roll · "Cheese Snow"</span></div>
+              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">温物</span><span class="text-ginza-ivory/60">Wagyu Shabu-shabu &amp; Dashi</span></div>
+              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">逸品</span><span class="text-ginza-ivory/60">Wagyu &amp; Shiso Spring Roll · "Cheese Snow"</span></div>
               <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">鮨</span><span class="text-ginza-ivory/60">Temaki · Pressed Sushi 6 kinds · Wagyu Nigiri</span></div>
               <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">椀</span><span class="text-ginza-ivory/60">Aka-dashi Miso — Lake Shinji Clams</span></div>
               <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">茶と甘味</span><span class="text-ginza-ivory/60">Matcha — Tsujiri · Wagashi 6 kinds</span></div>
@@ -357,24 +368,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <!-- BOKUSHOU -->
       <div class="course-card border border-ginza-gold/20 bg-ginza-gold/5">
-        <div class="p-4">
+        <div class="p-5">
           <p class="text-[9px] section-label mb-1">Ultimate Course</p>
           <p class="font-cormorant italic text-xl mb-3">BOKUSHOU — 墨匠 —</p>
           <div class="flex items-baseline gap-2 mb-1">
-            <span class="text-ginza-gold font-josefin font-bold text-sm">¥89,800</span>
+            <span class="text-ginza-gold font-josefin font-bold">¥89,800</span>
             <span class="text-ginza-ivory/35 text-[9px]">(¥98,780 inc.tax)</span>
           </div>
-          <p class="text-[10px] text-ginza-ivory/45 font-josefin mb-3">20 courses · 120 min</p>
+          <p class="text-[10px] text-ginza-ivory/45 font-josefin mb-4">20 courses · 120 min</p>
           <button onclick="toggleCourse('bokushou')" class="w-full text-[10px] font-josefin tracking-widest border border-ginza-gold/30 text-ginza-gold/70 py-2 rounded-lg flex items-center justify-center gap-1">
             SEE DETAILS <svg class="chevron-icon w-3 h-3" id="chevron-bokushou" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
           </button>
           <div class="course-detail-panel" id="detail-bokushou">
             <div class="border-t border-ginza-gold/10 space-y-2 pt-3 mt-3">
-              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">序</span><span class="text-ginza-ivory/60">Handmade Tofu · Seafood Yukhoe & Hyogo Nori</span></div>
+              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">序</span><span class="text-ginza-ivory/60">Handmade Tofu · Seafood Yukhoe &amp; Hyogo Nori</span></div>
               <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">八寸</span><span class="text-ginza-ivory/60">Seasonal Appetizer Collection</span></div>
-              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">温物</span><span class="text-ginza-ivory/60">Wagyu Shabu-shabu & Dashi</span></div>
-              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">鮨</span><span class="text-ginza-ivory/60">Temaki: Uni · Salmon & Ikura · Pressed Sushi 6 kinds · Wagyu Nigiri</span></div>
-              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">逸品</span><span class="text-ginza-ivory/60">Jet-Black Vichyssoise · Wagyu & Shiso Spring Roll · "Cheese Snow"</span></div>
+              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">温物</span><span class="text-ginza-ivory/60">Wagyu Shabu-shabu &amp; Dashi</span></div>
+              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">鮨</span><span class="text-ginza-ivory/60">Temaki: Uni · Salmon &amp; Ikura · Pressed Sushi 6 kinds · Wagyu Nigiri</span></div>
+              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">逸品</span><span class="text-ginza-ivory/60">Jet-Black Vichyssoise · Wagyu &amp; Shiso Spring Roll · "Cheese Snow"</span></div>
               <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">和牛</span><span class="text-ginza-ivory/60">Wagyu Steak "Tanto" · Mini Burger · "Ultimate One Bite"</span></div>
               <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">お口直し</span><span class="text-ginza-ivory/60">Yuzu Sorbet with Gold Leaf</span></div>
               <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">椀</span><span class="text-ginza-ivory/60">Aka-dashi Miso — Lake Shinji Clams</span></div>
@@ -386,8 +397,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     </div>
 
-    <!-- スクロールヒント -->
-    <p class="text-center text-[9px] text-ginza-ivory/30 font-josefin tracking-widest mb-8">← Swipe to see all courses →</p>
+    <p class="md:hidden text-center text-[9px] text-ginza-ivory/30 font-josefin tracking-widest mt-2 mb-8">← Swipe to see all courses →</p>
 
     <script>
       function toggleCourse(id) {
@@ -397,135 +407,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         chevron.classList.toggle('open');
       }
       window.addEventListener('load', function() {
-        const scroll = document.getElementById('courseScroll');
-        const bokuga = scroll.children[1];
-        scroll.scrollLeft = bokuga.offsetLeft - (scroll.offsetWidth - bokuga.offsetWidth) / 2;
-      });
-    </script>
-
-    <div class="course-scroll" id="courseScroll">
-
-      <!-- BOKUGA -->
-      <div class="course-card border border-ginza-gold/20 bg-ginza-gold/5">
-        <div class="relative h-32 overflow-hidden">
-          <img src="images/wagyu.jpg" alt="BOKUGA" class="w-full h-full object-cover"/>
-          <div class="absolute inset-0 bg-gradient-to-t from-ginza-black/90 to-transparent"></div>
-          <div class="absolute bottom-0 p-3">
-            <p class="text-[9px] section-label mb-0.5">Premium</p>
-            <p class="font-cormorant italic text-lg">BOKUGA — 墨雅 —</p>
-          </div>
-        </div>
-        <div class="p-4">
-          <div class="flex items-baseline gap-2 mb-1">
-            <span class="text-ginza-gold font-josefin font-bold text-sm">¥49,800</span>
-            <span class="text-ginza-ivory/35 text-[9px]">(¥54,780 inc.tax)</span>
-          </div>
-          <p class="text-[10px] text-ginza-ivory/45 font-josefin mb-3">15 courses · 75–90 min</p>
-          <button onclick="toggleCourse('bokuga')" class="w-full text-[10px] font-josefin tracking-widest border border-ginza-gold/30 text-ginza-gold/70 py-2 rounded-lg flex items-center justify-center gap-1">
-            SEE DETAILS <svg class="chevron-icon w-3 h-3" id="chevron-bokuga" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
-          </button>
-          <div class="course-detail-panel" id="detail-bokuga">
-            <div class="border-t border-ginza-gold/10 space-y-2 pt-3 mt-3">
-              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">序</span><span class="text-ginza-ivory/60">Handmade Tofu · Seafood Yukhoe & Hyogo Nori</span></div>
-              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">八寸</span><span class="text-ginza-ivory/60">Seasonal Appetizer Collection</span></div>
-              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">温物</span><span class="text-ginza-ivory/60">Wagyu Shabu-shabu & Dashi</span></div>
-              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">逸品</span><span class="text-ginza-ivory/60">Wagyu & Shiso Spring Roll · "Cheese Snow"</span></div>
-              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">鮨</span><span class="text-ginza-ivory/60">Temaki · Pressed Sushi 6 kinds · Wagyu Nigiri</span></div>
-              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">椀</span><span class="text-ginza-ivory/60">Aka-dashi Miso — Lake Shinji Clams</span></div>
-              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">茶と甘味</span><span class="text-ginza-ivory/60">Matcha — Tsujiri · Wagashi 6 kinds</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- SUMI（中央・ハイライト） -->
-      <div class="course-card border-2 border-ginza-gold relative" style="box-shadow:0 0 24px rgba(201,169,110,0.18);">
-        <div class="absolute top-3 left-3 bg-ginza-gold text-ginza-black text-[9px] font-josefin font-bold tracking-widest px-2.5 py-1 rounded-full z-10">MOST POPULAR</div>
-        <div class="relative h-32 overflow-hidden">
-          <img src="images/sushi.jpg" alt="SUMI" class="w-full h-full object-cover"/>
-          <div class="absolute inset-0 bg-gradient-to-t from-ginza-black/90 to-transparent"></div>
-          <div class="absolute bottom-0 p-3">
-            <p class="text-[9px] section-label mb-0.5">Entry Course</p>
-            <p class="font-cormorant italic text-lg">SUMI — 墨 —</p>
-          </div>
-        </div>
-        <div class="p-4 bg-ginza-gold/5">
-          <div class="flex items-baseline gap-2 mb-1">
-            <span class="text-ginza-gold font-josefin font-bold text-sm">¥39,800</span>
-            <span class="text-ginza-ivory/35 text-[9px]">(¥43,780 inc.tax)</span>
-          </div>
-          <p class="text-[10px] text-ginza-ivory/45 font-josefin mb-3">13 courses · 60–75 min</p>
-          <button onclick="toggleCourse('sumi')" class="w-full text-[10px] font-josefin tracking-widest border border-ginza-gold/50 text-ginza-gold py-2 rounded-lg flex items-center justify-center gap-1">
-            SEE DETAILS <svg class="chevron-icon w-3 h-3" id="chevron-sumi" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
-          </button>
-          <div class="course-detail-panel" id="detail-sumi">
-            <div class="border-t border-ginza-gold/10 space-y-2 pt-3 mt-3">
-              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">序</span><span class="text-ginza-ivory/60">Handmade Tofu · Seafood Yukhoe & Hyogo Nori</span></div>
-              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">八寸</span><span class="text-ginza-ivory/60">Seasonal Appetizer — Abalone / Shrimp & Ginkgo / Squid / Namasu / Date-maki / Lotus Root</span></div>
-              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">温物</span><span class="text-ginza-ivory/60">Wagyu Shabu-shabu & Dashi</span></div>
-              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">鮨</span><span class="text-ginza-ivory/60">Temaki: Salmon & Ikura / Maguro · Pressed Sushi 6 kinds · Wagyu Tenderloin Nigiri × Akazu</span></div>
-              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">椀</span><span class="text-ginza-ivory/60">Aka-dashi Miso — Lake Shinji Clams</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- BOKUSHOU -->
-      <div class="course-card border border-ginza-gold/20 bg-ginza-gold/5">
-        <div class="relative h-32 overflow-hidden">
-          <img src="images/wagyu_experience.jpg" alt="BOKUSHOU" class="w-full h-full object-cover"/>
-          <div class="absolute inset-0 bg-gradient-to-t from-ginza-black/90 to-transparent"></div>
-          <div class="absolute bottom-0 p-3">
-            <p class="text-[9px] section-label mb-0.5">Ultimate</p>
-            <p class="font-cormorant italic text-lg">BOKUSHOU — 墨匠 —</p>
-          </div>
-        </div>
-        <div class="p-4">
-          <div class="flex items-baseline gap-2 mb-1">
-            <span class="text-ginza-gold font-josefin font-bold text-sm">¥89,800</span>
-            <span class="text-ginza-ivory/35 text-[9px]">(¥98,780 inc.tax)</span>
-          </div>
-          <p class="text-[10px] text-ginza-ivory/45 font-josefin mb-3">20 courses · 120 min</p>
-          <button onclick="toggleCourse('bokushou')" class="w-full text-[10px] font-josefin tracking-widest border border-ginza-gold/30 text-ginza-gold/70 py-2 rounded-lg flex items-center justify-center gap-1">
-            SEE DETAILS <svg class="chevron-icon w-3 h-3" id="chevron-bokushou" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
-          </button>
-          <div class="course-detail-panel" id="detail-bokushou">
-            <div class="border-t border-ginza-gold/10 space-y-2 pt-3 mt-3">
-              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">序</span><span class="text-ginza-ivory/60">Handmade Tofu · Seafood Yukhoe & Hyogo Nori</span></div>
-              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">八寸</span><span class="text-ginza-ivory/60">Seasonal Appetizer Collection</span></div>
-              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">温物</span><span class="text-ginza-ivory/60">Wagyu Shabu-shabu & Dashi</span></div>
-              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">鮨</span><span class="text-ginza-ivory/60">Temaki: Uni · Salmon & Ikura · Pressed Sushi 6 kinds · Wagyu Nigiri</span></div>
-              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">逸品</span><span class="text-ginza-ivory/60">Jet-Black Vichyssoise · Wagyu & Shiso Spring Roll · "Cheese Snow"</span></div>
-              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">和牛</span><span class="text-ginza-ivory/60">Wagyu Steak "Tanto" · Mini Burger · "Ultimate One Bite"</span></div>
-              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">お口直し</span><span class="text-ginza-ivory/60">Yuzu Sorbet with Gold Leaf</span></div>
-              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">椀</span><span class="text-ginza-ivory/60">Aka-dashi Miso — Lake Shinji Clams</span></div>
-              <div class="flex gap-2 text-[10px]"><span class="text-ginza-gold/50 w-12 flex-shrink-0">茶と甘味</span><span class="text-ginza-ivory/60">Matcha — Tsujiri · Wagashi 6 kinds</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- スクロールヒント -->
-    <p class="text-center text-[9px] text-ginza-ivory/30 font-josefin tracking-widest mb-8">← Swipe to see all courses →</p>
-
-    <script>
-      function toggleCourse(id) {
-        const panel = document.getElementById('detail-' + id);
-        const chevron = document.getElementById('chevron-' + id);
-        panel.classList.toggle('open');
-        chevron.classList.toggle('open');
-      }
-      window.addEventListener('load', function() {
-        const scroll = document.getElementById('courseScroll');
-        const sumi = scroll.children[1];
-        scroll.scrollLeft = sumi.offsetLeft - (scroll.offsetWidth - sumi.offsetWidth) / 2;
+        if (window.innerWidth < 768) {
+          const scroll = document.getElementById('courseScroll');
+          const bokuga = scroll.children[1];
+          scroll.scrollLeft = bokuga.offsetLeft - (scroll.offsetWidth - bokuga.offsetWidth) / 2;
+        }
       });
     </script>
 
     <!-- 4画像グリッド -->
-    <div class="grid grid-cols-2 gap-3 mb-6">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-10 mb-6">
       <div class="aspect-square relative rounded-lg overflow-hidden">
         <img alt="Seasonal Menu" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" src="images/Seasonal_menu.jpg"/>
         <div class="absolute bottom-2 left-2 text-[10px] tracking-widest uppercase text-white/70">Seasonal Menu</div>
