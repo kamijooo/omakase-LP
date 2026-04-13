@@ -4,6 +4,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>omakase 墨 | Authentic Wagyu · Halal · Shinjuku Tokyo</title>
+
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -11,6 +12,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-TG6DJRLV');</script>
 <!-- End Google Tag Manager -->
+
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17988602222"></script>
 <script>
@@ -19,10 +21,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   gtag('js', new Date());
   gtag('config', 'AW-17988602222');
 </script>
+
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Epilogue:wght@300;400;600&family=Josefin+Sans:wght@300;400;600&family=Noto+Serif+JP:wght@300;400;600&display=swap" rel="stylesheet"/>
+
 <script>
   tailwind.config = {
     theme: {
@@ -46,6 +51,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
   }
 </script>
+
 <style>
   body { padding-bottom: 72px; }
   .reveal { opacity:0; transform:translateY(30px); transition:all 0.8s ease-out; }
@@ -58,32 +64,69 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .nav-link:hover::after { width:100%; }
   .header-divider { width:1px; height:14px; background:rgba(201,169,110,0.3); }
 
-  /* Sticky CTA */
-  .sticky-cta { position:fixed; bottom:0; left:0; right:0; z-index:100; background:rgba(9,9,9,0.93); backdrop-filter:blur(12px); border-top:1px solid rgba(201,169,110,0.25); padding:12px 20px; display:flex; align-items:center; justify-content:space-between; gap:12px; }
+  .sticky-cta {
+    position:fixed; bottom:0; left:0; right:0; z-index:100;
+    background:rgba(9,9,9,0.93); backdrop-filter:blur(12px);
+    border-top:1px solid rgba(201,169,110,0.25);
+    padding:12px 20px; display:flex; align-items:center; justify-content:space-between; gap:12px;
+  }
   .sticky-cta-text { font-size:11px; color:rgba(240,237,228,0.55); letter-spacing:0.05em; line-height:1.4; }
   .sticky-cta-text strong { display:block; color:rgba(201,169,110,0.9); font-weight:600; font-size:12px; letter-spacing:0.08em; }
-  .sticky-cta-btn { flex-shrink:0; background:#c9a96e; color:#090909; font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; padding:12px 20px; border-radius:8px; white-space:nowrap; transition:transform 0.2s,opacity 0.2s; text-decoration:none; }
+  .sticky-cta-btn {
+    flex-shrink:0; background:#c9a96e; color:#090909; font-family:'Josefin Sans',sans-serif;
+    font-weight:700; font-size:11px; letter-spacing:0.15em; text-transform:uppercase;
+    padding:12px 20px; border-radius:8px; white-space:nowrap; transition:transform 0.2s,opacity 0.2s;
+    text-decoration:none; border:none; cursor:pointer;
+  }
   .sticky-cta-btn:hover { transform:scale(1.04); opacity:0.92; }
 
-  /* Halal badge */
-  .halal-cert-badge { display:inline-flex; flex-direction:column; align-items:center; gap:6px; border:1.5px solid #c9a96e; border-radius:50%; width:88px; height:88px; justify-content:center; position:relative; background:radial-gradient(circle at center,rgba(201,169,110,0.08) 0%,transparent 70%); }
-  .halal-cert-badge::before { content:''; position:absolute; inset:4px; border-radius:50%; border:0.5px dashed rgba(201,169,110,0.4); }
+  .halal-cert-badge {
+    display:inline-flex; flex-direction:column; align-items:center; gap:6px;
+    border:1.5px solid #c9a96e; border-radius:50%; width:88px; height:88px;
+    justify-content:center; position:relative;
+    background:radial-gradient(circle at center,rgba(201,169,110,0.08) 0%,transparent 70%);
+  }
+  .halal-cert-badge::before {
+    content:''; position:absolute; inset:4px; border-radius:50%;
+    border:0.5px dashed rgba(201,169,110,0.4);
+  }
   .halal-cert-badge-wrap { display:flex; gap:20px; justify-content:center; flex-wrap:wrap; margin-top:2rem; }
 
-  /* Map */
-  .map-wrapper { position:relative; width:100%; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:12px; border:1px solid rgba(201,169,110,0.2); }
-  .map-wrapper iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:0; filter:grayscale(30%) contrast(1.05); }
+  .map-wrapper {
+    position:relative; width:100%; padding-bottom:56.25%; height:0; overflow:hidden;
+    border-radius:12px; border:1px solid rgba(201,169,110,0.2);
+  }
+  .map-wrapper iframe {
+    position:absolute; top:0; left:0; width:100%; height:100%; border:0;
+    filter:grayscale(30%) contrast(1.05);
+  }
 
-  /* ── Japanese font (和風) ── */
   .jp-text { font-family: 'Noto Serif JP', serif; font-weight: 300; letter-spacing: 0.15em; }
-  
 
-  /* Story */
-  .year-badge { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:3.5rem; color:rgba(201,169,110,0.2); line-height:1; }
+  .year-badge {
+    font-family:'Cormorant Garamond',serif; font-style:italic;
+    font-size:3.5rem; color:rgba(201,169,110,0.2); line-height:1;
+  }
   .section-label { font-size:10px; letter-spacing:0.3em; color:rgba(201,169,110,0.6); text-transform:uppercase; }
+
+  .slide { transition: opacity 1.2s ease-in-out; }
+
+  .course-scroll { display:flex; gap:16px; overflow-x:auto; padding:8px 0 16px; -ms-overflow-style:none; scrollbar-width:none; }
+  .course-scroll::-webkit-scrollbar { display:none; }
+  .course-card { flex-shrink:0; width:260px; border-radius:16px; overflow:hidden; }
+  @media (min-width:768px) {
+    .course-scroll { display:grid; grid-template-columns:repeat(3,1fr); overflow-x:visible; }
+    .course-card { width:auto; }
+  }
+  .course-detail-panel { max-height:0; overflow:hidden; transition:max-height 0.4s ease; }
+  .course-detail-panel.open { max-height:600px; }
+  .chevron-icon { transition:transform 0.3s; }
+  .chevron-icon.open { transform:rotate(180deg); }
 </style>
 </head>
+
 <body class="bg-ginza-black text-ginza-ivory font-epilogue overflow-x-hidden">
+
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TG6DJRLV"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -95,8 +138,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <strong>Reservations</strong>
     Recommended 2 weeks in advance
   </div>
-  <a href="https://www.tablecheck.com/shops/halal-wagyu-shinjuku-5w-tokyo/reserve"
-     target="_blank" rel="noopener" class="sticky-cta-btn" data-gtm-label=”sticky_cta”>RESERVE →</a>
+  <button onclick="openReserveModal('sticky_cta')" class="sticky-cta-btn" data-gtm-label="sticky_cta">RESERVE →</button>
 </div>
 
 <!-- HEADER -->
@@ -118,16 +160,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="header-divider"></span>
       <a class="nav-link" href="#access">Access</a>
     </div>
-    <a class="bg-ginza-gold text-ginza-black px-4 py-2 rounded-lg text-[10px] font-josefin font-semibold tracking-widest hover:bg-opacity-90 hover:scale-105 transition-all"
-       href="https://www.tablecheck.com/shops/halal-wagyu-shinjuku-5w-tokyo/reserve"
-       target="_blank" rel="noopener" data-gtm-label=”header”>RESERVE</a>
+    <button onclick="openReserveModal('header')" class="bg-ginza-gold text-ginza-black px-4 py-2 rounded-lg text-[10px] font-josefin font-semibold tracking-widest hover:bg-opacity-90 hover:scale-105 transition-all" data-gtm-label="header">RESERVE</button>
   </nav>
 </header>
 
 <!-- HERO -->
 <section class="relative h-screen w-full flex flex-col justify-end items-center overflow-hidden" id="hero">
   <div class="absolute inset-0 z-0">
-    <!-- Fade slideshow -->
     <div id="slideshow" class="absolute inset-0">
       <img class="slide absolute inset-0 w-full h-full object-cover" src="images/hero.jpg" alt="Omakase Full Course"/>
       <img class="slide absolute inset-0 w-full h-full object-cover opacity-0" src="images/sushi.jpg" alt="Omakase Sushi"/>
@@ -137,6 +176,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="absolute inset-0 dark-overlay"></div>
   </div>
+
   <div class="relative z-10 w-full px-8 pb-28 text-center">
     <span class="inline-block border border-ginza-gold/50 px-3 py-1 mb-6 text-[10px] tracking-[0.3em] text-ginza-gold uppercase jp-text">新宿 · SHINJUKU · TOKYO</span>
     <h1 class="font-cormorant italic text-4xl md:text-5xl mb-3 leading-tight">
@@ -146,19 +186,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="text-sm font-light text-ginza-ivory/70 mb-8 max-w-xs mx-auto leading-relaxed">
       Ultra-rare lean Wagyu. Halal certified.<br/>A dining experience crafted for the world.
     </p>
+
     <div class="flex flex-col items-center gap-3 w-full max-w-xs mx-auto">
-      <!-- 予約ボタン：カレンダーアイコン付き -->
-      <a class="w-full bg-ginza-gold text-ginza-black font-josefin font-semibold rounded-lg tracking-widest text-sm hover:scale-105 transition-transform shadow-[0_0_24px_rgba(201,169,110,0.3)] flex overflow-hidden"
-         href="https://www.tablecheck.com/shops/halal-wagyu-shinjuku-5w-tokyo/reserve"
-         target="_blank" rel="noopener" data-gtm-label=”calendar_button”>
+      <button onclick="openReserveModal('hero');gtag('event','click',{'event_category':'reserve','event_label':'hero'})" class="w-full bg-ginza-gold text-ginza-black font-josefin font-semibold rounded-lg tracking-widest text-sm hover:scale-105 transition-transform shadow-[0_0_24px_rgba(201,169,110,0.3)] flex overflow-hidden" data-gtm-label="hero">
         <span class="flex-1 py-4 px-4 text-center">RESERVE YOUR SEAT</span>
         <span class="bg-black/15 px-4 flex items-center justify-center">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
             <path d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" stroke="#090909" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </span>
-      </a>
-      <!-- アクセスボタン -->
+      </button>
+
+      <!-- ここが崩れ原因だった箇所を修正 -->
       <a class="w-full text-center text-ginza-gold font-josefin text-xs tracking-widest py-3 rounded-lg border border-ginza-gold/40 hover:border-ginza-gold/80 transition-colors flex items-center justify-center gap-2"
          href="#access">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
@@ -167,6 +206,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </svg>
         ACCESS &amp; MAP
       </a>
+
       <div class="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
         <svg class="w-4 h-4 text-ginza-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"/></svg>
         <span class="text-[10px] font-josefin tracking-widest uppercase">Halal Certified · Alcohol Free</span>
@@ -175,12 +215,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<style>
-  .slide { transition: opacity 1.2s ease-in-out; }
-</style>
-
 <script>
-  // Fade slideshow
   (function() {
     const slides = document.querySelectorAll('.slide');
     let current = 0;
@@ -196,11 +231,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="py-8 bg-ginza-black">
   <div class="flex flex-wrap justify-center gap-4 px-4">
 
-    <!-- Tripadvisor -->
     <div class="trip-card w-full max-w-[340px] border border-ginza-gold/30 rounded-lg bg-ginza-gold/5 text-center flex flex-col items-center gap-0 overflow-hidden">
-      <!-- ランキング画像：小さめ表示 -->
       <img src="images/trippage.jpg" alt="Tripadvisor Ranking" class="w-1/2 h-auto mx-auto mt-3 rounded opacity-90"/>
-      <!-- フクロウアイコン + テキスト -->
       <div class="flex flex-col items-center gap-1.5 p-3 border-t border-ginza-gold/10 w-full mt-2">
         <img src="images/tripicon.jpg" alt="Tripadvisor" class="w-8 h-8 object-contain rounded-full p-0.5" style="background:#34e0a1;"/>
         <p class="text-[10px] uppercase tracking-widest text-ginza-gold">Trip Advisor</p>
@@ -212,7 +244,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
 
-    <!-- Google Reviews -->
     <div class="w-40 border border-ginza-gold/30 p-4 rounded-lg bg-ginza-gold/5 text-center flex flex-col items-center gap-2">
       <svg class="w-8 h-8" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
         <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
@@ -225,7 +256,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="text-[9px] text-ginza-ivory/50 leading-relaxed">Highly rated by guests from around the world.</p>
     </div>
 
-    <!-- Halal Certified -->
     <div class="w-40 border border-ginza-gold/30 p-4 rounded-lg bg-ginza-gold/5 text-center flex flex-col items-center gap-2">
       <svg class="w-10 h-10" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
         <circle cx="24" cy="24" r="23" fill="#1a6b35" opacity="0.9"/>
@@ -242,8 +272,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- MENU -->
 <section class="reveal py-16 bg-ginza-black" id="menu">
-
-  <!-- Mastery見出し -->
   <div class="text-center mb-10 px-6">
     <p class="section-label mb-4">Menu · Mastery</p>
     <h3 class="font-cormorant italic text-3xl mb-4 leading-snug">"Where Theatre Meets Taste"</h3>
@@ -252,7 +280,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </p>
   </div>
 
-  <!-- 背景画像：2枚横並び（full bleed） -->
   <div class="flex mb-10">
     <div class="relative flex-1 h-52 overflow-hidden group">
       <img alt="Omakase Sushi" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="images/sushi.jpg"/>
@@ -281,7 +308,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h3 class="font-cormorant italic text-3xl leading-snug">The Story Begins in 1962</h3>
     </div>
 
-    <!-- Origin -->
     <div class="flex items-start gap-4 mb-10">
       <div class="flex-shrink-0 text-center">
         <div class="year-badge">1962</div>
@@ -294,7 +320,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
 
-    <!-- Personal connection -->
     <div class="relative mb-10 pl-6 border-l border-ginza-gold/30">
       <p class="font-cormorant italic text-xl leading-relaxed text-ginza-ivory/90 mb-3">
         "Wagyu was never a 'special occasion treat' for me. I have known its taste since I was a child and it was always close to me."
@@ -302,7 +327,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="text-[10px] font-josefin tracking-widest text-ginza-gold/60 uppercase">— 5th Generation Owner</p>
     </div>
 
-    <!-- Turning point -->
     <div class="mb-8">
       <p class="section-label mb-3">The Turning Point</p>
       <p class="text-sm font-light leading-relaxed text-ginza-ivory/70 mb-4">
@@ -313,7 +337,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </p>
     </div>
 
-    <!-- What is real -->
     <div class="bg-ginza-gold/5 border border-ginza-gold/15 rounded-2xl p-6 mb-8">
       <p class="section-label mb-3">Our Commitment to Quality</p>
       <p class="text-sm font-light leading-relaxed text-ginza-ivory/70">
@@ -321,7 +344,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </p>
     </div>
 
-    <!-- For everyone -->
     <div class="mb-4">
       <p class="section-label mb-3">For Everyone in the World</p>
       <p class="text-sm font-light leading-relaxed text-ginza-ivory/70">
@@ -331,8 +353,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-
-<!-- DIVIDER: photo fade -->
 <div class="relative h-48 overflow-hidden">
   <img src="images/hero.jpg" alt="" class="w-full h-full object-cover object-center"/>
   <div class="absolute inset-0" style="background:linear-gradient(to bottom, #090909 0%, transparent 30%, transparent 70%, #090909 100%);"></div>
@@ -345,7 +365,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="reveal py-16 bg-ginza-black" id="courses">
   <div class="px-6 max-w-3xl mx-auto">
 
-    <!-- キーファクト -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10">
       <div class="rounded-xl p-4 text-center" style="background:linear-gradient(135deg,rgba(201,169,110,0.15) 0%,rgba(201,169,110,0.05) 100%); border:1px solid rgba(201,169,110,0.35);">
         <p class="font-cormorant italic text-2xl text-ginza-gold mb-1">Only 5%</p>
@@ -369,30 +388,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
 
-    <!-- コース見出し -->
     <div class="text-center mb-4">
       <p class="section-label mb-2">Course Selection</p>
       <p class="text-xs text-ginza-ivory/40 font-josefin tracking-widest">Tap a course to see full details</p>
     </div>
 
-    <!-- コースカード：PC=3列 / SP=横スクロール -->
-    <style>
-      .course-scroll { display:flex; gap:16px; overflow-x:auto; padding:8px 0 16px; -ms-overflow-style:none; scrollbar-width:none; }
-      .course-scroll::-webkit-scrollbar { display:none; }
-      .course-card { flex-shrink:0; width:260px; border-radius:16px; overflow:hidden; }
-      @media (min-width:768px) {
-        .course-scroll { display:grid; grid-template-columns:repeat(3,1fr); overflow-x:visible; }
-        .course-card { width:auto; }
-      }
-      .course-detail-panel { max-height:0; overflow:hidden; transition:max-height 0.4s ease; }
-      .course-detail-panel.open { max-height:600px; }
-      .chevron-icon { transition:transform 0.3s; }
-      .chevron-icon.open { transform:rotate(180deg); }
-    </style>
-
     <div class="course-scroll" id="courseScroll">
 
-      <!-- SUMI -->
       <div class="course-card border border-ginza-gold/20 bg-ginza-gold/5">
         <div class="p-5">
           <p class="text-[9px] section-label mb-1">Entry Course</p>
@@ -417,7 +419,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
 
-      <!-- BOKUGA（MOST POPULAR） -->
       <div class="course-card border-2 border-ginza-gold relative" style="box-shadow:0 0 24px rgba(201,169,110,0.18);">
         <div class="absolute top-3 right-3 bg-ginza-gold text-ginza-black text-[9px] font-josefin font-bold tracking-widest px-2.5 py-1 rounded-full z-10">MOST POPULAR</div>
         <div class="p-5 bg-ginza-gold/5">
@@ -445,7 +446,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
 
-      <!-- BOKUSHOU -->
       <div class="course-card border border-ginza-gold/20 bg-ginza-gold/5">
         <div class="p-5">
           <p class="text-[9px] section-label mb-1">Ultimate Course</p>
@@ -478,23 +478,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <p class="md:hidden text-center text-[9px] text-ginza-ivory/30 font-josefin tracking-widest mt-2 mb-8">← Swipe to see all courses →</p>
 
-    <script>
-      function toggleCourse(id) {
-        const panel = document.getElementById('detail-' + id);
-        const chevron = document.getElementById('chevron-' + id);
-        panel.classList.toggle('open');
-        chevron.classList.toggle('open');
-      }
-      window.addEventListener('load', function() {
-        if (window.innerWidth < 768) {
-          const scroll = document.getElementById('courseScroll');
-          const bokuga = scroll.children[1];
-          scroll.scrollLeft = bokuga.offsetLeft - (scroll.offsetWidth - bokuga.offsetWidth) / 2;
-        }
-      });
-    </script>
-
-    <!-- 4画像グリッド -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-10 mb-6">
       <div class="aspect-square relative rounded-lg overflow-hidden">
         <img alt="Seasonal Menu" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" src="images/Seasonal_menu.jpg"/>
@@ -516,6 +499,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   </div>
 </section>
+
 <!-- RESERVATION CTA -->
 <section class="reveal py-20 px-6 text-center bg-ginza-black" id="reservation">
   <div class="max-w-[390px] mx-auto">
@@ -524,93 +508,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="text-sm font-light text-ginza-ivory/50 mb-8 max-w-xs mx-auto">
       Reservations recommended 2 weeks in advance.<br/>Walk-ins welcome subject to availability.
     </p>
-
-    <!-- Clickable calendar card -->
-    <a href="https://www.tablecheck.com/shops/halal-wagyu-shinjuku-5w-tokyo/reserve"
-       target="_blank" rel="noopener"
-       class="block border border-ginza-gold/30 rounded-2xl overflow-hidden shadow-[0_0_40px_rgba(201,169,110,0.08)] mb-4 hover:border-ginza-gold/60 transition-all duration-300 cursor-pointer group" data-gtm-label=”calendar_card”>
-
-      <!-- Calendar header (month/year injected by JS) -->
-      <div class="bg-ginza-gold px-5 py-3 flex items-center justify-between">
-        <div class="text-left">
-          <p class="text-[9px] font-josefin tracking-widest text-ginza-black/60 uppercase">Tap to reserve</p>
-          <p id="cal-month" class="text-base font-josefin font-bold text-ginza-black tracking-wide"></p>
-        </div>
-        <svg class="w-5 h-5 text-ginza-black/60 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/>
-        </svg>
-      </div>
-
-      <!-- Calendar grid (7 days injected by JS) -->
-      <div class="bg-ginza-black/60 px-4 pt-4 pb-2">
-        <div id="cal-grid" class="grid grid-cols-7 gap-x-1"></div>
-        <!-- Legend -->
-        <div class="flex items-center justify-center gap-5 mt-3 pt-3 border-t border-ginza-gold/10">
-          <div class="flex items-center gap-1.5">
-            <span class="text-[11px] text-ginza-gold leading-none">○</span>
-            <span class="text-[9px] text-ginza-ivory/40 font-josefin tracking-wider">Available</span>
-          </div>
-          <div class="flex items-center gap-1.5">
-            <span class="text-[10px] text-ginza-gold/50 leading-none">△</span>
-            <span class="text-[9px] text-ginza-ivory/40 font-josefin tracking-wider">Limited</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Bottom CTA bar -->
-      <div class="bg-ginza-gold/10 border-t border-ginza-gold/20 px-5 py-3 flex items-center justify-center gap-2">
-        <svg class="w-3.5 h-3.5 text-ginza-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/>
-        </svg>
-        <span class="text-[11px] font-josefin tracking-widest text-ginza-gold uppercase">Check Availability & Reserve</span>
-      </div>
-    </a>
-
-    <p class="text-[10px] text-ginza-ivory/25 tracking-widest">* Please check TableCheck for real-time availability.</p>
+    <button onclick="openReserveModal('reservation_section');gtag('event','click',{'event_category':'reserve','event_label':'reservation_section'})"
+      data-gtm-label="reservation_section"
+      class="w-full bg-ginza-gold text-ginza-black font-josefin font-bold py-4 rounded-lg tracking-widest text-sm hover:scale-105 transition-transform shadow-[0_0_24px_rgba(201,169,110,0.3)] flex items-center justify-center gap-2">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+        <path d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" stroke="#090909" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      RESERVE YOUR SEAT
+    </button>
   </div>
 </section>
-
-<script>
-  // ── 1週間カレンダー（今日から7日分・リアルタイム）──
-  (function() {
-    const days  = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-    const months = ['January','February','March','April','May','June',
-                    'July','August','September','October','November','December'];
-
-    const today = new Date();
-    const grid  = document.getElementById('cal-grid');
-    const monthEl = document.getElementById('cal-month');
-
-    // ヘッダー：月表示（今日の月）
-    monthEl.textContent = months[today.getMonth()] + ' ' + today.getFullYear();
-
-    // 7日分表示（今日〜6日後）
-    // 各日にランダムで○か△を割り当て（seed: 日付ベースで固定っぽく）
-    for (let i = 0; i < 7; i++) {
-      const d = new Date(today);
-      d.setDate(today.getDate() + i);
-
-      const dayName = days[d.getDay()];
-      const dateNum = d.getDate();
-
-      // seedっぽい割り当て：日付の数字で決定（○:3割、△:7割）
-      const isCircle = (dateNum * 13 + d.getMonth() * 7) % 10 >= 7;
-      const symbol   = isCircle ? '○' : '△';
-      const symColor = isCircle ? 'text-ginza-gold text-[11px]' : 'text-ginza-gold/50 text-[10px]';
-
-      const isToday = i === 0;
-
-      const cell = document.createElement('div');
-      cell.className = 'flex flex-col items-center gap-0.5 py-2';
-      cell.innerHTML = `
-        <span class="text-[9px] font-josefin tracking-wide ${isToday ? 'text-ginza-gold' : 'text-ginza-ivory/30'}">${dayName}</span>
-        <span class="text-[11px] ${isToday ? 'text-ginza-gold font-semibold' : 'text-ginza-ivory/50'}">${dateNum}</span>
-        <span class="${symColor} leading-none">${symbol}</span>
-      `;
-      grid.appendChild(cell);
-    }
-  })();
-</script>
 
 <!-- ACCESS -->
 <section class="reveal py-20 px-6 bg-ginza-black" id="access">
@@ -725,13 +632,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
         </svg>
       </a>
-      <a class="text-ginza-gold hover:text-white transition-colors"
-         href="https://www.tablecheck.com/shops/halal-wagyu-shinjuku-5w-tokyo/reserve"
-         target="_blank" rel="noopener" aria-label="Reserve" data-gtm-label=”footer”>
+      <button class="text-ginza-gold hover:text-white transition-colors" onclick="openReserveModal('footer')" aria-label="Reserve">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/>
         </svg>
-      </a>
+      </button>
       <a class="text-ginza-gold hover:text-white transition-colors"
          href="https://maps.app.goo.gl/MbPytsPEsMee3WeG8"
          target="_blank" rel="noopener" aria-label="Google Maps">
@@ -745,11 +650,161 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </footer>
 
+<!-- RESERVATION MODAL -->
+<div id="reserveModal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.85);overflow-y:auto;-webkit-overflow-scrolling:touch;">
+  <div style="min-height:100%;display:flex;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;">
+    <div style="background:#111;border:1px solid rgba(201,169,110,0.3);border-radius:16px;width:100%;max-width:480px;padding:32px 24px;position:relative;box-sizing:border-box;">
+      <button onclick="closeReserveModal()" style="position:absolute;top:16px;right:16px;background:none;border:none;color:rgba(240,237,228,0.5);font-size:24px;cursor:pointer;line-height:1;">&#x00D7;</button>
+      <p style="font-size:10px;letter-spacing:0.3em;color:rgba(201,169,110,0.6);text-transform:uppercase;margin:0 0 8px;">Reservation Request</p>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:24px;color:#f0ede4;margin:0 0 4px;">予約リクエスト</h3>
+      <p style="font-size:12px;color:rgba(240,237,228,0.5);margin:0 0 24px;">送信後、確認メールをお送りします。<br/>We will send you a confirmation email.</p>
+
+      <div id="reserveForm">
+        <div style="margin-bottom:16px;"><label style="display:block;font-size:10px;letter-spacing:0.15em;color:rgba(201,169,110,0.7);text-transform:uppercase;margin-bottom:6px;">お名前 / Name *</label><input id="r_name" type="text" placeholder="Yamada Taro" autocomplete="name" style="width:100%;background:#1a1a1a;border:1px solid rgba(201,169,110,0.25);border-radius:8px;padding:10px 14px;color:#f0ede4;font-size:16px;box-sizing:border-box;-webkit-appearance:none;"/></div>
+        <div style="margin-bottom:16px;"><label style="display:block;font-size:10px;letter-spacing:0.15em;color:rgba(201,169,110,0.7);text-transform:uppercase;margin-bottom:6px;">メールアドレス / Email *</label><input id="r_email" type="email" placeholder="example@email.com" autocomplete="email" style="width:100%;background:#1a1a1a;border:1px solid rgba(201,169,110,0.25);border-radius:8px;padding:10px 14px;color:#f0ede4;font-size:16px;box-sizing:border-box;-webkit-appearance:none;"/></div>
+        <div style="margin-bottom:16px;"><label style="display:block;font-size:10px;letter-spacing:0.15em;color:rgba(201,169,110,0.7);text-transform:uppercase;margin-bottom:6px;">電話番号 / Phone</label><input id="r_phone" type="tel" placeholder="+81 90-0000-0000" autocomplete="tel" style="width:100%;background:#1a1a1a;border:1px solid rgba(201,169,110,0.25);border-radius:8px;padding:10px 14px;color:#f0ede4;font-size:16px;box-sizing:border-box;-webkit-appearance:none;"/></div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+          <div><label style="display:block;font-size:10px;letter-spacing:0.15em;color:rgba(201,169,110,0.7);text-transform:uppercase;margin-bottom:6px;">人数 / Guests *</label><select id="r_guests" style="width:100%;background:#1a1a1a;border:1px solid rgba(201,169,110,0.25);border-radius:8px;padding:10px 14px;color:#f0ede4;font-size:16px;box-sizing:border-box;-webkit-appearance:none;"><option value="">-</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8+</option></select></div>
+          <div><label style="display:block;font-size:10px;letter-spacing:0.15em;color:rgba(201,169,110,0.7);text-transform:uppercase;margin-bottom:6px;">希望時間 / Time *</label><select id="r_time" style="width:100%;background:#1a1a1a;border:1px solid rgba(201,169,110,0.25);border-radius:8px;padding:10px 14px;color:#f0ede4;font-size:16px;box-sizing:border-box;-webkit-appearance:none;"><option value="">-</option><option>11:00</option><option>12:00</option><option>13:00</option><option>17:00</option><option>18:00</option><option>19:00</option><option>20:00</option><option>21:00</option></select></div>
+        </div>
+
+        <div style="margin-bottom:16px;"><label style="display:block;font-size:10px;letter-spacing:0.15em;color:rgba(201,169,110,0.7);text-transform:uppercase;margin-bottom:6px;">希望日 / Preferred Date *</label><input id="r_date" type="date" style="width:100%;background:#1a1a1a;border:1px solid rgba(201,169,110,0.25);border-radius:8px;padding:10px 14px;color:#f0ede4;font-size:16px;box-sizing:border-box;-webkit-appearance:none;"/></div>
+        <div style="margin-bottom:20px;"><label style="display:block;font-size:10px;letter-spacing:0.15em;color:rgba(201,169,110,0.7);text-transform:uppercase;margin-bottom:6px;">ご要望 / Special Requests</label><textarea id="r_message" rows="3" placeholder="Allergies, dietary requirements, special occasions..." style="width:100%;background:#1a1a1a;border:1px solid rgba(201,169,110,0.25);border-radius:8px;padding:10px 14px;color:#f0ede4;font-size:16px;box-sizing:border-box;resize:vertical;-webkit-appearance:none;"></textarea></div>
+
+        <div style="background:rgba(201,169,110,0.05);border:1px solid rgba(201,169,110,0.2);border-radius:8px;padding:12px 14px;margin-bottom:20px;font-size:11px;color:rgba(240,237,228,0.5);line-height:1.7;">
+          <p style="margin:0 0 6px;color:rgba(201,169,110,0.7);font-weight:600;">キャンセルポリシー / Cancellation Policy</p>
+          <p style="margin:0 0 4px;">・24時間前以内：¥5,000 / person &nbsp;|&nbsp; Within 24 hours: ¥5,000 / person</p>
+          <p style="margin:0 0 10px;">・48時間前以内：¥2,500 / person &nbsp;|&nbsp; Within 48 hours: ¥2,500 / person</p>
+          <hr style="border:none;border-top:1px solid rgba(201,169,110,0.15);margin:8px 0;"/>
+          <p style="margin:0;color:rgba(240,237,228,0.4);">※ 入れ違いで予約が入ることがあるため、このフォームでの送信は予約確定ではありません。godaimeinfo@gmail.com からの予約確定メールをお待ちください。<br/><br/>* This form does not confirm your reservation. Please wait for a confirmation email from godaimeinfo@gmail.com.</p>
+        </div>
+
+        <p id="r_error" style="color:#e57373;font-size:12px;margin-bottom:12px;display:none;"></p>
+        <button onclick="submitReservation()" id="r_submit" style="width:100%;background:#c9a96e;color:#090909;font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.15em;text-transform:uppercase;padding:14px;border:none;border-radius:8px;cursor:pointer;">SEND REQUEST / 送信する</button>
+      </div>
+
+      <div id="reserveSuccess" style="display:none;text-align:center;padding:20px 0;">
+        <div style="font-size:48px;margin-bottom:16px;">&#x2709;&#xFE0F;</div>
+        <h4 style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:#c9a96e;margin-bottom:12px;">Request Sent!</h4>
+        <p style="font-size:14px;color:rgba(240,237,228,0.7);margin-bottom:8px;">リクエストを受け付けました。<br/>godaimeinfo@gmail.com からの確定メールをお待ちください。</p>
+        <p style="font-size:13px;color:rgba(240,237,228,0.5);">Your request has been received.<br/>Please wait for a confirmation from godaimeinfo@gmail.com.</p>
+        <button onclick="closeReserveModal()" style="margin-top:24px;background:none;border:1px solid rgba(201,169,110,0.4);color:#c9a96e;font-family:'Josefin Sans',sans-serif;font-size:11px;letter-spacing:0.15em;padding:10px 24px;border-radius:8px;cursor:pointer;">CLOSE</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
-  const observer = new IntersectionObserver((e) => {
-    e.forEach(el => { if (el.isIntersecting) el.target.classList.add('active'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  emailjs.init('6I-wkxv05ZwY-PpXa');
+
+  function toggleCourse(id) {
+    const panel = document.getElementById('detail-' + id);
+    const chevron = document.getElementById('chevron-' + id);
+    panel.classList.toggle('open');
+    chevron.classList.toggle('open');
+  }
+
+  window.addEventListener('load', function() {
+    if (window.innerWidth < 768) {
+      const scroll = document.getElementById('courseScroll');
+      const bokuga = scroll.children[1];
+      scroll.scrollLeft = bokuga.offsetLeft - (scroll.offsetWidth - bokuga.offsetWidth) / 2;
+    }
+  });
+
+  function openReserveModal(label) {
+    document.getElementById('reserveModal').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    if (label && typeof gtag !== 'undefined') {
+      gtag('event', 'click', { 'event_category': 'reserve', 'event_label': label });
+    }
+  }
+
+  function closeReserveModal() {
+    document.getElementById('reserveModal').style.display = 'none';
+    document.body.style.overflow = '';
+    document.getElementById('reserveForm').style.display = 'block';
+    document.getElementById('reserveSuccess').style.display = 'none';
+    ['r_name','r_email','r_phone','r_guests','r_time','r_date','r_message'].forEach(function(id){
+      document.getElementById(id).value = '';
+    });
+    const err = document.getElementById('r_error');
+    err.style.display = 'none';
+    err.textContent = '';
+    const btn = document.getElementById('r_submit');
+    btn.textContent = 'SEND REQUEST / 送信する';
+    btn.disabled = false;
+  }
+
+  async function submitReservation() {
+    var name = document.getElementById('r_name').value.trim();
+    var email = document.getElementById('r_email').value.trim();
+    var phone = document.getElementById('r_phone').value.trim();
+    var guests = document.getElementById('r_guests').value;
+    var time = document.getElementById('r_time').value;
+    var date = document.getElementById('r_date').value;
+    var message = document.getElementById('r_message').value.trim();
+    var errEl = document.getElementById('r_error');
+
+    if (!name || !email || !guests || !time || !date) {
+      errEl.textContent = '* 必須項目を入力してください / Please fill in required fields.';
+      errEl.style.display = 'block';
+      return;
+    }
+
+    errEl.style.display = 'none';
+
+    var btn = document.getElementById('r_submit');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    var params = {
+      name: name,
+      email: email,
+      phone: phone,
+      guests: guests,
+      time: time,
+      date: date,
+      message: message
+    };
+
+    try {
+      await emailjs.send('service_41qov79', 'template_uk1m5wn', params);
+      await emailjs.send('service_41qov79', 'template_f9w6hmy', params);
+
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'reservation_submitted', { 'event_category': 'reserve' });
+      }
+
+      document.getElementById('reserveForm').style.display = 'none';
+      document.getElementById('reserveSuccess').style.display = 'block';
+    } catch (err) {
+      errEl.textContent = 'エラーが発生しました。再度お試しください。/ An error occurred. Please try again.';
+      errEl.style.display = 'block';
+      btn.textContent = 'SEND REQUEST / 送信する';
+      btn.disabled = false;
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var m = document.getElementById('reserveModal');
+    if (m) {
+      m.addEventListener('click', function(e) {
+        if (e.target === this) closeReserveModal();
+      });
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(el => {
+        if (el.isIntersecting) el.target.classList.add('active');
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  });
 </script>
+
 </body>
 </html>
