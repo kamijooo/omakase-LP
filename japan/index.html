@@ -105,10 +105,7 @@ body { padding-bottom: 72px; }
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<!-- ============================================================
-     STICKY CTA
-     GTMラベル: sticky_cta
-     ============================================================ -->
+<!-- STICKY CTA -->
 <div class="sticky-cta">
   <div class="sticky-cta-text">
     <strong>Reservations</strong>
@@ -122,10 +119,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </button>
 </div>
 
-<!-- ============================================================
-     HEADER
-     GTMラベル: header
-     ============================================================ -->
+<!-- HEADER -->
 <header class="fixed top-0 left-0 w-full z-50 bg-ginza-black/80 backdrop-blur-md border-b border-ginza-gold/20">
 <div class="hidden sm:flex items-center justify-center gap-6 py-1.5 border-b border-ginza-gold/10 text-[9px] tracking-[0.25em] text-ginza-gold/60 uppercase">
 <span>Shinjuku · Tokyo</span>
@@ -153,10 +147,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </nav>
 </header>
 
-<!-- ============================================================
-     HERO
-     GTMラベル: hero（予約ボタン）/ hero_map（アクセスボタン）
-     ============================================================ -->
+<!-- HERO -->
 <section class="relative h-screen w-full flex flex-col justify-end items-center overflow-hidden" id="hero">
 <div class="absolute inset-0 z-0">
 <div id="slideshow" class="absolute inset-0">
@@ -180,7 +171,6 @@ Ultra-rare lean Wagyu. Halal certified.<br/>A dining experience crafted for the 
 </p>
 
 <div class="flex flex-col items-center gap-3 w-full max-w-xs mx-auto">
-  <!-- 予約ボタン -->
   <button
     onclick="openReserveModal('hero')"
     class="w-full bg-ginza-gold text-ginza-black font-josefin font-semibold rounded-lg tracking-widest text-sm hover:scale-105 transition-transform shadow-[0_0_24px_rgba(201,169,110,0.3)] flex overflow-hidden"
@@ -193,7 +183,6 @@ Ultra-rare lean Wagyu. Halal certified.<br/>A dining experience crafted for the 
     </span>
   </button>
 
-  <!-- アクセスボタン -->
   <a
     class="w-full text-center text-ginza-gold font-josefin text-xs tracking-widest py-3 rounded-lg border border-ginza-gold/40 hover:border-ginza-gold/80 transition-colors flex items-center justify-center gap-2"
     href="#access"
@@ -505,10 +494,7 @@ window.addEventListener('load', function() {
 </div>
 </section>
 
-<!-- ============================================================
-     RESERVATION CTA SECTION
-     GTMラベル: calendar_card（カレンダーカード）/ reservation_section（ボタン）
-     ============================================================ -->
+<!-- RESERVATION CTA SECTION -->
 <section class="reveal py-20 px-6 text-center bg-ginza-black" id="reservation">
 <div class="max-w-[390px] mx-auto">
 <p class="section-label mb-4">Reserve</p>
@@ -517,7 +503,6 @@ window.addEventListener('load', function() {
 Reservations recommended 2 weeks in advance.<br/>Walk-ins welcome subject to availability.
 </p>
 
-  <!-- カレンダーカード：クリックでモーダルを開く -->
   <div
     onclick="openReserveModal('calendar_card')"
     class="block border border-ginza-gold/30 rounded-2xl overflow-hidden shadow-[0_0_40px_rgba(201,169,110,0.08)] mb-4 hover:border-ginza-gold/60 transition-all duration-300 cursor-pointer group"
@@ -599,10 +584,7 @@ Reservations recommended 2 weeks in advance.<br/>Walk-ins welcome subject to ava
 })();
 </script>
 
-<!-- ============================================================
-     ACCESS
-     GTMラベル: map_link（Google Mapsを開くリンク）
-     ============================================================ -->
+<!-- ACCESS -->
 <section class="reveal py-20 px-6 bg-ginza-black" id="access">
 <div class="max-w-[390px] mx-auto">
 <div class="text-center mb-10">
@@ -623,7 +605,6 @@ Reservations recommended 2 weeks in advance.<br/>Walk-ins welcome subject to ava
 Tokyo, Shinjuku-ku, Shinjuku 3-7-5<br/>Iccho Bldg. 2F<br/>
 <span class="text-ginza-ivory/40 text-[11px]">Open 11:00 — 23:00</span>
 </address>
-<!-- マップリンク：GTMラベル map_link -->
 <a href="https://maps.app.goo.gl/MbPytsPEsMee3WeG8"
    target="_blank" rel="noopener"
    class="inline-flex items-center gap-1.5 mt-3 text-[10px] font-josefin tracking-widest text-ginza-gold uppercase border-b border-ginza-gold/30 pb-0.5 hover:border-ginza-gold transition-colors"
@@ -700,10 +681,7 @@ To ensure comfort and convenience for our Muslim guests, we also provide a <span
 </div>
 </section>
 
-<!-- ============================================================
-     FOOTER
-     GTMラベル: footer（予約ボタン）/ footer_map（マップアイコン）
-     ============================================================ -->
+<!-- FOOTER -->
 <footer class="py-16 px-8 bg-black/50 border-t border-white/5">
 <div class="text-center">
 <div class="mb-1 text-[9px] font-josefin tracking-[0.35em] text-ginza-gold/60 uppercase">omakase</div>
@@ -714,7 +692,6 @@ Tokyo, Shinjuku-ku, Shinjuku 3-7-5<br/>Iccho Bldg. 2F<br/>
 Open 11:00 — 23:00
 </address>
 <div class="flex justify-center gap-6 mb-12">
-  <!-- Instagram -->
   <a class="text-ginza-gold hover:text-white transition-colors"
      href="https://www.instagram.com/omakase_tokyo_wagyu?igsh=dzR6cmlvZzlueG93&utm_source=qr"
      target="_blank" rel="noopener" aria-label="Instagram">
@@ -722,7 +699,6 @@ Open 11:00 — 23:00
       <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
     </svg>
   </a>
-  <!-- 予約ボタン -->
   <button
     class="text-ginza-gold hover:text-white transition-colors"
     onclick="openReserveModal('footer')"
@@ -732,7 +708,6 @@ Open 11:00 — 23:00
       <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/>
     </svg>
   </button>
-  <!-- マップリンク -->
   <a class="text-ginza-gold hover:text-white transition-colors"
      href="https://maps.app.goo.gl/MbPytsPEsMee3WeG8"
      target="_blank" rel="noopener"
@@ -748,10 +723,7 @@ Open 11:00 — 23:00
 </div>
 </footer>
 
-<!-- ============================================================
-     RESERVATION MODAL
-     フォーム送信成功時に dataLayer.push でイベント送信
-     ============================================================ -->
+<!-- RESERVATION MODAL -->
 <div id="reserveModal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.85);overflow-y:auto;-webkit-overflow-scrolling:touch;">
   <div style="min-height:100%;display:flex;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;">
     <div style="background:#111;border:1px solid rgba(201,169,110,0.3);border-radius:16px;width:100%;max-width:480px;padding:32px 24px;position:relative;box-sizing:border-box;">
@@ -804,11 +776,9 @@ Open 11:00 — 23:00
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   emailjs.init('6I-wkxv05ZwY-PpXa');
 
-  // モーダルを開く：どのボタンから開いたかをdataLayerに送信
   function openReserveModal(label) {
     document.getElementById('reserveModal').style.display = 'block';
     document.body.style.overflow = 'hidden';
-    // GTM用：モーダルオープンイベント
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
       event: 'reserve_modal_open',
@@ -853,20 +823,23 @@ Open 11:00 — 23:00
     btn.textContent = 'Sending...';
     btn.disabled = true;
 
-    var params = { name, email, phone, guests, time, date, message };
+    // ===== 流入元URLパスを取得 =====
+    var source = window.location.pathname;
+    // ================================
+
+    var params = { name, email, phone, guests, time, date, message, source_path: source };
 
     try {
       await emailjs.send('service_41qov79', 'template_uk1m5wn', params);
       await emailjs.send('service_41qov79', 'template_f9w6hmy', params);
 
-      // ===== GTM用：フォーム送信成功イベント（CVトリガーに使用）=====
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
-        event: 'reservation_form_submit',   // GTMトリガー名はこれを使う
+        event: 'reservation_form_submit',
         form_guests: guests,
-        form_date: date
+        form_date: date,
+        source_path: source
       });
-      // =============================================================
 
       document.getElementById('reserveForm').style.display = 'none';
       document.getElementById('reserveSuccess').style.display = 'block';
