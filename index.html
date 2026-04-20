@@ -95,6 +95,23 @@ body { padding-bottom: 72px; }
 .course-detail-panel.open { max-height:600px; }
 .chevron-icon { transition:transform 0.3s; }
 .chevron-icon.open { transform:rotate(180deg); }
+
+/* Booking count banner */
+.booking-pulse {
+  display:inline-block;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#ef4444;
+  margin-right:8px;
+  animation: pulseRed 1.8s ease-in-out infinite;
+  box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+}
+@keyframes pulseRed {
+  0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+  70% { box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
 </style>
 </head>
 
@@ -193,6 +210,14 @@ Ultra-rare lean Wagyu. Halal certified.<br/>A dining experience crafted for the 
     </svg>
     ACCESS &amp; MAP
   </a>
+
+  <!-- BOOKING COUNT BANNER -->
+  <div class="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-ginza-gold/10 via-ginza-gold/20 to-ginza-gold/10 border border-ginza-gold/40 rounded-full px-4 py-2.5 mt-1">
+    <span class="booking-pulse"></span>
+    <span class="text-[11px] font-josefin font-semibold tracking-[0.1em] text-ginza-gold uppercase">
+      <span class="text-ginza-ivory">76 bookings</span> in the last 24 hours
+    </span>
+  </div>
 
   <div class="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
     <svg class="w-4 h-4 text-ginza-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"/></svg>
@@ -499,9 +524,17 @@ window.addEventListener('load', function() {
 <div class="max-w-[390px] mx-auto">
 <p class="section-label mb-4">Reserve</p>
 <h3 class="font-cormorant italic text-3xl mb-2">Begin Your Experience</h3>
-<p class="text-sm font-light text-ginza-ivory/50 mb-8 max-w-xs mx-auto">
+<p class="text-sm font-light text-ginza-ivory/50 mb-6 max-w-xs mx-auto">
 Reservations recommended 2 weeks in advance.<br/>Walk-ins welcome subject to availability.
 </p>
+
+  <!-- BOOKING COUNT BANNER (reservation section) -->
+  <div class="inline-flex items-center justify-center gap-2 bg-ginza-gold/10 border border-ginza-gold/40 rounded-full px-4 py-2 mb-8">
+    <span class="booking-pulse"></span>
+    <span class="text-[11px] font-josefin font-semibold tracking-[0.1em] text-ginza-gold uppercase">
+      <span class="text-ginza-ivory">76 bookings</span> in the last 24 hours
+    </span>
+  </div>
 
   <div
     onclick="openReserveModal('calendar_card')"
@@ -728,18 +761,24 @@ Open 11:00 — 23:00
   <div style="min-height:100%;display:flex;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;">
     <div style="background:#111;border:1px solid rgba(201,169,110,0.3);border-radius:16px;width:100%;max-width:480px;padding:32px 24px;position:relative;box-sizing:border-box;">
       <button onclick="closeReserveModal()" style="position:absolute;top:16px;right:16px;background:none;border:none;color:rgba(240,237,228,0.5);font-size:24px;cursor:pointer;line-height:1;">&#x00D7;</button>
-      <p style="font-size:10px;letter-spacing:0.3em;color:rgba(201,169,110,0.6);text-transform:uppercase;margin:0 0 8px;">Reservation Request</p>
-      <h3 style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:24px;color:#f0ede4;margin:0 0 4px;">予約リクエスト</h3>
-      <p style="font-size:12px;color:rgba(240,237,228,0.5);margin:0 0 24px;">送信後、確認メールをお送りします。<br/>We will send you a confirmation email.</p>
+      <p style="font-size:10px;letter-spacing:0.3em;color:rgba(201,169,110,0.6);text-transform:uppercase;margin:0 0 8px;">Reservation</p>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:28px;color:#f0ede4;margin:0 0 4px;line-height:1.2;">Reservation Request</h3>
+      <p style="font-size:12px;color:rgba(201,169,110,0.7);margin:0 0 4px;letter-spacing:0.05em;">予約リクエスト</p>
+      <p style="font-size:12px;color:rgba(240,237,228,0.5);margin:0 0 24px;">We will send you a confirmation email.<br/>送信後、確認メールをお送りします。</p>
 
       <div id="reserveForm">
+        <!-- Honeypot field: hidden from humans, bots will fill it -->
+        <div style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+          <label for="r_website">Website (do not fill)</label>
+          <input id="r_website" name="website" type="text" tabindex="-1" autocomplete="off"/>
+        </div>
         <div style="margin-bottom:16px;"><label style="display:block;font-size:10px;letter-spacing:0.15em;color:rgba(201,169,110,0.7);text-transform:uppercase;margin-bottom:6px;">お名前 / Name *</label><input id="r_name" type="text" placeholder="Yamada Taro" autocomplete="name" style="width:100%;background:#1a1a1a;border:1px solid rgba(201,169,110,0.25);border-radius:8px;padding:10px 14px;color:#f0ede4;font-size:16px;box-sizing:border-box;-webkit-appearance:none;"/></div>
         <div style="margin-bottom:16px;"><label style="display:block;font-size:10px;letter-spacing:0.15em;color:rgba(201,169,110,0.7);text-transform:uppercase;margin-bottom:6px;">メールアドレス / Email *</label><input id="r_email" type="email" placeholder="example@email.com" autocomplete="email" style="width:100%;background:#1a1a1a;border:1px solid rgba(201,169,110,0.25);border-radius:8px;padding:10px 14px;color:#f0ede4;font-size:16px;box-sizing:border-box;-webkit-appearance:none;"/></div>
-        <div style="margin-bottom:16px;"><label style="display:block;font-size:10px;letter-spacing:0.15em;color:rgba(201,169,110,0.7);text-transform:uppercase;margin-bottom:6px;">電話番号 / Phone</label><input id="r_phone" type="tel" placeholder="+81 90-0000-0000" autocomplete="tel" style="width:100%;background:#1a1a1a;border:1px solid rgba(201,169,110,0.25);border-radius:8px;padding:10px 14px;color:#f0ede4;font-size:16px;box-sizing:border-box;-webkit-appearance:none;"/></div>
+        <div style="margin-bottom:16px;"><label style="display:block;font-size:10px;letter-spacing:0.15em;color:rgba(201,169,110,0.7);text-transform:uppercase;margin-bottom:6px;">電話番号 / Phone *</label><input id="r_phone" type="tel" placeholder="+81 90-0000-0000" autocomplete="tel" style="width:100%;background:#1a1a1a;border:1px solid rgba(201,169,110,0.25);border-radius:8px;padding:10px 14px;color:#f0ede4;font-size:16px;box-sizing:border-box;-webkit-appearance:none;"/></div>
 
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
           <div><label style="display:block;font-size:10px;letter-spacing:0.15em;color:rgba(201,169,110,0.7);text-transform:uppercase;margin-bottom:6px;">人数 / Guests *</label><select id="r_guests" style="width:100%;background:#1a1a1a;border:1px solid rgba(201,169,110,0.25);border-radius:8px;padding:10px 14px;color:#f0ede4;font-size:16px;box-sizing:border-box;-webkit-appearance:none;"><option value="">-</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8+</option></select></div>
-          <div><label style="display:block;font-size:10px;letter-spacing:0.15em;color:rgba(201,169,110,0.7);text-transform:uppercase;margin-bottom:6px;">希望時間 / Time *</label><select id="r_time" style="width:100%;background:#1a1a1a;border:1px solid rgba(201,169,110,0.25);border-radius:8px;padding:10px 14px;color:#f0ede4;font-size:16px;box-sizing:border-box;-webkit-appearance:none;"><option value="">-</option><option>11:00</option><option>12:00</option><option>13:00</option><option>17:00</option><option>18:00</option><option>19:00</option><option>20:00</option><option>21:00</option></select></div>
+          <div><label style="display:block;font-size:10px;letter-spacing:0.15em;color:rgba(201,169,110,0.7);text-transform:uppercase;margin-bottom:6px;">希望時間 / Time *</label><select id="r_time" style="width:100%;background:#1a1a1a;border:1px solid rgba(201,169,110,0.25);border-radius:8px;padding:10px 14px;color:#f0ede4;font-size:16px;box-sizing:border-box;-webkit-appearance:none;"><option value="">-</option><option>12:00</option><option>14:00</option><option>17:00</option><option>20:00</option></select></div>
         </div>
 
         <div style="margin-bottom:16px;"><label style="display:block;font-size:10px;letter-spacing:0.15em;color:rgba(201,169,110,0.7);text-transform:uppercase;margin-bottom:6px;">希望日 / Preferred Date *</label><input id="r_date" type="date" style="width:100%;background:#1a1a1a;border:1px solid rgba(201,169,110,0.25);border-radius:8px;padding:10px 14px;color:#f0ede4;font-size:16px;box-sizing:border-box;-webkit-appearance:none;"/></div>
@@ -750,7 +789,9 @@ Open 11:00 — 23:00
           <p style="margin:0 0 4px;">・24時間前以内：¥5,000 / person &nbsp;|&nbsp; Within 24 hours: ¥5,000 / person</p>
           <p style="margin:0 0 10px;">・48時間前以内：¥2,500 / person &nbsp;|&nbsp; Within 48 hours: ¥2,500 / person</p>
           <hr style="border:none;border-top:1px solid rgba(201,169,110,0.15);margin:8px 0;"/>
-          <p style="margin:0;color:rgba(240,237,228,0.4);">※ このフォームでの送信は予約確定ではありません。godaimeinfo@gmail.com からの予約確定メールをお待ちください。<br/><br/>* This form does not confirm your reservation. Please wait for a confirmation email from godaimeinfo@gmail.com.</p>
+          <p style="margin:0 0 10px;color:rgba(240,237,228,0.4);">※ このフォームでの送信は予約確定ではありません。godaimeinfo@gmail.com からの予約確定メールをお待ちください。<br/><br/>* This form does not confirm your reservation. Please wait for a confirmation email from godaimeinfo@gmail.com.</p>
+          <hr style="border:none;border-top:1px solid rgba(201,169,110,0.15);margin:8px 0;"/>
+          <p style="margin:0;color:rgba(201,169,110,0.75);font-weight:600;">※ 当日予約の場合、お席の確認が遅れることがございますので、<a href="tel:07035248272" style="color:#c9a96e;text-decoration:underline;">070-3524-8272</a> までお電話ください。<br/><br/><span style="color:rgba(240,237,228,0.5);font-weight:400;">* For same-day reservations, seat confirmation may be delayed. Please call <a href="tel:07035248272" style="color:#c9a96e;text-decoration:underline;">070-3524-8272</a>.</span></p>
         </div>
 
         <p id="r_error" style="color:#e57373;font-size:12px;margin-bottom:12px;display:none;"></p>
@@ -779,6 +820,7 @@ Open 11:00 — 23:00
   function openReserveModal(label) {
     document.getElementById('reserveModal').style.display = 'block';
     document.body.style.overflow = 'hidden';
+    window._reserveModalOpenedAt = Date.now();  // タイマー用: モーダル表示時刻を記録
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
       event: 'reserve_modal_open',
@@ -791,7 +833,7 @@ Open 11:00 — 23:00
     document.body.style.overflow = '';
     document.getElementById('reserveForm').style.display = 'block';
     document.getElementById('reserveSuccess').style.display = 'none';
-    ['r_name','r_email','r_phone','r_guests','r_time','r_date','r_message'].forEach(function(id){
+    ['r_name','r_email','r_phone','r_guests','r_time','r_date','r_message','r_website'].forEach(function(id){
       document.getElementById(id).value = '';
     });
     const err = document.getElementById('r_error');
@@ -810,9 +852,30 @@ Open 11:00 — 23:00
     var time    = document.getElementById('r_time').value;
     var date    = document.getElementById('r_date').value;
     var message = document.getElementById('r_message').value.trim();
+    var website = document.getElementById('r_website').value.trim();  // Honeypot
     var errEl   = document.getElementById('r_error');
 
-    if (!name || !email || !guests || !time || !date) {
+    // ===== Bot対策 1: Honeypotフィールド =====
+    // 人間には見えない隠しフィールドに値が入っている = bot確定
+    if (website !== '') {
+      // botには正常送信されたように見せかけて静かに破棄（stealth reject）
+      document.getElementById('reserveForm').style.display = 'none';
+      document.getElementById('reserveSuccess').style.display = 'block';
+      return;
+    }
+
+    // ===== Bot対策 2: 送信時間チェック =====
+    // モーダルを開いてから3秒未満の送信はbot
+    var openedAt = window._reserveModalOpenedAt || 0;
+    var elapsed = Date.now() - openedAt;
+    if (elapsed < 3000) {
+      document.getElementById('reserveForm').style.display = 'none';
+      document.getElementById('reserveSuccess').style.display = 'block';
+      return;
+    }
+
+    // ===== 必須チェック =====
+    if (!name || !email || !phone || !guests || !time || !date) {
       errEl.textContent = '* 必須項目を入力してください / Please fill in required fields.';
       errEl.style.display = 'block';
       return;
