@@ -112,6 +112,155 @@ body { padding-bottom: 72px; }
   70% { box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); }
   100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
 }
+
+/* Confirmation dialog styles */
+.confirm-checkbox {
+  appearance:none;
+  -webkit-appearance:none;
+  width:18px;
+  height:18px;
+  border:1.5px solid rgba(201,169,110,0.5);
+  border-radius:4px;
+  background:#1a1a1a;
+  cursor:pointer;
+  position:relative;
+  flex-shrink:0;
+  margin-top:2px;
+}
+.confirm-checkbox:checked {
+  background:#c9a96e;
+  border-color:#c9a96e;
+}
+.confirm-checkbox:checked::after {
+  content:'';
+  position:absolute;
+  left:5px;
+  top:1px;
+  width:5px;
+  height:10px;
+  border:solid #090909;
+  border-width:0 2px 2px 0;
+  transform:rotate(45deg);
+}
+
+/* Review cards */
+.review-scroll {
+  display:flex;
+  gap:16px;
+  overflow-x:auto;
+  padding:8px 0 16px;
+  -ms-overflow-style:none;
+  scrollbar-width:none;
+  scroll-snap-type:x mandatory;
+}
+.review-scroll::-webkit-scrollbar { display:none; }
+.review-card {
+  flex-shrink:0;
+  width:300px;
+  padding:24px;
+  border-radius:16px;
+  border:1px solid rgba(201,169,110,0.2);
+  background:linear-gradient(135deg, rgba(201,169,110,0.06) 0%, rgba(201,169,110,0.02) 100%);
+  scroll-snap-align:start;
+}
+@media (min-width:768px) {
+  .review-scroll {
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    overflow-x:visible;
+  }
+  .review-card { width:auto; }
+}
+@media (min-width:1024px) {
+  .review-scroll {
+    grid-template-columns:repeat(3, 1fr);
+  }
+}
+
+/* Success screen: gold foil + ink brush animation */
+.success-stage {
+  position:relative;
+  padding:40px 0 32px;
+  text-align:center;
+  overflow:hidden;
+}
+.gold-foil-bg {
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:0.6;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(201,169,110,0.25) 0%, transparent 40%),
+    radial-gradient(circle at 80% 60%, rgba(201,169,110,0.18) 0%, transparent 45%),
+    radial-gradient(circle at 50% 85%, rgba(201,169,110,0.12) 0%, transparent 50%);
+  animation: foilShimmer 4s ease-in-out infinite;
+}
+@keyframes foilShimmer {
+  0%, 100% { opacity:0.4; transform:scale(1); }
+  50% { opacity:0.7; transform:scale(1.05); }
+}
+.gold-particle {
+  position:absolute;
+  width:4px;
+  height:4px;
+  background:#c9a96e;
+  border-radius:50%;
+  opacity:0;
+  animation: particleFloat 3s ease-out infinite;
+  box-shadow:0 0 6px rgba(201,169,110,0.9), 0 0 12px rgba(201,169,110,0.5);
+}
+@keyframes particleFloat {
+  0% { opacity:0; transform:translate(0, 0) scale(0); }
+  20% { opacity:1; transform:translate(var(--dx, 20px), -10px) scale(1); }
+  80% { opacity:0.6; transform:translate(calc(var(--dx, 20px) * 2), -40px) scale(0.7); }
+  100% { opacity:0; transform:translate(calc(var(--dx, 20px) * 3), -80px) scale(0); }
+}
+.sumi-brush-svg {
+  position:relative;
+  z-index:2;
+  width:110px;
+  height:110px;
+  margin:0 auto 20px;
+}
+.sumi-brush-svg path {
+  fill:none;
+  stroke:#c9a96e;
+  stroke-width:5;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-dasharray:600;
+  stroke-dashoffset:600;
+  filter:drop-shadow(0 0 8px rgba(201,169,110,0.7));
+}
+.sumi-brush-svg.drawing path {
+  animation: drawSumi 1.6s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+@keyframes drawSumi {
+  0% { stroke-dashoffset:600; }
+  100% { stroke-dashoffset:0; }
+}
+.success-title {
+  position:relative;
+  z-index:2;
+  opacity:0;
+  animation: fadeRise 0.8s ease-out 1.2s forwards;
+}
+.success-body {
+  position:relative;
+  z-index:2;
+  opacity:0;
+  animation: fadeRise 0.8s ease-out 1.6s forwards;
+}
+.success-close {
+  position:relative;
+  z-index:2;
+  opacity:0;
+  animation: fadeRise 0.8s ease-out 2.0s forwards;
+}
+@keyframes fadeRise {
+  0% { opacity:0; transform:translateY(10px); }
+  100% { opacity:1; transform:translateY(0); }
+}
 </style>
 </head>
 
@@ -519,6 +668,131 @@ window.addEventListener('load', function() {
 </div>
 </section>
 
+<!-- REVIEWS / VOICES -->
+<section class="reveal py-20 bg-ginza-black border-t border-ginza-gold/10" id="reviews">
+<div class="max-w-3xl mx-auto px-6">
+  <div class="text-center mb-10">
+    <p class="section-label mb-4">Guest Voices</p>
+    <h3 class="font-cormorant italic text-3xl mb-3">From Around the World</h3>
+    <p class="text-sm font-light text-ginza-ivory/50 max-w-sm mx-auto leading-relaxed">
+      A selection of impressions shared by our guests.<br/>
+      <span class="text-ginza-ivory/30 text-[11px]">※ Sample voices · to be replaced with verified reviews</span>
+    </p>
+  </div>
+
+  <!-- Review scroll container -->
+  <div class="review-scroll" id="reviewScroll">
+
+    <!-- Review 1: English / UAE -->
+    <div class="review-card">
+      <div class="flex items-center gap-1 mb-3">
+        <span class="text-ginza-gold text-sm">★★★★★</span>
+        <span class="text-[10px] text-ginza-ivory/40 font-josefin tracking-wider ml-2">TRIPADVISOR</span>
+      </div>
+      <p class="font-cormorant italic text-base leading-relaxed text-ginza-ivory/85 mb-4">
+        "The prayer room made all the difference. Beautifully presented halal wagyu, thoughtfully served. My family from Dubai felt completely at home in Tokyo."
+      </p>
+      <div class="flex items-center gap-3 pt-3 border-t border-ginza-gold/10">
+        <div class="w-8 h-8 rounded-full bg-ginza-gold/20 border border-ginza-gold/30 flex items-center justify-center text-ginza-gold font-cormorant italic text-sm">A</div>
+        <div>
+          <p class="text-[11px] font-josefin tracking-wider text-ginza-ivory/70">Ahmed K.</p>
+          <p class="text-[9px] text-ginza-ivory/40 tracking-widest uppercase">Dubai · UAE</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Review 2: English / US -->
+    <div class="review-card">
+      <div class="flex items-center gap-1 mb-3">
+        <span class="text-ginza-gold text-sm">★★★★★</span>
+        <span class="text-[10px] text-ginza-ivory/40 font-josefin tracking-wider ml-2">GOOGLE</span>
+      </div>
+      <p class="font-cormorant italic text-base leading-relaxed text-ginza-ivory/85 mb-4">
+        "The BOKUGA course was theatrical — watching the chef carve the wagyu felt like a performance. The quality of the beef is on another level. Worth every yen."
+      </p>
+      <div class="flex items-center gap-3 pt-3 border-t border-ginza-gold/10">
+        <div class="w-8 h-8 rounded-full bg-ginza-gold/20 border border-ginza-gold/30 flex items-center justify-center text-ginza-gold font-cormorant italic text-sm">J</div>
+        <div>
+          <p class="text-[11px] font-josefin tracking-wider text-ginza-ivory/70">Jennifer M.</p>
+          <p class="text-[9px] text-ginza-ivory/40 tracking-widest uppercase">New York · USA</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Review 3: Japanese -->
+    <div class="review-card">
+      <div class="flex items-center gap-1 mb-3">
+        <span class="text-ginza-gold text-sm">★★★★★</span>
+        <span class="text-[10px] text-ginza-ivory/40 font-josefin tracking-wider ml-2">GOOGLE</span>
+      </div>
+      <p class="font-cormorant italic text-base leading-relaxed text-ginza-ivory/85 mb-4">
+        「接待で利用しました。海外のお客様に和牛と寿司の両方を体験していただけて大変喜ばれました。静かな個室と丁寧な英語対応で安心してお任せできます。」
+      </p>
+      <div class="flex items-center gap-3 pt-3 border-t border-ginza-gold/10">
+        <div class="w-8 h-8 rounded-full bg-ginza-gold/20 border border-ginza-gold/30 flex items-center justify-center text-ginza-gold font-cormorant italic text-sm">T</div>
+        <div>
+          <p class="text-[11px] font-josefin tracking-wider text-ginza-ivory/70">田中 宏之 様</p>
+          <p class="text-[9px] text-ginza-ivory/40 tracking-widest uppercase">Tokyo · Japan</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Review 4: Chinese (Traditional) -->
+    <div class="review-card">
+      <div class="flex items-center gap-1 mb-3">
+        <span class="text-ginza-gold text-sm">★★★★★</span>
+        <span class="text-[10px] text-ginza-ivory/40 font-josefin tracking-wider ml-2">TRIPADVISOR</span>
+      </div>
+      <p class="font-cormorant italic text-base leading-relaxed text-ginza-ivory/85 mb-4">
+        "真正的日本和牛體驗，完全不同於香港吃到的。低溫慢煮帶出的甘甜讓人難忘。師傅對每一片肉的態度就像對藝術品一樣。"
+      </p>
+      <div class="flex items-center gap-3 pt-3 border-t border-ginza-gold/10">
+        <div class="w-8 h-8 rounded-full bg-ginza-gold/20 border border-ginza-gold/30 flex items-center justify-center text-ginza-gold font-cormorant italic text-sm">L</div>
+        <div>
+          <p class="text-[11px] font-josefin tracking-wider text-ginza-ivory/70">Lin H.</p>
+          <p class="text-[9px] text-ginza-ivory/40 tracking-widest uppercase">Hong Kong</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Review 5: English / Malaysia -->
+    <div class="review-card">
+      <div class="flex items-center gap-1 mb-3">
+        <span class="text-ginza-gold text-sm">★★★★★</span>
+        <span class="text-[10px] text-ginza-ivory/40 font-josefin tracking-wider ml-2">GOOGLE</span>
+      </div>
+      <p class="font-cormorant italic text-base leading-relaxed text-ginza-ivory/85 mb-4">
+        "As a Muslim food lover, finding authentic halal-certified omakase in Tokyo was a dream. The attention to every detail — from certification to the prayer space — showed real respect. The wagyu itself was sublime."
+      </p>
+      <div class="flex items-center gap-3 pt-3 border-t border-ginza-gold/10">
+        <div class="w-8 h-8 rounded-full bg-ginza-gold/20 border border-ginza-gold/30 flex items-center justify-center text-ginza-gold font-cormorant italic text-sm">F</div>
+        <div>
+          <p class="text-[11px] font-josefin tracking-wider text-ginza-ivory/70">Farah S.</p>
+          <p class="text-[9px] text-ginza-ivory/40 tracking-widest uppercase">Kuala Lumpur</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="md:hidden text-center text-[9px] text-ginza-ivory/30 font-josefin tracking-widest mt-2">← Swipe to read more →</p>
+
+  <!-- Aggregate rating summary -->
+  <div class="mt-10 flex flex-wrap justify-center items-center gap-6 pt-8 border-t border-ginza-gold/10">
+    <div class="text-center">
+      <p class="font-cormorant italic text-3xl text-ginza-gold leading-none mb-1">4.8</p>
+      <p class="text-ginza-gold text-sm mb-1">★★★★★</p>
+      <p class="text-[9px] text-ginza-ivory/40 font-josefin tracking-widest uppercase">Google · 500+ reviews</p>
+    </div>
+    <div class="w-px h-12 bg-ginza-gold/20"></div>
+    <div class="text-center">
+      <p class="font-cormorant italic text-3xl text-ginza-gold leading-none mb-1">No.1</p>
+      <p class="text-[9px] text-ginza-ivory/40 font-josefin tracking-widest uppercase mt-2">Tripadvisor Tokyo<br/>Aug 2025 — Mar 2026 (flagship)</p>
+    </div>
+  </div>
+</div>
+</section>
+
 <!-- RESERVATION CTA SECTION -->
 <section class="reveal py-20 px-6 text-center bg-ginza-black" id="reservation">
 <div class="max-w-[390px] mx-auto">
@@ -781,7 +1055,16 @@ Open 11:00 — 23:00
           <div><label style="display:block;font-size:10px;letter-spacing:0.15em;color:rgba(201,169,110,0.7);text-transform:uppercase;margin-bottom:6px;">希望時間 / Time *</label><select id="r_time" style="width:100%;background:#1a1a1a;border:1px solid rgba(201,169,110,0.25);border-radius:8px;padding:10px 14px;color:#f0ede4;font-size:16px;box-sizing:border-box;-webkit-appearance:none;"><option value="">-</option><option>12:00</option><option>14:00</option><option>17:00</option><option>20:00</option></select></div>
         </div>
 
-        <div style="margin-bottom:16px;"><label style="display:block;font-size:10px;letter-spacing:0.15em;color:rgba(201,169,110,0.7);text-transform:uppercase;margin-bottom:6px;">希望日 / Preferred Date *</label><input id="r_date" type="date" style="width:100%;background:#1a1a1a;border:1px solid rgba(201,169,110,0.25);border-radius:8px;padding:10px 14px;color:#f0ede4;font-size:16px;box-sizing:border-box;-webkit-appearance:none;"/></div>
+        <div style="margin-bottom:16px;">
+          <label style="display:block;font-size:10px;letter-spacing:0.15em;color:rgba(201,169,110,0.7);text-transform:uppercase;margin-bottom:6px;">希望日 / Preferred Date *</label>
+          <div style="position:relative;" onclick="document.getElementById('r_date').showPicker ? document.getElementById('r_date').showPicker() : document.getElementById('r_date').focus();">
+            <input id="r_date" type="date" style="width:100%;background:#1a1a1a;border:1px solid rgba(201,169,110,0.25);border-radius:8px;padding:12px 40px 12px 14px;color:#f0ede4;font-size:16px;box-sizing:border-box;-webkit-appearance:none;cursor:pointer;" onclick="event.stopPropagation(); this.showPicker && this.showPicker();"/>
+            <svg style="position:absolute;right:14px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:#c9a96e;pointer-events:none;" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/>
+            </svg>
+          </div>
+          <p style="font-size:10px;color:rgba(240,237,228,0.4);margin:4px 0 0;">📅 タップしてカレンダーから日付を選択 / Tap to pick from calendar</p>
+        </div>
         <div style="margin-bottom:20px;"><label style="display:block;font-size:10px;letter-spacing:0.15em;color:rgba(201,169,110,0.7);text-transform:uppercase;margin-bottom:6px;">ご要望 / Special Requests</label><textarea id="r_message" rows="3" placeholder="Allergies, dietary requirements, special occasions..." style="width:100%;background:#1a1a1a;border:1px solid rgba(201,169,110,0.25);border-radius:8px;padding:10px 14px;color:#f0ede4;font-size:16px;box-sizing:border-box;resize:vertical;-webkit-appearance:none;"></textarea></div>
 
         <div style="background:rgba(201,169,110,0.05);border:1px solid rgba(201,169,110,0.2);border-radius:8px;padding:12px 14px;margin-bottom:20px;font-size:11px;color:rgba(240,237,228,0.5);line-height:1.7;">
@@ -795,21 +1078,125 @@ Open 11:00 — 23:00
         </div>
 
         <p id="r_error" style="color:#e57373;font-size:12px;margin-bottom:12px;display:none;"></p>
-        <button onclick="submitReservation()" id="r_submit" style="width:100%;background:#c9a96e;color:#090909;font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.15em;text-transform:uppercase;padding:14px;border:none;border-radius:8px;cursor:pointer;">SEND REQUEST / 送信する</button>
+        <button onclick="openConfirmDialog()" id="r_submit" style="width:100%;background:#c9a96e;color:#090909;font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.15em;text-transform:uppercase;padding:14px;border:none;border-radius:8px;cursor:pointer;">SEND REQUEST / 送信する</button>
       </div>
 
-      <div id="reserveSuccess" style="display:none;text-align:center;padding:20px 0;">
-        <div style="font-size:48px;margin-bottom:16px;">&#x2709;&#xFE0F;</div>
-        <h4 style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:#c9a96e;margin-bottom:12px;">Request Sent!</h4>
-        <p style="font-size:14px;color:rgba(240,237,228,0.7);margin-bottom:8px;">リクエストを受け付けました。<br/>godaimeinfo@gmail.com からの確定メールをお待ちください。</p>
-        <p style="font-size:13px;color:rgba(240,237,228,0.5);">Your request has been received.<br/>Please wait for a confirmation from godaimeinfo@gmail.com.</p>
-        <button onclick="closeReserveModal()" style="margin-top:24px;background:none;border:1px solid rgba(201,169,110,0.4);color:#c9a96e;font-family:'Josefin Sans',sans-serif;font-size:11px;letter-spacing:0.15em;padding:10px 24px;border-radius:8px;cursor:pointer;">CLOSE</button>
+      <div id="reserveSuccess" style="display:none;">
+        <div class="success-stage">
+          <!-- Gold foil shimmer background -->
+          <div class="gold-foil-bg"></div>
+          <!-- Floating gold particles -->
+          <span class="gold-particle" style="left:20%;top:70%;--dx:15px;animation-delay:0.2s;"></span>
+          <span class="gold-particle" style="left:35%;top:80%;--dx:-12px;animation-delay:0.6s;"></span>
+          <span class="gold-particle" style="left:55%;top:75%;--dx:18px;animation-delay:1.0s;"></span>
+          <span class="gold-particle" style="left:70%;top:82%;--dx:-10px;animation-delay:1.4s;"></span>
+          <span class="gold-particle" style="left:82%;top:68%;--dx:14px;animation-delay:0.8s;"></span>
+          <span class="gold-particle" style="left:15%;top:60%;--dx:-8px;animation-delay:1.8s;"></span>
+
+          <!-- Ink-brush "墨" character drawn with SVG animation -->
+          <svg class="sumi-brush-svg" id="sumiBrushSvg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <!-- Top horizontal stroke -->
+            <path d="M 28 22 Q 50 18 72 22"/>
+            <!-- Upper box: left side -->
+            <path d="M 32 22 L 30 38"/>
+            <!-- Upper box: right side -->
+            <path d="M 68 22 L 70 38"/>
+            <!-- Upper box: bottom -->
+            <path d="M 30 38 L 70 38"/>
+            <!-- Middle horizontal -->
+            <path d="M 26 50 L 74 50"/>
+            <!-- Middle vertical -->
+            <path d="M 50 38 L 50 50"/>
+            <!-- Lower 土 top -->
+            <path d="M 38 62 L 62 62"/>
+            <!-- Lower 土 vertical -->
+            <path d="M 50 62 L 50 82"/>
+            <!-- Lower 土 bottom (wider) -->
+            <path d="M 26 82 L 74 82"/>
+          </svg>
+
+          <h4 class="success-title" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:26px;color:#c9a96e;margin:0 0 8px;letter-spacing:0.05em;">Request Received</h4>
+          <p class="success-title" style="font-family:'Noto Serif JP',serif;font-size:12px;color:rgba(201,169,110,0.7);margin:0 0 20px;letter-spacing:0.15em;">ご予約リクエストを承りました</p>
+
+          <div class="success-body" style="max-width:300px;margin:0 auto;padding:16px 20px;background:rgba(201,169,110,0.05);border:1px solid rgba(201,169,110,0.2);border-radius:12px;">
+            <p style="font-size:13px;color:rgba(240,237,228,0.8);margin:0 0 10px;line-height:1.7;">
+              godaimeinfo@gmail.com からの<br/>確定メールをお待ちください。
+            </p>
+            <div style="height:1px;background:rgba(201,169,110,0.2);margin:10px 0;"></div>
+            <p style="font-size:12px;color:rgba(240,237,228,0.55);margin:0;line-height:1.6;">
+              Please wait for a confirmation<br/>from godaimeinfo@gmail.com.
+            </p>
+          </div>
+
+          <button onclick="closeReserveModal()" class="success-close" style="margin-top:28px;background:transparent;border:1px solid rgba(201,169,110,0.5);color:#c9a96e;font-family:'Josefin Sans',sans-serif;font-size:11px;letter-spacing:0.2em;padding:11px 32px;border-radius:8px;cursor:pointer;transition:all 0.3s;" onmouseover="this.style.background='rgba(201,169,110,0.1)';this.style.borderColor='#c9a96e';" onmouseout="this.style.background='transparent';this.style.borderColor='rgba(201,169,110,0.5)';">CLOSE</button>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<!-- CONFIRMATION DIALOG (overlay on top of reservation modal) -->
+<div id="confirmDialog" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,0.75);overflow-y:auto;-webkit-overflow-scrolling:touch;">
+  <div style="min-height:100%;display:flex;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;">
+    <div style="background:#0f0f0f;border:1.5px solid rgba(201,169,110,0.5);border-radius:16px;width:100%;max-width:440px;padding:28px 24px;position:relative;box-sizing:border-box;box-shadow:0 0 40px rgba(201,169,110,0.15);">
+      <button onclick="closeConfirmDialog()" style="position:absolute;top:14px;right:14px;background:none;border:none;color:rgba(240,237,228,0.5);font-size:22px;cursor:pointer;line-height:1;">&#x00D7;</button>
+
+      <p style="font-size:10px;letter-spacing:0.3em;color:rgba(201,169,110,0.6);text-transform:uppercase;margin:0 0 8px;">Final Check</p>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:#c9a96e;margin:0 0 4px;line-height:1.2;">Please Confirm Your Reservation</h3>
+      <p style="font-size:12px;color:rgba(201,169,110,0.7);margin:0 0 16px;letter-spacing:0.05em;">ご予約内容のご確認</p>
+
+      <div style="background:rgba(201,169,110,0.08);border-left:3px solid #c9a96e;padding:10px 14px;margin-bottom:18px;border-radius:0 6px 6px 0;">
+        <p style="font-size:12px;color:rgba(240,237,228,0.8);margin:0 0 4px;line-height:1.6;">
+          食材とお席の準備がございますので、内容に誤りがないかご確認ください。
+        </p>
+        <p style="font-size:11px;color:rgba(240,237,228,0.5);margin:0;line-height:1.6;">
+          We prepare ingredients and seating based on your reservation. Please confirm details are correct.
+        </p>
+      </div>
+
+      <div style="background:#1a1a1a;border:1px solid rgba(201,169,110,0.25);border-radius:12px;padding:16px 18px;margin-bottom:18px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(201,169,110,0.1);">
+          <span style="font-size:10px;letter-spacing:0.15em;color:rgba(201,169,110,0.6);text-transform:uppercase;">Date / 日付</span>
+          <span id="confirm_date" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:#c9a96e;font-weight:600;">—</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(201,169,110,0.1);">
+          <span style="font-size:10px;letter-spacing:0.15em;color:rgba(201,169,110,0.6);text-transform:uppercase;">Time / 時間</span>
+          <span id="confirm_time" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:#c9a96e;font-weight:600;">—</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;">
+          <span style="font-size:10px;letter-spacing:0.15em;color:rgba(201,169,110,0.6);text-transform:uppercase;">Guests / 人数</span>
+          <span id="confirm_guests" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:#c9a96e;font-weight:600;">—</span>
+        </div>
+      </div>
+
+      <div style="margin-bottom:20px;">
+        <label style="display:flex;gap:10px;align-items:flex-start;cursor:pointer;padding:10px 0;">
+          <input id="confirm_check_details" type="checkbox" class="confirm-checkbox"/>
+          <span style="font-size:12px;color:rgba(240,237,228,0.75);line-height:1.5;">
+            <strong style="color:rgba(201,169,110,0.9);font-weight:600;">日付・時間・人数を確認しました</strong><br/>
+            <span style="color:rgba(240,237,228,0.55);font-size:11px;">I have confirmed the date, time and number of guests are correct.</span>
+          </span>
+        </label>
+        <label style="display:flex;gap:10px;align-items:flex-start;cursor:pointer;padding:10px 0;border-top:1px solid rgba(201,169,110,0.1);">
+          <input id="confirm_check_policy" type="checkbox" class="confirm-checkbox"/>
+          <span style="font-size:12px;color:rgba(240,237,228,0.75);line-height:1.5;">
+            <strong style="color:rgba(201,169,110,0.9);font-weight:600;">キャンセルポリシーを確認しました</strong><br/>
+            <span style="color:rgba(240,237,228,0.55);font-size:11px;">I have read and agree to the cancellation policy.</span>
+          </span>
+        </label>
+      </div>
+
+      <p id="confirm_error" style="color:#e57373;font-size:11px;margin:0 0 12px;display:none;">両方にチェックを入れてください / Please check both boxes.</p>
+
+      <div style="display:grid;grid-template-columns:1fr 1.2fr;gap:10px;">
+        <button onclick="closeConfirmDialog()" style="background:transparent;border:1px solid rgba(201,169,110,0.4);color:rgba(201,169,110,0.9);font-family:'Josefin Sans',sans-serif;font-weight:600;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;padding:13px 10px;border-radius:8px;cursor:pointer;">修正する<br/><span style="font-size:9px;opacity:0.7;">EDIT</span></button>
+        <button onclick="confirmAndSubmit()" id="confirm_submit_btn" style="background:#c9a96e;color:#090909;font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;padding:13px 10px;border:none;border-radius:8px;cursor:pointer;">この内容で送信<br/><span style="font-size:9px;opacity:0.75;">CONFIRM &amp; SEND</span></button>
+      </div>
+    </div>
+  </div>
+</div>
 <script>
   const observer = new IntersectionObserver((e) => {
     e.forEach(el => { if (el.isIntersecting) el.target.classList.add('active'); });
@@ -821,6 +1208,14 @@ Open 11:00 — 23:00
     document.getElementById('reserveModal').style.display = 'block';
     document.body.style.overflow = 'hidden';
     window._reserveModalOpenedAt = Date.now();  // タイマー用: モーダル表示時刻を記録
+
+    // 日付入力の最小値を今日に設定（過去日付選択を防止）
+    var today = new Date();
+    var minDate = today.getFullYear() + '-' +
+                  String(today.getMonth()+1).padStart(2,'0') + '-' +
+                  String(today.getDate()).padStart(2,'0');
+    document.getElementById('r_date').setAttribute('min', minDate);
+
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
       event: 'reserve_modal_open',
@@ -830,12 +1225,17 @@ Open 11:00 — 23:00
 
   function closeReserveModal() {
     document.getElementById('reserveModal').style.display = 'none';
+    document.getElementById('confirmDialog').style.display = 'none';
     document.body.style.overflow = '';
     document.getElementById('reserveForm').style.display = 'block';
     document.getElementById('reserveSuccess').style.display = 'none';
+    var brushReset = document.getElementById('sumiBrushSvg');
+    if (brushReset) brushReset.classList.remove('drawing');
     ['r_name','r_email','r_phone','r_guests','r_time','r_date','r_message','r_website'].forEach(function(id){
       document.getElementById(id).value = '';
     });
+    document.getElementById('confirm_check_details').checked = false;
+    document.getElementById('confirm_check_policy').checked = false;
     const err = document.getElementById('r_error');
     err.style.display = 'none';
     err.textContent = '';
@@ -844,37 +1244,38 @@ Open 11:00 — 23:00
     btn.disabled = false;
   }
 
-  async function submitReservation() {
+  // ============ 確認ダイアログを開く（必須チェック + bot対策後） ============
+  function openConfirmDialog() {
     var name    = document.getElementById('r_name').value.trim();
     var email   = document.getElementById('r_email').value.trim();
     var phone   = document.getElementById('r_phone').value.trim();
     var guests  = document.getElementById('r_guests').value;
     var time    = document.getElementById('r_time').value;
     var date    = document.getElementById('r_date').value;
-    var message = document.getElementById('r_message').value.trim();
-    var website = document.getElementById('r_website').value.trim();  // Honeypot
+    var website = document.getElementById('r_website').value.trim();
     var errEl   = document.getElementById('r_error');
 
-    // ===== Bot対策 1: Honeypotフィールド =====
-    // 人間には見えない隠しフィールドに値が入っている = bot確定
+    // Bot対策 1: Honeypot
     if (website !== '') {
-      // botには正常送信されたように見せかけて静かに破棄（stealth reject）
       document.getElementById('reserveForm').style.display = 'none';
       document.getElementById('reserveSuccess').style.display = 'block';
+      var brushSvg1 = document.getElementById('sumiBrushSvg');
+      if (brushSvg1) { brushSvg1.classList.remove('drawing'); void brushSvg1.offsetWidth; brushSvg1.classList.add('drawing'); }
       return;
     }
 
-    // ===== Bot対策 2: 送信時間チェック =====
-    // モーダルを開いてから3秒未満の送信はbot
+    // Bot対策 2: 送信時間チェック
     var openedAt = window._reserveModalOpenedAt || 0;
     var elapsed = Date.now() - openedAt;
     if (elapsed < 3000) {
       document.getElementById('reserveForm').style.display = 'none';
       document.getElementById('reserveSuccess').style.display = 'block';
+      var brushSvg2 = document.getElementById('sumiBrushSvg');
+      if (brushSvg2) { brushSvg2.classList.remove('drawing'); void brushSvg2.offsetWidth; brushSvg2.classList.add('drawing'); }
       return;
     }
 
-    // ===== 必須チェック =====
+    // 必須チェック
     if (!name || !email || !phone || !guests || !time || !date) {
       errEl.textContent = '* 必須項目を入力してください / Please fill in required fields.';
       errEl.style.display = 'block';
@@ -882,15 +1283,56 @@ Open 11:00 — 23:00
     }
     errEl.style.display = 'none';
 
-    var btn = document.getElementById('r_submit');
+    // 確認ダイアログに予約内容を表示
+    var dateObj = new Date(date);
+    var weekdays = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    var formattedDate = dateObj.getFullYear() + '/' +
+                        String(dateObj.getMonth()+1).padStart(2,'0') + '/' +
+                        String(dateObj.getDate()).padStart(2,'0') +
+                        ' (' + weekdays[dateObj.getDay()] + ')';
+
+    document.getElementById('confirm_date').textContent = formattedDate;
+    document.getElementById('confirm_time').textContent = time;
+    document.getElementById('confirm_guests').textContent = guests + (guests === '1' ? ' guest' : ' guests');
+
+    document.getElementById('confirm_check_details').checked = false;
+    document.getElementById('confirm_check_policy').checked = false;
+    document.getElementById('confirm_error').style.display = 'none';
+
+    document.getElementById('confirmDialog').style.display = 'block';
+  }
+
+  function closeConfirmDialog() {
+    document.getElementById('confirmDialog').style.display = 'none';
+  }
+
+  // ============ 確認後に送信 ============
+  async function confirmAndSubmit() {
+    var checkDetails = document.getElementById('confirm_check_details').checked;
+    var checkPolicy  = document.getElementById('confirm_check_policy').checked;
+    var errEl = document.getElementById('confirm_error');
+
+    if (!checkDetails || !checkPolicy) {
+      errEl.textContent = '両方にチェックを入れてください / Please check both boxes.';
+      errEl.style.display = 'block';
+      return;
+    }
+    errEl.style.display = 'none';
+
+    var btn = document.getElementById('confirm_submit_btn');
     btn.textContent = 'Sending...';
     btn.disabled = true;
 
-    // ===== 流入元URLパスを取得 =====
-    var source = window.location.pathname;
-    // ================================
+    var name    = document.getElementById('r_name').value.trim();
+    var email   = document.getElementById('r_email').value.trim();
+    var phone   = document.getElementById('r_phone').value.trim();
+    var guests  = document.getElementById('r_guests').value;
+    var time    = document.getElementById('r_time').value;
+    var date    = document.getElementById('r_date').value;
+    var message = document.getElementById('r_message').value.trim();
 
-    var params = { name, email, phone, guests, time, date, message, source_path: source };
+    var source = window.location.pathname;
+    var params = { name, email, phone, guests, time, date, message, source_path: source, location: '新宿三丁目店', location_key: 'shinjuku', address_jp: '東京都新宿区新宿3-7-5 一兆ビル 2F', address_en: 'Tokyo, Shinjuku-ku, Shinjuku 3-7-5, Iccho Bldg. 2F' };
 
     try {
       await emailjs.send('service_41qov79', 'template_uk1m5wn', params);
@@ -904,14 +1346,27 @@ Open 11:00 — 23:00
         source_path: source
       });
 
+      document.getElementById('confirmDialog').style.display = 'none';
       document.getElementById('reserveForm').style.display = 'none';
       document.getElementById('reserveSuccess').style.display = 'block';
+      // Trigger ink-brush drawing animation (新宿店のみ)
+      var brushSvg = document.getElementById('sumiBrushSvg');
+      if (brushSvg) {
+        brushSvg.classList.remove('drawing');
+        void brushSvg.offsetWidth;
+        brushSvg.classList.add('drawing');
+      }
     } catch (err) {
       errEl.textContent = 'エラーが発生しました。再度お試しください。/ An error occurred. Please try again.';
       errEl.style.display = 'block';
-      btn.textContent = 'SEND REQUEST / 送信する';
+      btn.innerHTML = 'この内容で送信<br/><span style="font-size:9px;opacity:0.75;">CONFIRM &amp; SEND</span>';
       btn.disabled = false;
     }
+  }
+
+  async function submitReservation() {
+    // 互換性のため残しているが、実際には openConfirmDialog → confirmAndSubmit の流れに置き換え済み
+    openConfirmDialog();
   }
 
   document.addEventListener('DOMContentLoaded', function() {
@@ -919,6 +1374,13 @@ Open 11:00 — 23:00
     if (m) {
       m.addEventListener('click', function(e) {
         if (e.target === this) closeReserveModal();
+      });
+    }
+    // 確認ダイアログの背景クリックで閉じる
+    var cd = document.getElementById('confirmDialog');
+    if (cd) {
+      cd.addEventListener('click', function(e) {
+        if (e.target === this) closeConfirmDialog();
       });
     }
     const obs = new IntersectionObserver((entries) => {
