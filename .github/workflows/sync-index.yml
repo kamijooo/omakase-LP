@@ -16,6 +16,8 @@ jobs:
           cp index.html japan/index.html
           cp index.html global/index.html
           cp index.html map/index.html
+          cp index.html insta/index.html
+          cp index.html tiktok/index.html
 
       - name: Commit and push
         run: |
