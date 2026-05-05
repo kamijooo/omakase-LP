@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>omakase 墨 | Authentic Wagyu · Halal · Shinjuku Tokyo</title>
+<title>omakase 墨 | Authentic Wagyu · Muslim-Friendly · Shinjuku Tokyo</title>
 
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -91,6 +91,44 @@ body { padding-bottom: 72px; }
   .course-scroll { display:grid; grid-template-columns:repeat(3,1fr); overflow-x:visible; }
   .course-card { width:auto; }
 }
+
+/* Vertical video centered above courses */
+.course-video-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+.course-video-frame {
+  position: relative;
+  width: 100%;
+  max-width: 240px;
+  aspect-ratio: 9 / 16;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(201, 169, 110, 0.25);
+  box-shadow: 0 0 40px rgba(201, 169, 110, 0.12);
+  background: #0a0a0a;
+}
+.course-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: #0a0a0a;
+}
+.course-video-label {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 16px 18px 18px;
+  background: linear-gradient(to top, rgba(9,9,9,0.85) 0%, rgba(9,9,9,0.4) 60%, transparent 100%);
+  pointer-events: none;
+}
+@media (min-width: 768px) {
+  .course-video-frame {
+    max-width: 280px;
+  }
+}
 .course-detail-panel { max-height:0; overflow:hidden; transition:max-height 0.4s ease; }
 .course-detail-panel.open { max-height:600px; }
 .chevron-icon { transition:transform 0.3s; }
@@ -111,6 +149,139 @@ body { padding-bottom: 72px; }
   0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
   70% { box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); }
   100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+/* Form course selector cards */
+.form-course-card {
+  display: block;
+  position: relative;
+  background: rgba(201, 169, 110, 0.04);
+  border: 1px solid rgba(201, 169, 110, 0.25);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.form-course-card:hover {
+  border-color: rgba(201, 169, 110, 0.5);
+  background: rgba(201, 169, 110, 0.07);
+}
+.form-course-card input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.form-course-card.popular {
+  border-color: rgba(201, 169, 110, 0.55);
+  box-shadow: 0 0 16px rgba(201, 169, 110, 0.12);
+}
+.form-course-card.popular::before {
+  content: 'MOST POPULAR';
+  position: absolute;
+  top: 0;
+  right: 12px;
+  transform: translateY(-50%);
+  background: #c9a96e;
+  color: #090909;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  padding: 3px 8px;
+  border-radius: 999px;
+  z-index: 2;
+}
+.form-course-card .check-mark {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid rgba(201, 169, 110, 0.4);
+  border-radius: 50%;
+  background: #1a1a1a;
+  transition: all 0.2s ease;
+}
+.form-course-card input[type="radio"]:checked ~ .check-mark {
+  border-color: #c9a96e;
+  background: #c9a96e;
+}
+.form-course-card input[type="radio"]:checked ~ .check-mark::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 1px;
+  width: 5px;
+  height: 9px;
+  border: solid #090909;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.form-course-card input[type="radio"]:checked + .form-course-card-content {
+  /* parent selector workaround: use sibling-class trigger */
+}
+.form-course-card.selected {
+  border-color: #c9a96e;
+  background: rgba(201, 169, 110, 0.10);
+  box-shadow: 0 0 20px rgba(201, 169, 110, 0.15);
+}
+.form-course-card-tier {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: rgba(201, 169, 110, 0.65);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.form-course-card-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 18px;
+  color: #f0ede4;
+  margin-bottom: 6px;
+  line-height: 1.1;
+}
+.form-course-card-price {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+.form-course-card-price-main {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #c9a96e;
+}
+.form-course-card-price-tax {
+  font-size: 9px;
+  color: rgba(240, 237, 228, 0.4);
+}
+.form-course-card-meta {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 10px;
+  color: rgba(240, 237, 228, 0.55);
+  letter-spacing: 0.03em;
+}
+.form-course-card-details {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(201, 169, 110, 0.12);
+  font-size: 10px;
+  color: rgba(240, 237, 228, 0.55);
+  line-height: 1.65;
+}
+.form-course-card-details-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 3px;
+}
+.form-course-card-details-label {
+  color: rgba(201, 169, 110, 0.55);
+  flex-shrink: 0;
+  width: 42px;
+  font-size: 10px;
 }
 
 /* Confirmation dialog styles */
@@ -292,7 +463,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <span class="header-divider"></span>
 <span>Open 11:00 — 23:00</span>
 <span class="header-divider"></span>
-<span>Halal Certified</span>
+<span>Muslim-Friendly</span>
 </div>
 <nav class="flex items-center justify-between px-6 py-3 max-w-[390px] mx-auto">
 <div class="flex flex-col leading-none">
@@ -319,7 +490,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div id="slideshow" class="absolute inset-0">
 <img class="slide absolute inset-0 w-full h-full object-cover" src="images/hero.jpg" alt="Omakase Full Course"/>
 <img class="slide absolute inset-0 w-full h-full object-cover opacity-0" src="images/sushi.jpg" alt="Omakase Sushi"/>
-<img class="slide absolute inset-0 w-full h-full object-cover opacity-0" src="images/wagyu.jpg" alt="A5 Wagyu"/>
+<img class="slide absolute inset-0 w-full h-full object-cover opacity-0" src="images/wagyu.jpg" alt="Authentic Japanese Wagyu"/>
 <img class="slide absolute inset-0 w-full h-full object-cover opacity-0" src="images/Seasonal_menu.jpg" alt="Seasonal Menu"/>
 <img class="slide absolute inset-0 w-full h-full object-cover opacity-0" src="images/Japanese_sweets.jpg" alt="Japanese Sweets"/>
 </div>
@@ -329,11 +500,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="relative z-10 w-full px-8 pb-28 text-center">
 <span class="inline-block border border-ginza-gold/50 px-3 py-1 mb-6 text-[10px] tracking-[0.3em] text-ginza-gold uppercase jp-text">新宿 · SHINJUKU · TOKYO</span>
 <h1 class="font-cormorant italic text-4xl md:text-5xl mb-3 leading-tight">
-Tokyo Omakase Sushi Wagyu (Halal) Shinjuku Restaurant<br/><span class="text-2xl md:text-3xl">新宿寿司和牛餐厅</span>
+Tokyo Omakase Sushi Wagyu (Muslim-Friendly) Shinjuku Restaurant<br/><span class="text-2xl md:text-3xl">新宿寿司和牛餐厅</span>
 </h1>
 <p class="text-sm text-ginza-gold/60 tracking-widest mb-5 jp-text">おまかせコース · 和牛体験</p>
 <p class="text-sm font-light text-ginza-ivory/70 mb-8 max-w-xs mx-auto leading-relaxed">
-Ultra-rare lean Wagyu. Halal certified.<br/>A dining experience crafted for the world.
+Ultra-rare lean Wagyu. Muslim-friendly.<br/>A dining experience crafted for the world.
 </p>
 
 <div class="flex flex-col items-center gap-3 w-full max-w-xs mx-auto">
@@ -370,7 +541,7 @@ Ultra-rare lean Wagyu. Halal certified.<br/>A dining experience crafted for the 
 
   <div class="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
     <svg class="w-4 h-4 text-ginza-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"/></svg>
-    <span class="text-[10px] font-josefin tracking-widest uppercase">Halal Certified · Alcohol Free</span>
+    <span class="text-[10px] font-josefin tracking-widest uppercase">Muslim-Friendly · Alcohol Free</span>
   </div>
 </div>
 </div>
@@ -388,56 +559,13 @@ slides[current].style.opacity = '1';
 })();
 </script>
 
-<!-- SOCIAL PROOF -->
-<section class="py-8 bg-ginza-black">
-<div class="flex flex-wrap justify-center gap-4 px-4">
-
-<div class="trip-card w-full max-w-[340px] border border-ginza-gold/30 rounded-lg bg-ginza-gold/5 text-center flex flex-col items-center gap-0 overflow-hidden">
-<img src="images/trippage.jpg" alt="Tripadvisor Ranking" class="w-1/2 h-auto mx-auto mt-3 rounded opacity-90"/>
-<div class="flex flex-col items-center gap-1.5 p-3 border-t border-ginza-gold/10 w-full mt-2">
-<img src="images/tripicon.jpg" alt="Tripadvisor" class="w-8 h-8 object-contain rounded-full p-0.5" style="background:#34e0a1;"/>
-<p class="text-[10px] uppercase tracking-widest text-ginza-gold">Trip Advisor</p>
-<p class="font-cormorant text-base italic leading-tight">Tokyo 2026 · No.1 Ranked</p>
-<p class="text-[8px] text-ginza-ivory/40 leading-relaxed px-2 mt-1">
-* This No.1 refers to our Flagship (main) store, not this location.<br/>
-It ranked No.1 on Tripadvisor's Tokyo ranking from August 2025 to March 2026.
-</p>
-</div>
-</div>
-
-<div class="w-40 border border-ginza-gold/30 p-4 rounded-lg bg-ginza-gold/5 text-center flex flex-col items-center gap-2">
-<svg class="w-8 h-8" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-<path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
-<path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
-<path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
-<path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
-</svg>
-<p class="text-[10px] uppercase tracking-widest text-ginza-gold">Google Reviews</p>
-<p class="font-cormorant text-lg italic leading-tight">4.8 ★<br/>500+ Reviews</p>
-<p class="text-[9px] text-ginza-ivory/50 leading-relaxed">Highly rated by guests from around the world.</p>
-</div>
-
-<div class="w-40 border border-ginza-gold/30 p-4 rounded-lg bg-ginza-gold/5 text-center flex flex-col items-center gap-2">
-<svg class="w-10 h-10" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-<circle cx="24" cy="24" r="23" fill="#1a6b35" opacity="0.9"/>
-<path d="M24 10a14 14 0 1 0 0 28 10.5 10.5 0 1 1 0-21A14 14 0 0 0 24 10z" fill="white"/>
-<polygon points="33,9 34.5,13.5 39,13.5 35.3,16.2 36.8,20.7 33,18 29.2,20.7 30.7,16.2 27,13.5 31.5,13.5" fill="white"/>
-</svg>
-<p class="text-[10px] uppercase tracking-widest text-ginza-gold">Halal Certified</p>
-<p class="font-cormorant text-lg italic leading-tight">Japan Muslim<br/>Association</p>
-<p class="text-[9px] text-ginza-ivory/50 leading-relaxed">Certified Halal. No pork, no alcohol. Prayer room on-site.</p>
-</div>
-
-</div>
-</section>
-
 <!-- MENU -->
 <section class="reveal py-16 bg-ginza-black" id="menu">
 <div class="text-center mb-10 px-6">
 <p class="section-label mb-4">Menu · Mastery</p>
 <h3 class="font-cormorant italic text-3xl mb-4 leading-snug">"Where Theatre Meets Taste"</h3>
 <p class="text-sm font-light leading-relaxed text-ginza-ivory/70 max-w-lg mx-auto">
-From the delicate assembly of Edomae-style sushi to the dramatic carving of A5 Wagyu, every course is a choreographed masterpiece performed live before your eyes.
+From the delicate craftsmanship of our omakase sushi to the dramatic carving of Authentic Japanese Wagyu, every course is a choreographed masterpiece performed live before your eyes.
 </p>
 </div>
 <div class="flex mb-10">
@@ -450,11 +578,11 @@ From the delicate assembly of Edomae-style sushi to the dramatic carving of A5 W
 </div>
 </div>
 <div class="relative flex-1 h-52 overflow-hidden group">
-<img alt="A5 Wagyu" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="images/wagyu.jpg"/>
+<img alt="Authentic Japanese Wagyu" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="images/wagyu.jpg"/>
 <div class="absolute inset-0 bg-gradient-to-l from-transparent to-ginza-black/70"></div>
 <div class="absolute bottom-0 left-0 p-4">
 <p class="text-[9px] tracking-widest uppercase text-ginza-gold mb-0.5">The Ritual</p>
-<p class="font-cormorant italic text-lg">A5 Wagyu</p>
+<p class="font-cormorant italic text-lg">Authentic Japanese Wagyu</p>
 </div>
 </div>
 </div>
@@ -502,7 +630,7 @@ I visit livestock farms all over Japan and purchase only Wagyu that I truly acce
 <div class="mb-4">
 <p class="section-label mb-3">For Everyone in the World</p>
 <p class="text-sm font-light leading-relaxed text-ginza-ivory/70">
-I personally select Wagyu processed at halal-certified slaughterhouses in Japan. This restaurant was born to share authentic Japanese food culture with everyone — regardless of nationality, religion, age, or gender.
+I personally select Wagyu with care, respecting all dietary needs. This restaurant was born to share authentic Japanese food culture with everyone — regardless of nationality, religion, age, or gender.
 </p>
 </div>
 </div>
@@ -537,7 +665,7 @@ I personally select Wagyu processed at halal-certified slaughterhouses in Japan.
 </div>
 <div class="rounded-xl p-4 text-center" style="background:linear-gradient(135deg,rgba(201,169,110,0.15) 0%,rgba(201,169,110,0.05) 100%); border:1px solid rgba(201,169,110,0.35);">
 <p class="font-cormorant italic text-2xl text-ginza-gold mb-1">100%</p>
-<p class="text-[10px] tracking-widest uppercase text-ginza-ivory/60">Halal certified</p>
+<p class="text-[10px] tracking-widest uppercase text-ginza-ivory/60">Muslim-Friendly</p>
 <p class="text-[10px] text-ginza-ivory/40 mt-1">Alcohol-free menu</p>
 </div>
 </div>
@@ -547,6 +675,26 @@ I personally select Wagyu processed at halal-certified slaughterhouses in Japan.
 <p class="text-xs text-ginza-ivory/40 font-josefin tracking-widest">Tap a course to see full details</p>
 </div>
 
+<!-- Vertical video centered above courses -->
+<div class="course-video-wrap">
+  <div class="course-video-frame">
+    <video
+      class="course-video"
+      src="images/course-sushi.mp4"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+      aria-label="Sushi being served at omakase 墨"></video>
+    <div class="course-video-label">
+      <span class="text-[9px] tracking-widest uppercase text-ginza-gold/80">Live from the Counter</span>
+      <p class="font-cormorant italic text-base text-ginza-ivory mt-1">The Craft in Motion</p>
+    </div>
+  </div>
+</div>
+
+<!-- Course cards -->
 <div class="course-scroll" id="courseScroll">
 <div class="course-card border border-ginza-gold/20 bg-ginza-gold/5">
 <div class="p-5">
@@ -643,6 +791,22 @@ window.addEventListener('load', function() {
     const bokuga = scroll.children[1];
     scroll.scrollLeft = bokuga.offsetLeft - (scroll.offsetWidth - bokuga.offsetWidth) / 2;
   }
+
+  // iOS Safari対策: 動画の自動再生を確実にする
+  var courseVideo = document.querySelector('.course-video');
+  if (courseVideo) {
+    courseVideo.muted = true;
+    courseVideo.play().catch(function(err) {
+      // 自動再生がブロックされた場合、ユーザーの最初のタップで再生
+      var resumeOnInteraction = function() {
+        courseVideo.play().catch(function(){});
+        document.removeEventListener('touchstart', resumeOnInteraction);
+        document.removeEventListener('click', resumeOnInteraction);
+      };
+      document.addEventListener('touchstart', resumeOnInteraction, { once: true });
+      document.addEventListener('click', resumeOnInteraction, { once: true });
+    });
+  }
 });
 </script>
 
@@ -690,13 +854,12 @@ window.addEventListener('load', function() {
         <span class="text-[10px] text-ginza-ivory/40 font-josefin tracking-wider ml-2">TRIPADVISOR</span>
       </div>
       <p class="font-cormorant italic text-base leading-relaxed text-ginza-ivory/85 mb-4">
-        "The prayer room made all the difference. Beautifully presented halal wagyu, thoughtfully served. My family from Dubai felt completely at home in Tokyo."
+        "Beautifully presented Wagyu, thoughtfully served. The Muslim-friendly menu meant my family from Dubai could fully enjoy the experience. Truly felt at home in Tokyo."
       </p>
       <div class="flex items-center gap-3 pt-3 border-t border-ginza-gold/10">
         <div class="w-8 h-8 rounded-full bg-ginza-gold/20 border border-ginza-gold/30 flex items-center justify-center text-ginza-gold font-cormorant italic text-sm">A</div>
         <div>
-          <p class="text-[11px] font-josefin tracking-wider text-ginza-ivory/70">Ahmed K.</p>
-          <p class="text-[9px] text-ginza-ivory/40 tracking-widest uppercase">Dubai · UAE</p>
+          <p class="text-[11px] font-josefin tracking-wider text-ginza-ivory/70">A.</p>
         </div>
       </div>
     </div>
@@ -713,8 +876,7 @@ window.addEventListener('load', function() {
       <div class="flex items-center gap-3 pt-3 border-t border-ginza-gold/10">
         <div class="w-8 h-8 rounded-full bg-ginza-gold/20 border border-ginza-gold/30 flex items-center justify-center text-ginza-gold font-cormorant italic text-sm">J</div>
         <div>
-          <p class="text-[11px] font-josefin tracking-wider text-ginza-ivory/70">Jennifer M.</p>
-          <p class="text-[9px] text-ginza-ivory/40 tracking-widest uppercase">New York · USA</p>
+          <p class="text-[11px] font-josefin tracking-wider text-ginza-ivory/70">J.</p>
         </div>
       </div>
     </div>
@@ -731,8 +893,7 @@ window.addEventListener('load', function() {
       <div class="flex items-center gap-3 pt-3 border-t border-ginza-gold/10">
         <div class="w-8 h-8 rounded-full bg-ginza-gold/20 border border-ginza-gold/30 flex items-center justify-center text-ginza-gold font-cormorant italic text-sm">T</div>
         <div>
-          <p class="text-[11px] font-josefin tracking-wider text-ginza-ivory/70">田中 宏之 様</p>
-          <p class="text-[9px] text-ginza-ivory/40 tracking-widest uppercase">Tokyo · Japan</p>
+          <p class="text-[11px] font-josefin tracking-wider text-ginza-ivory/70">T. 様</p>
         </div>
       </div>
     </div>
@@ -749,8 +910,7 @@ window.addEventListener('load', function() {
       <div class="flex items-center gap-3 pt-3 border-t border-ginza-gold/10">
         <div class="w-8 h-8 rounded-full bg-ginza-gold/20 border border-ginza-gold/30 flex items-center justify-center text-ginza-gold font-cormorant italic text-sm">L</div>
         <div>
-          <p class="text-[11px] font-josefin tracking-wider text-ginza-ivory/70">Lin H.</p>
-          <p class="text-[9px] text-ginza-ivory/40 tracking-widest uppercase">Hong Kong</p>
+          <p class="text-[11px] font-josefin tracking-wider text-ginza-ivory/70">L.</p>
         </div>
       </div>
     </div>
@@ -762,13 +922,29 @@ window.addEventListener('load', function() {
         <span class="text-[10px] text-ginza-ivory/40 font-josefin tracking-wider ml-2">GOOGLE</span>
       </div>
       <p class="font-cormorant italic text-base leading-relaxed text-ginza-ivory/85 mb-4">
-        "As a Muslim food lover, finding authentic halal-certified omakase in Tokyo was a dream. The attention to every detail — from certification to the prayer space — showed real respect. The wagyu itself was sublime."
+        "As a Muslim food lover, finding an authentic Muslim-friendly omakase in Tokyo was a dream. The attention to dietary detail and respect for our needs really showed. The wagyu itself was sublime."
       </p>
       <div class="flex items-center gap-3 pt-3 border-t border-ginza-gold/10">
         <div class="w-8 h-8 rounded-full bg-ginza-gold/20 border border-ginza-gold/30 flex items-center justify-center text-ginza-gold font-cormorant italic text-sm">F</div>
         <div>
-          <p class="text-[11px] font-josefin tracking-wider text-ginza-ivory/70">Farah S.</p>
-          <p class="text-[9px] text-ginza-ivory/40 tracking-widest uppercase">Kuala Lumpur</p>
+          <p class="text-[11px] font-josefin tracking-wider text-ginza-ivory/70">F.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Review 6: English / Cultural experience -->
+    <div class="review-card">
+      <div class="flex items-center gap-1 mb-3">
+        <span class="text-ginza-gold text-sm">★★★★★</span>
+        <span class="text-[10px] text-ginza-ivory/40 font-josefin tracking-wider ml-2">TRIPADVISOR</span>
+      </div>
+      <p class="font-cormorant italic text-base leading-relaxed text-ginza-ivory/85 mb-4">
+        "This was not just a meal — it was a true cultural experience. From the chef's craftsmanship to the storytelling behind every dish, we felt deeply connected to Japanese tradition. If you visit Japan, you absolutely must experience this!!"
+      </p>
+      <div class="flex items-center gap-3 pt-3 border-t border-ginza-gold/10">
+        <div class="w-8 h-8 rounded-full bg-ginza-gold/20 border border-ginza-gold/30 flex items-center justify-center text-ginza-gold font-cormorant italic text-sm">M</div>
+        <div>
+          <p class="text-[11px] font-josefin tracking-wider text-ginza-ivory/70">M.</p>
         </div>
       </div>
     </div>
@@ -777,19 +953,6 @@ window.addEventListener('load', function() {
 
   <p class="md:hidden text-center text-[9px] text-ginza-ivory/30 font-josefin tracking-widest mt-2">← Swipe to read more →</p>
 
-  <!-- Aggregate rating summary -->
-  <div class="mt-10 flex flex-wrap justify-center items-center gap-6 pt-8 border-t border-ginza-gold/10">
-    <div class="text-center">
-      <p class="font-cormorant italic text-3xl text-ginza-gold leading-none mb-1">4.8</p>
-      <p class="text-ginza-gold text-sm mb-1">★★★★★</p>
-      <p class="text-[9px] text-ginza-ivory/40 font-josefin tracking-widest uppercase">Google · 500+ reviews</p>
-    </div>
-    <div class="w-px h-12 bg-ginza-gold/20"></div>
-    <div class="text-center">
-      <p class="font-cormorant italic text-3xl text-ginza-gold leading-none mb-1">No.1</p>
-      <p class="text-[9px] text-ginza-ivory/40 font-josefin tracking-widest uppercase mt-2">Tripadvisor Tokyo<br/>Aug 2025 — Mar 2026 (flagship)</p>
-    </div>
-  </div>
 </div>
 </section>
 
@@ -847,7 +1010,7 @@ Reservations recommended 2 weeks in advance.<br/>Walk-ins welcome subject to ava
     </div>
   </div>
 
-  <p class="text-[10px] text-ginza-ivory/25 tracking-widest mb-4">* Reservation is confirmed after email from godaimeinfo@gmail.com.</p>
+  <p class="text-[10px] text-ginza-ivory/25 tracking-widest mb-4">* Reservation is confirmed after email from Official omakase sumi.</p>
 
   <button
     onclick="openReserveModal('reservation_section')"
@@ -931,7 +1094,7 @@ allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" ti
 </div>
 </section>
 
-<!-- HALAL -->
+<!-- MUSLIM-FRIENDLY -->
 <section class="reveal py-20 px-8 bg-halal-green border-t border-ginza-gold/10">
 <div class="flex flex-col items-center text-center max-w-[390px] mx-auto">
 <div class="w-16 h-16 mb-6 text-ginza-gold opacity-80">
@@ -939,51 +1102,18 @@ allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" ti
 <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
 </svg>
 </div>
-<p class="section-label mb-3">Halal Dining</p>
-<h2 class="font-cormorant italic text-3xl mb-6">A Halal-Friendly Dining Experience in Tokyo</h2>
+<p class="section-label mb-3">Muslim-Friendly Dining</p>
+<h2 class="font-cormorant italic text-3xl mb-6">A Muslim-Friendly Dining Experience in Tokyo</h2>
 <p class="text-sm font-light leading-relaxed text-ginza-ivory/70 max-w-xs mb-4">
-Welcome to our restaurant — a warm, inclusive space where guests from all cultures can dine with peace of mind. We proudly serve Halal-certified, alcohol-free dishes, making us a trusted choice for Muslim travelers and families visiting Japan.
+Welcome to our restaurant — a warm, inclusive space where guests from all cultures can dine with peace of mind. We thoughtfully prepare alcohol-free, pork-free dishes, making us a trusted choice for Muslim travelers and families visiting Japan.
 </p>
 <p class="text-sm font-light leading-relaxed text-ginza-ivory/60 max-w-xs mb-8">
-To ensure comfort and convenience for our Muslim guests, we also provide a <span class="text-ginza-gold/80">prayer room on-site</span>.
+Please feel free to share any dietary preferences or restrictions when making your reservation — we will do our best to accommodate.
 </p>
-<div class="flex flex-wrap items-center justify-center gap-3 text-xs font-josefin tracking-[0.15em] text-ginza-gold mb-8">
+<div class="flex flex-wrap items-center justify-center gap-3 text-xs font-josefin tracking-[0.15em] text-ginza-gold mb-4">
 <span class="px-3 py-1 border border-ginza-gold/30 rounded">NO PORK</span>
 <span class="px-3 py-1 border border-ginza-gold/30 rounded">NO ALCOHOL IN FOOD</span>
-<span class="px-3 py-1 border border-ginza-gold/30 rounded">PRAYER ROOM</span>
-</div>
-<div class="halal-cert-badge-wrap">
-<div class="flex flex-col items-center gap-3">
-<div class="halal-cert-badge">
-<svg class="w-7 h-7 text-ginza-gold" viewBox="0 0 32 32" fill="none">
-<path d="M16 4a12 12 0 1 0 0 24 9 9 0 1 1 0-18 12 12 0 0 0 0-6z" fill="currentColor" opacity="0.9"/>
-<polygon points="22,6 23.2,9.6 27,9.6 24,11.8 25.2,15.4 22,13.2 18.8,15.4 20,11.8 17,9.6 20.8,9.6" fill="currentColor" opacity="0.85"/>
-</svg>
-<span class="text-[8px] font-josefin tracking-wider text-ginza-gold uppercase leading-none">HALAL</span>
-</div>
-<p class="text-[9px] tracking-widest text-ginza-ivory/50 uppercase">Japan Halal<br/>Association</p>
-</div>
-<div class="flex flex-col items-center gap-3">
-<div class="halal-cert-badge">
-<svg class="w-6 h-6 text-ginza-gold" viewBox="0 0 32 32" fill="none">
-<circle cx="16" cy="16" r="10" stroke="currentColor" stroke-width="1.5" opacity="0.7"/>
-<path d="M16 8a8 8 0 1 0 0 16A6 6 0 1 1 16 8z" fill="currentColor" opacity="0.8"/>
-<path d="M21 9l1 3h3l-2.5 1.8 1 3L21 15l-3.5 1.8 1-3L16 12h3z" fill="currentColor" opacity="0.9"/>
-</svg>
-<span class="text-[8px] font-josefin tracking-wider text-ginza-gold uppercase leading-none">CERTIFIED</span>
-</div>
-<p class="text-[9px] tracking-widest text-ginza-ivory/50 uppercase">Muslim<br/>Friendly</p>
-</div>
-<div class="flex flex-col items-center gap-3">
-<div class="halal-cert-badge">
-<svg class="w-6 h-6 text-ginza-gold" viewBox="0 0 32 32" fill="none">
-<path d="M16 6 L16 18 M10 12 L16 6 L22 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-<rect x="8" y="20" width="16" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
-</svg>
-<span class="text-[8px] font-josefin tracking-wider text-ginza-gold uppercase leading-none">PRAYER</span>
-</div>
-<p class="text-[9px] tracking-widest text-ginza-ivory/50 uppercase">Prayer Room<br/>On-Site</p>
-</div>
+<span class="px-3 py-1 border border-ginza-gold/30 rounded">MUSLIM-FRIENDLY</span>
 </div>
 </div>
 </section>
@@ -1050,6 +1180,81 @@ Open 11:00 — 23:00
         <div style="margin-bottom:16px;"><label style="display:block;font-size:10px;letter-spacing:0.15em;color:rgba(201,169,110,0.7);text-transform:uppercase;margin-bottom:6px;">メールアドレス / Email *</label><input id="r_email" type="email" placeholder="example@email.com" autocomplete="email" style="width:100%;background:#1a1a1a;border:1px solid rgba(201,169,110,0.25);border-radius:8px;padding:10px 14px;color:#f0ede4;font-size:16px;box-sizing:border-box;-webkit-appearance:none;"/></div>
         <div style="margin-bottom:16px;"><label style="display:block;font-size:10px;letter-spacing:0.15em;color:rgba(201,169,110,0.7);text-transform:uppercase;margin-bottom:6px;">電話番号 / Phone *</label><input id="r_phone" type="tel" placeholder="+81 90-0000-0000" autocomplete="tel" style="width:100%;background:#1a1a1a;border:1px solid rgba(201,169,110,0.25);border-radius:8px;padding:10px 14px;color:#f0ede4;font-size:16px;box-sizing:border-box;-webkit-appearance:none;"/></div>
 
+        <div style="margin-bottom:16px;">
+          <label style="display:block;font-size:10px;letter-spacing:0.15em;color:rgba(201,169,110,0.7);text-transform:uppercase;margin-bottom:8px;">コース / Course *</label>
+
+          <!-- Course Card 1: SUMI -->
+          <label class="form-course-card" id="course-card-sumi" onclick="selectCourse('sumi')">
+            <input type="radio" name="r_course_radio" value="SUMI - ¥39,800 (¥43,780 inc.tax) / 13 courses · 60-75 min"/>
+            <span class="check-mark"></span>
+            <div class="form-course-card-tier">Entry Course</div>
+            <div class="form-course-card-name">SUMI — 墨 —</div>
+            <div class="form-course-card-price">
+              <span class="form-course-card-price-main">¥39,800</span>
+              <span class="form-course-card-price-tax">(¥43,780 inc.tax)</span>
+            </div>
+            <div class="form-course-card-meta">13 courses · 60–75 min</div>
+            <div class="form-course-card-details">
+              <div class="form-course-card-details-row"><span class="form-course-card-details-label">序</span><span>Tofu · Yukhoe &amp; Hyogo Nori</span></div>
+              <div class="form-course-card-details-row"><span class="form-course-card-details-label">八寸</span><span>Seasonal Appetizer (6 kinds)</span></div>
+              <div class="form-course-card-details-row"><span class="form-course-card-details-label">温物</span><span>Wagyu Shabu-shabu &amp; Dashi</span></div>
+              <div class="form-course-card-details-row"><span class="form-course-card-details-label">鮨</span><span>Temaki · Pressed Sushi · Wagyu Nigiri</span></div>
+              <div class="form-course-card-details-row"><span class="form-course-card-details-label">椀</span><span>Aka-dashi Miso</span></div>
+            </div>
+          </label>
+
+          <!-- Course Card 2: BOKUGA (Most Popular) -->
+          <label class="form-course-card popular" id="course-card-bokuga" onclick="selectCourse('bokuga')">
+            <input type="radio" name="r_course_radio" value="BOKUGA - ¥49,800 (¥54,780 inc.tax) / 15 courses · 75-90 min"/>
+            <span class="check-mark"></span>
+            <div class="form-course-card-tier">Premium Course</div>
+            <div class="form-course-card-name">BOKUGA — 墨雅 —</div>
+            <div class="form-course-card-price">
+              <span class="form-course-card-price-main">¥49,800</span>
+              <span class="form-course-card-price-tax">(¥54,780 inc.tax)</span>
+            </div>
+            <div class="form-course-card-meta">15 courses · 75–90 min</div>
+            <div class="form-course-card-details">
+              <div class="form-course-card-details-row"><span class="form-course-card-details-label">序</span><span>Tofu · Yukhoe &amp; Hyogo Nori</span></div>
+              <div class="form-course-card-details-row"><span class="form-course-card-details-label">八寸</span><span>Seasonal Appetizer Collection</span></div>
+              <div class="form-course-card-details-row"><span class="form-course-card-details-label">温物</span><span>Wagyu Shabu-shabu &amp; Dashi</span></div>
+              <div class="form-course-card-details-row"><span class="form-course-card-details-label">逸品</span><span>Wagyu &amp; Shiso Spring Roll · "Cheese Snow"</span></div>
+              <div class="form-course-card-details-row"><span class="form-course-card-details-label">鮨</span><span>Temaki · Pressed Sushi · Wagyu Nigiri</span></div>
+              <div class="form-course-card-details-row"><span class="form-course-card-details-label">椀</span><span>Aka-dashi Miso</span></div>
+              <div class="form-course-card-details-row"><span class="form-course-card-details-label">茶と甘味</span><span>Matcha — Tsujiri · Wagashi 6 kinds</span></div>
+            </div>
+          </label>
+
+          <!-- Course Card 3: BOKUSHOU -->
+          <label class="form-course-card" id="course-card-bokushou" onclick="selectCourse('bokushou')">
+            <input type="radio" name="r_course_radio" value="BOKUSHOU - ¥89,800 (¥98,780 inc.tax) / 20 courses · 120 min"/>
+            <span class="check-mark"></span>
+            <div class="form-course-card-tier">Ultimate Course</div>
+            <div class="form-course-card-name">BOKUSHOU — 墨匠 —</div>
+            <div class="form-course-card-price">
+              <span class="form-course-card-price-main">¥89,800</span>
+              <span class="form-course-card-price-tax">(¥98,780 inc.tax)</span>
+            </div>
+            <div class="form-course-card-meta">20 courses · 120 min</div>
+            <div class="form-course-card-details">
+              <div class="form-course-card-details-row"><span class="form-course-card-details-label">序</span><span>Tofu · Yukhoe &amp; Hyogo Nori</span></div>
+              <div class="form-course-card-details-row"><span class="form-course-card-details-label">八寸</span><span>Seasonal Appetizer Collection</span></div>
+              <div class="form-course-card-details-row"><span class="form-course-card-details-label">温物</span><span>Wagyu Shabu-shabu &amp; Dashi</span></div>
+              <div class="form-course-card-details-row"><span class="form-course-card-details-label">鮨</span><span>Temaki: Uni / Salmon &amp; Ikura · Pressed Sushi · Wagyu Nigiri</span></div>
+              <div class="form-course-card-details-row"><span class="form-course-card-details-label">逸品</span><span>Jet-Black Vichyssoise · Wagyu Spring Roll</span></div>
+              <div class="form-course-card-details-row"><span class="form-course-card-details-label">和牛</span><span>Wagyu Steak "Tanto" · Mini Burger</span></div>
+              <div class="form-course-card-details-row"><span class="form-course-card-details-label">お口直し</span><span>Yuzu Sorbet with Gold Leaf</span></div>
+              <div class="form-course-card-details-row"><span class="form-course-card-details-label">椀</span><span>Aka-dashi Miso</span></div>
+              <div class="form-course-card-details-row"><span class="form-course-card-details-label">茶と甘味</span><span>Matcha — Tsujiri · Wagashi 6 kinds</span></div>
+            </div>
+          </label>
+
+          <!-- Hidden field to store selected value (for compatibility with existing JS) -->
+          <input type="hidden" id="r_course" value=""/>
+
+          <p style="font-size:10px;color:rgba(240,237,228,0.4);margin:4px 0 0;line-height:1.5;">価格は1名様あたり / Prices are per person.</p>
+        </div>
+
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
           <div><label style="display:block;font-size:10px;letter-spacing:0.15em;color:rgba(201,169,110,0.7);text-transform:uppercase;margin-bottom:6px;">人数 / Guests *</label><select id="r_guests" style="width:100%;background:#1a1a1a;border:1px solid rgba(201,169,110,0.25);border-radius:8px;padding:10px 14px;color:#f0ede4;font-size:16px;box-sizing:border-box;-webkit-appearance:none;"><option value="">-</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8+</option></select></div>
           <div><label style="display:block;font-size:10px;letter-spacing:0.15em;color:rgba(201,169,110,0.7);text-transform:uppercase;margin-bottom:6px;">希望時間 / Time *</label><select id="r_time" style="width:100%;background:#1a1a1a;border:1px solid rgba(201,169,110,0.25);border-radius:8px;padding:10px 14px;color:#f0ede4;font-size:16px;box-sizing:border-box;-webkit-appearance:none;"><option value="">-</option><option>12:00</option><option>14:00</option><option>17:00</option><option>20:00</option></select></div>
@@ -1064,6 +1269,7 @@ Open 11:00 — 23:00
             </svg>
           </div>
           <p style="font-size:10px;color:rgba(240,237,228,0.4);margin:4px 0 0;">📅 タップしてカレンダーから日付を選択 / Tap to pick from calendar</p>
+          <p style="font-size:10px;color:#e57373;margin:6px 0 0;line-height:1.5;">※ 2026年5月25日〜5月31日は店舗工事のため休業いたします<br/>* Closed May 25 – May 31, 2026 due to scheduled renovation</p>
         </div>
         <div style="margin-bottom:20px;"><label style="display:block;font-size:10px;letter-spacing:0.15em;color:rgba(201,169,110,0.7);text-transform:uppercase;margin-bottom:6px;">ご要望 / Special Requests</label><textarea id="r_message" rows="3" placeholder="Allergies, dietary requirements, special occasions..." style="width:100%;background:#1a1a1a;border:1px solid rgba(201,169,110,0.25);border-radius:8px;padding:10px 14px;color:#f0ede4;font-size:16px;box-sizing:border-box;resize:vertical;-webkit-appearance:none;"></textarea></div>
 
@@ -1072,13 +1278,21 @@ Open 11:00 — 23:00
           <p style="margin:0 0 4px;">・24時間前以内：¥5,000 / person &nbsp;|&nbsp; Within 24 hours: ¥5,000 / person</p>
           <p style="margin:0 0 10px;">・48時間前以内：¥2,500 / person &nbsp;|&nbsp; Within 48 hours: ¥2,500 / person</p>
           <hr style="border:none;border-top:1px solid rgba(201,169,110,0.15);margin:8px 0;"/>
-          <p style="margin:0 0 10px;color:rgba(240,237,228,0.4);">※ このフォームでの送信は予約確定ではありません。godaimeinfo@gmail.com からの予約確定メールをお待ちください。<br/><br/>* This form does not confirm your reservation. Please wait for a confirmation email from godaimeinfo@gmail.com.</p>
+          <p style="margin:0 0 10px;color:rgba(240,237,228,0.4);">※ このフォームでの送信は予約確定ではありません。Official omakase sumi からの予約確定メールをお待ちください。<br/><br/>* This form does not confirm your reservation. Please wait for a confirmation email from Official omakase sumi.</p>
           <hr style="border:none;border-top:1px solid rgba(201,169,110,0.15);margin:8px 0;"/>
           <p style="margin:0;color:rgba(201,169,110,0.75);font-weight:600;">※ 当日予約の場合、お席の確認が遅れることがございますので、<a href="tel:07035248272" style="color:#c9a96e;text-decoration:underline;">070-3524-8272</a> までお電話ください。<br/><br/><span style="color:rgba(240,237,228,0.5);font-weight:400;">* For same-day reservations, seat confirmation may be delayed. Please call <a href="tel:07035248272" style="color:#c9a96e;text-decoration:underline;">070-3524-8272</a>.</span></p>
         </div>
 
+        <div style="background:rgba(201,169,110,0.05);border:1px solid rgba(201,169,110,0.2);border-radius:8px;padding:12px 14px;margin-bottom:12px;font-size:11px;color:rgba(240,237,228,0.5);line-height:1.7;">
+          <p style="margin:0 0 6px;color:rgba(201,169,110,0.7);font-weight:600;">個人情報の取り扱いについて / Privacy Policy</p>
+          <p style="margin:0 0 6px;">ご入力いただいた個人情報（お名前・メールアドレス・電話番号等）は、ご予約の確認・連絡および当店からのお知らせのみに使用し、第三者に提供することはございません。法令に基づく場合を除き、お客様の同意なく目的外に利用することはありません。</p>
+          <p style="margin:0;color:rgba(240,237,228,0.4);">* Personal information you provide (name, email, phone number, etc.) will be used solely for reservation confirmation, communication, and store notifications. We will not share your information with third parties except as required by law.</p>
+        </div>
+
         <p id="r_error" style="color:#e57373;font-size:12px;margin-bottom:12px;display:none;"></p>
         <button onclick="openConfirmDialog()" id="r_submit" style="width:100%;background:#c9a96e;color:#090909;font-family:'Josefin Sans',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.15em;text-transform:uppercase;padding:14px;border:none;border-radius:8px;cursor:pointer;">SEND REQUEST / 送信する</button>
+
+        <p style="font-size:10px;color:rgba(240,237,228,0.35);margin:10px 0 0;text-align:center;line-height:1.6;">送信することで、上記の個人情報の取り扱いに同意したものとみなされます。<br/>By submitting, you agree to the privacy terms above.</p>
       </div>
 
       <div id="reserveSuccess" style="display:none;">
@@ -1120,11 +1334,11 @@ Open 11:00 — 23:00
 
           <div class="success-body" style="max-width:300px;margin:0 auto;padding:16px 20px;background:rgba(201,169,110,0.05);border:1px solid rgba(201,169,110,0.2);border-radius:12px;">
             <p style="font-size:13px;color:rgba(240,237,228,0.8);margin:0 0 10px;line-height:1.7;">
-              godaimeinfo@gmail.com からの<br/>確定メールをお待ちください。
+              Official omakase sumi からの<br/>確定メールをお待ちください。
             </p>
             <div style="height:1px;background:rgba(201,169,110,0.2);margin:10px 0;"></div>
             <p style="font-size:12px;color:rgba(240,237,228,0.55);margin:0;line-height:1.6;">
-              Please wait for a confirmation<br/>from godaimeinfo@gmail.com.
+              Please wait for a confirmation<br/>from Official omakase sumi.
             </p>
           </div>
 
@@ -1165,9 +1379,13 @@ Open 11:00 — 23:00
           <span style="font-size:10px;letter-spacing:0.15em;color:rgba(201,169,110,0.6);text-transform:uppercase;">Time / 時間</span>
           <span id="confirm_time" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:#c9a96e;font-weight:600;">—</span>
         </div>
-        <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(201,169,110,0.1);">
           <span style="font-size:10px;letter-spacing:0.15em;color:rgba(201,169,110,0.6);text-transform:uppercase;">Guests / 人数</span>
           <span id="confirm_guests" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:#c9a96e;font-weight:600;">—</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;gap:8px;">
+          <span style="font-size:10px;letter-spacing:0.15em;color:rgba(201,169,110,0.6);text-transform:uppercase;flex-shrink:0;">Course / コース</span>
+          <span id="confirm_course" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:#c9a96e;font-weight:600;text-align:right;line-height:1.4;">—</span>
         </div>
       </div>
 
@@ -1204,12 +1422,28 @@ Open 11:00 — 23:00
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   emailjs.init('6I-wkxv05ZwY-PpXa');
 
+  // コースカード選択
+  function selectCourse(courseId) {
+    var ids = ['sumi', 'bokuga', 'bokushou'];
+    ids.forEach(function(id) {
+      var card = document.getElementById('course-card-' + id);
+      var radio = card.querySelector('input[type="radio"]');
+      if (id === courseId) {
+        card.classList.add('selected');
+        radio.checked = true;
+        document.getElementById('r_course').value = radio.value;
+      } else {
+        card.classList.remove('selected');
+        radio.checked = false;
+      }
+    });
+  }
+
   function openReserveModal(label) {
     document.getElementById('reserveModal').style.display = 'block';
     document.body.style.overflow = 'hidden';
-    window._reserveModalOpenedAt = Date.now();  // タイマー用: モーダル表示時刻を記録
+    window._reserveModalOpenedAt = Date.now();
 
-    // 日付入力の最小値を今日に設定（過去日付選択を防止）
     var today = new Date();
     var minDate = today.getFullYear() + '-' +
                   String(today.getMonth()+1).padStart(2,'0') + '-' +
@@ -1223,6 +1457,34 @@ Open 11:00 — 23:00
     });
   }
 
+  // 工事期間など、選択不可にしたい日付（YYYY-MM-DD形式）
+  var BLOCKED_DATES = [];
+  (function(){
+    // 2026-05-25 から 2026-05-31 までを追加
+    var start = new Date('2026-05-25');
+    var end   = new Date('2026-05-31');
+    for (var d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+      var ymd = d.getFullYear() + '-' +
+                String(d.getMonth()+1).padStart(2,'0') + '-' +
+                String(d.getDate()).padStart(2,'0');
+      BLOCKED_DATES.push(ymd);
+    }
+  })();
+
+  // 日付入力に変更があったら、工事期間の日付を弾く
+  document.addEventListener('DOMContentLoaded', function() {
+    var dateInput = document.getElementById('r_date');
+    if (dateInput) {
+      dateInput.addEventListener('change', function() {
+        var selected = this.value;
+        if (BLOCKED_DATES.indexOf(selected) !== -1) {
+          alert('申し訳ございません。選択された日付は店舗工事のため受付しておりません。\n\nSorry, the selected date is unavailable due to scheduled renovation work (May 25 – May 31, 2026). Please select another date.');
+          this.value = '';
+        }
+      });
+    }
+  });
+
   function closeReserveModal() {
     document.getElementById('reserveModal').style.display = 'none';
     document.getElementById('confirmDialog').style.display = 'none';
@@ -1231,8 +1493,17 @@ Open 11:00 — 23:00
     document.getElementById('reserveSuccess').style.display = 'none';
     var brushReset = document.getElementById('sumiBrushSvg');
     if (brushReset) brushReset.classList.remove('drawing');
-    ['r_name','r_email','r_phone','r_guests','r_time','r_date','r_message','r_website'].forEach(function(id){
+    ['r_name','r_email','r_phone','r_course','r_guests','r_time','r_date','r_message','r_website'].forEach(function(id){
       document.getElementById(id).value = '';
+    });
+    // コースカードの選択状態をリセット
+    ['sumi', 'bokuga', 'bokushou'].forEach(function(id) {
+      var card = document.getElementById('course-card-' + id);
+      if (card) {
+        card.classList.remove('selected');
+        var radio = card.querySelector('input[type="radio"]');
+        if (radio) radio.checked = false;
+      }
     });
     document.getElementById('confirm_check_details').checked = false;
     document.getElementById('confirm_check_policy').checked = false;
@@ -1244,18 +1515,17 @@ Open 11:00 — 23:00
     btn.disabled = false;
   }
 
-  // ============ 確認ダイアログを開く（必須チェック + bot対策後） ============
   function openConfirmDialog() {
     var name    = document.getElementById('r_name').value.trim();
     var email   = document.getElementById('r_email').value.trim();
     var phone   = document.getElementById('r_phone').value.trim();
+    var course  = document.getElementById('r_course').value;
     var guests  = document.getElementById('r_guests').value;
     var time    = document.getElementById('r_time').value;
     var date    = document.getElementById('r_date').value;
     var website = document.getElementById('r_website').value.trim();
     var errEl   = document.getElementById('r_error');
 
-    // Bot対策 1: Honeypot
     if (website !== '') {
       document.getElementById('reserveForm').style.display = 'none';
       document.getElementById('reserveSuccess').style.display = 'block';
@@ -1264,7 +1534,6 @@ Open 11:00 — 23:00
       return;
     }
 
-    // Bot対策 2: 送信時間チェック
     var openedAt = window._reserveModalOpenedAt || 0;
     var elapsed = Date.now() - openedAt;
     if (elapsed < 3000) {
@@ -1275,15 +1544,20 @@ Open 11:00 — 23:00
       return;
     }
 
-    // 必須チェック
-    if (!name || !email || !phone || !guests || !time || !date) {
+    if (!name || !email || !phone || !course || !guests || !time || !date) {
       errEl.textContent = '* 必須項目を入力してください / Please fill in required fields.';
+      errEl.style.display = 'block';
+      return;
+    }
+
+    // 工事期間の日付を弾く（直接入力対策）
+    if (BLOCKED_DATES.indexOf(date) !== -1) {
+      errEl.textContent = '※ 選択された日付は店舗工事のため受付しておりません (5/25-5/31) / The selected date is unavailable due to renovation (May 25 – May 31).';
       errEl.style.display = 'block';
       return;
     }
     errEl.style.display = 'none';
 
-    // 確認ダイアログに予約内容を表示
     var dateObj = new Date(date);
     var weekdays = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
     var formattedDate = dateObj.getFullYear() + '/' +
@@ -1294,6 +1568,9 @@ Open 11:00 — 23:00
     document.getElementById('confirm_date').textContent = formattedDate;
     document.getElementById('confirm_time').textContent = time;
     document.getElementById('confirm_guests').textContent = guests + (guests === '1' ? ' guest' : ' guests');
+    // コース名を短縮表示（料金部分は省略）
+    var courseDisplay = course.split(' - ')[0];
+    document.getElementById('confirm_course').textContent = courseDisplay;
 
     document.getElementById('confirm_check_details').checked = false;
     document.getElementById('confirm_check_policy').checked = false;
@@ -1306,7 +1583,6 @@ Open 11:00 — 23:00
     document.getElementById('confirmDialog').style.display = 'none';
   }
 
-  // ============ 確認後に送信 ============
   async function confirmAndSubmit() {
     var checkDetails = document.getElementById('confirm_check_details').checked;
     var checkPolicy  = document.getElementById('confirm_check_policy').checked;
@@ -1326,13 +1602,14 @@ Open 11:00 — 23:00
     var name    = document.getElementById('r_name').value.trim();
     var email   = document.getElementById('r_email').value.trim();
     var phone   = document.getElementById('r_phone').value.trim();
+    var course  = document.getElementById('r_course').value;
     var guests  = document.getElementById('r_guests').value;
     var time    = document.getElementById('r_time').value;
     var date    = document.getElementById('r_date').value;
     var message = document.getElementById('r_message').value.trim();
 
     var source = window.location.pathname;
-    var params = { name, email, phone, guests, time, date, message, source_path: source, location: '新宿三丁目店', location_key: 'shinjuku', address_jp: '東京都新宿区新宿3-7-5 一兆ビル 2F', address_en: 'Tokyo, Shinjuku-ku, Shinjuku 3-7-5, Iccho Bldg. 2F' };
+    var params = { name, email, phone, course, guests, time, date, message, source_path: source, location: '新宿三丁目店', location_key: 'shinjuku', address_jp: '東京都新宿区新宿3-7-5 一兆ビル 2F', address_en: 'Tokyo, Shinjuku-ku, Shinjuku 3-7-5, Iccho Bldg. 2F' };
 
     try {
       await emailjs.send('service_41qov79', 'template_uk1m5wn', params);
@@ -1343,13 +1620,13 @@ Open 11:00 — 23:00
         event: 'reservation_form_submit',
         form_guests: guests,
         form_date: date,
+        form_course: course,
         source_path: source
       });
 
       document.getElementById('confirmDialog').style.display = 'none';
       document.getElementById('reserveForm').style.display = 'none';
       document.getElementById('reserveSuccess').style.display = 'block';
-      // Trigger ink-brush drawing animation (新宿店のみ)
       var brushSvg = document.getElementById('sumiBrushSvg');
       if (brushSvg) {
         brushSvg.classList.remove('drawing');
@@ -1365,7 +1642,6 @@ Open 11:00 — 23:00
   }
 
   async function submitReservation() {
-    // 互換性のため残しているが、実際には openConfirmDialog → confirmAndSubmit の流れに置き換え済み
     openConfirmDialog();
   }
 
@@ -1376,7 +1652,6 @@ Open 11:00 — 23:00
         if (e.target === this) closeReserveModal();
       });
     }
-    // 確認ダイアログの背景クリックで閉じる
     var cd = document.getElementById('confirmDialog');
     if (cd) {
       cd.addEventListener('click', function(e) {
@@ -1392,3 +1667,4 @@ Open 11:00 — 23:00
 
 </body>
 </html>
+<!-- sync test -->
